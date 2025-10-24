@@ -492,6 +492,89 @@
 								</div>
 							</div>
 						</div>
+						
+						<!-- Creative Ads Project -->
+						<div class="resume-wrap d-flex ftco-animate">
+							<div class="icon d-flex align-items-center justify-content-center">
+								<span class="flaticon-ideas"></span>
+							</div>
+							<div class="text pl-3">
+								<span class="date">2024-2025</span>
+								<h2>Creative Ads 개발</h2>
+								<span class="position">슈퍼센트</span>
+								<div> <b class="text-dark">기술 스택 : </b>Unity, Unity PlayWorks, C#</div>
+								<div> <b class="text-dark">프로젝트 규모 : </b>총 41개의 크리에이티브 광고 제작 및 배포</div>
+								<div>Unity와 Unity PlayWorks 플러그인을 활용한 동영상 광고 제작.</div>
+								<div>다양한 게임의 핵심 메커니즘을 짧은 영상으로 압축하여 사용자의 흥미를 유도하는 크리에이티브 광고 콘텐츠를 제작했습니다.</div>
+								
+								<!-- Video Viewer -->
+								<div class="game-shorts-container mt-4">
+									<!-- Video Info Panel -->
+									<div class="game-info-panel">
+										<div class="video-info-item active" data-video="0" onclick="switchToVideo(0)">
+											<h3 id="video-title-0">Video 1</h3>
+										</div>
+										<div class="video-info-item" data-video="1" onclick="switchToVideo(1)">
+											<h3 id="video-title-1">Video 2</h3>
+										</div>
+										<div class="video-info-item" data-video="2" onclick="switchToVideo(2)">
+											<h3 id="video-title-2">Video 3</h3>
+										</div>
+										<div class="video-info-item" data-video="3" onclick="switchToVideo(3)">
+											<h3 id="video-title-3">Video 4</h3>
+										</div>
+										<div class="video-info-item" data-video="4" onclick="switchToVideo(4)">
+											<h3 id="video-title-4">Video 5</h3>
+										</div>
+									</div>
+									
+									<!-- Video Viewer Wrapper -->
+									<div class="game-viewer-wrapper">
+										<!-- Videos will be loaded here -->
+										<div class="video-slide active" data-video="0">
+											<div class="video-frame">
+												<div class="game-loading">동영상 로딩 중...</div>
+											</div>
+										</div>
+										<div class="video-slide" data-video="1">
+											<div class="video-frame">
+												<div class="game-loading">동영상 로딩 중...</div>
+											</div>
+										</div>
+										<div class="video-slide" data-video="2">
+											<div class="video-frame">
+												<div class="game-loading">동영상 로딩 중...</div>
+											</div>
+										</div>
+										<div class="video-slide" data-video="3">
+											<div class="video-frame">
+												<div class="game-loading">동영상 로딩 중...</div>
+											</div>
+										</div>
+										<div class="video-slide" data-video="4">
+											<div class="video-frame">
+												<div class="game-loading">동영상 로딩 중...</div>
+											</div>
+										</div>
+									</div>
+									
+									<!-- Navigation Buttons -->
+									<div class="game-nav-controls">
+										<button class="game-nav-btn game-nav-up" id="prevVideoBtn" onclick="navigateVideo(-1)">
+											<span class="icon-chevron-up"></span>
+										</button>
+										<button class="game-nav-btn game-nav-down" id="nextVideoBtn" onclick="navigateVideo(1)">
+											<span class="icon-chevron-down"></span>
+										</button>
+									</div>
+									
+									<!-- Video Counter -->
+									<div class="game-counter">
+										<span id="currentVideo">1</span> / <span id="totalVideos">5</span>
+									</div>
+								</div>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -656,6 +739,205 @@
 			} else if (e.key === 'ArrowDown') {
 				navigateGame(1);
 			}
+		});
+	</script>
+
+	<!-- Video Navigation Script -->
+	<script>
+		// List of all available videos
+		const allVideos = [
+			'Creatives/video725_burgerplease_en_30s_1080x1920_annie_250328.mp4',
+			'Creatives/video723_burgerplease_en_29s_1080x1920_annie_250328.mp4',
+			'Creatives/video722_burgerplease_en_28s_1080x1920_annie_250328.mp4',
+			'Creatives/video721_burgerplease_en_30s_1080x1920_annie_250328.mp4',
+			'Creatives/video720_burgerplease_en_27s_1080x1920_annie_250328.mp4',
+			'Creatives/video701_burgerplease_en_60s_1080x1920_annie_250221.mp4',
+			'Creatives/video689_burgerplease_en_30s_1080x1920_annie_250207.mp4',
+			'Creatives/video688_burgerplease_en_32s_1080x1920_annie_250207.mp4',
+			'Creatives/video687_burgerplease_en_30s_1080x1920_annie_250207.mp4',
+			'Creatives/video686_burgerplease_en_30s_1080x1920_annie_250207.mp4',
+			'Creatives/video449_pizzaidle_en_56s_1080x1920_jaeny_250912.mp4',
+			'Creatives/video363_pizzaplease_en_31s_1080x1920_kay_250307.mp4',
+			'Creatives/video360_pizzaplease_en_36s_1080x1920_kay_250307.mp4',
+			'Creatives/video360_outletsrush_en_34s_1080x1920_bean_250612.mp4',
+			'Creatives/video359_pizzaplease_en_36s_1080x1920_kay_250307.mp4',
+			'Creatives/video359_outletsrush_en_29s_1080x1920_bean_250612.mp4',
+			'Creatives/video358_pizzaplease_en_37s_1080x1920_kay_250307.mp4',
+			'Creatives/video358_outletsrush_en_36s_1080x1920_bean_250612.mp4',
+			'Creatives/video285_slime_en_30s_1080x1920_annie_250124.mp4',
+			'Creatives/video284_slime_en_23s_1080x1920_annie_250124.mp4',
+			'Creatives/video283_slime_en_22s_1080x1920_annie_250124.mp4',
+			'Creatives/video282_slime_en_26s_1080x1920_annie_250124.mp4',
+			'Creatives/video131_downhill_en_30s_1080x1920_kay_250314.mp4',
+			'Creatives/video128_downhill_en_28s_1080x1920_kay_250227.mp4',
+			'Creatives/video127_downhill_en_28s_1080x1920_kay_250227.mp4',
+			'Creatives/video125_downhill_en_15s_1080x1920_kay_250227.mp4',
+			'Creatives/video117_lumberchopper_en_33s_1080x1920_brown_251002.mp4',
+			'Creatives/video116_lumberchopper_en_33s_1080x1920_brown_251002.mp4',
+			'Creatives/video115_lumberchopper_en_37s_1080x1920_brown_251002.mp4',
+			'Creatives/video114_lumberchopper_en_44s_1080x1920_brown_251002.mp4',
+			'Creatives/video113_lumberchopper_en_44s_1080x1920_brown_251002.mp4',
+			'Creatives/video112_lumberchopper_en_46s_1080x1920_brown_251002.mp4',
+			'Creatives/video102_xphero_en_48s_1080x1920_jaeny_250711.mp4',
+			'Creatives/video079_cardealeridle_en_30s_1080x1920_bean_250123.mp4',
+			'Creatives/video078_cardealeridle_en_28s_1080x1920_bean_250123.mp4',
+			'Creatives/video058_xphero_en_25s_1080x1920_jaeny_250613.mp4',
+			'Creatives/video056_xphero_en_32s_1080x1920_jaeny_250613.mp4',
+			'Creatives/video055_xphero_en_30s_1080x1920_jaeny_250613.mp4',
+			'Creatives/video054_xphero_en_48s_1080x1920_annie_250314.mp4',
+			'Creatives/video053_xphero_en_30s_1080x1920_annie_250314.mp4',
+			'Creatives/video052_xphero_en_38s_1080x1920_annie_250314.mp4',
+			'Creatives/video050_xphero_en_39s_1080x1920_annie_250314.mp4'
+		];
+		
+		// Randomly select 5 videos
+		function getRandomVideos(count = 5) {
+			const shuffled = [...allVideos].sort(() => 0.5 - Math.random());
+			return shuffled.slice(0, count);
+		}
+		
+		const selectedVideos = getRandomVideos(5);
+		let currentVideoIndex = 0;
+		const loadedVideos = new Set();
+		
+		// Extract video name from path for display
+		function getVideoName(path) {
+			const filename = path.split('/').pop();
+			const match = filename.match(/video\d+_([^_]+)/);
+			return match ? match[1].charAt(0).toUpperCase() + match[1].slice(1) : 'Video';
+		}
+		
+		// Update video titles
+		selectedVideos.forEach((video, index) => {
+			const titleElement = document.getElementById(`video-title-${index}`);
+			if (titleElement) {
+				titleElement.textContent = getVideoName(video);
+			}
+		});
+		
+		// Load a video
+		function loadVideo(index, forceReload = false) {
+			const slides = document.querySelectorAll('.video-slide');
+			const slide = slides[index];
+			const videoFrame = slide.querySelector('.video-frame');
+			
+			// If force reload, remove existing video
+			if (forceReload && loadedVideos.has(index)) {
+				const existingVideo = videoFrame.querySelector('video');
+				if (existingVideo) {
+					existingVideo.pause();
+					existingVideo.remove();
+				}
+				loadedVideos.delete(index);
+			}
+			
+			// If already loaded and not forcing reload, skip
+			if (loadedVideos.has(index) && !forceReload) {
+				const video = videoFrame.querySelector('video');
+				if (video) {
+					video.play();
+				}
+				return;
+			}
+			
+			// Remove loading message if exists
+			const loadingDiv = videoFrame.querySelector('.game-loading');
+			if (loadingDiv) {
+				loadingDiv.remove();
+			}
+			
+		// Create video element
+		const video = document.createElement('video');
+		video.src = selectedVideos[index];
+		video.controls = true;
+		video.autoplay = true;
+		video.loop = true;
+		video.muted = true;
+		video.playsInline = true;
+		video.style.width = '100%';
+		video.style.height = '100%';
+		video.style.objectFit = 'contain';
+		video.style.backgroundColor = '#000';
+			
+			// Add video
+			videoFrame.appendChild(video);
+			loadedVideos.add(index);
+		}
+		
+		// Switch to specific video (for info panel clicks)
+		function switchToVideo(index) {
+			if (index === currentVideoIndex) {
+				return; // Already on this video
+			}
+			
+			const slides = document.querySelectorAll('.video-slide');
+			const infoItems = document.querySelectorAll('.video-info-item');
+			
+			// Stop current video
+			const currentSlide = slides[currentVideoIndex];
+			const currentVideo = currentSlide.querySelector('video');
+			if (currentVideo) {
+				currentVideo.pause();
+			}
+			
+			// Remove active class from current slide and info
+			slides[currentVideoIndex].classList.remove('active');
+			infoItems[currentVideoIndex].classList.remove('active');
+			
+			// Update index
+			currentVideoIndex = index;
+			
+			// Load the new video
+			loadVideo(currentVideoIndex, false);
+			
+			// Add active class to new slide and info
+			slides[currentVideoIndex].classList.add('active');
+			infoItems[currentVideoIndex].classList.add('active');
+			
+			// Update counter
+			document.getElementById('currentVideo').textContent = currentVideoIndex + 1;
+		}
+		
+		function navigateVideo(direction) {
+			const slides = document.querySelectorAll('.video-slide');
+			const infoItems = document.querySelectorAll('.video-info-item');
+			
+			// Stop current video
+			const currentSlide = slides[currentVideoIndex];
+			const currentVideo = currentSlide.querySelector('video');
+			if (currentVideo) {
+				currentVideo.pause();
+			}
+			
+			// Remove active class from current slide and info
+			slides[currentVideoIndex].classList.remove('active');
+			infoItems[currentVideoIndex].classList.remove('active');
+			
+			// Calculate new index
+			currentVideoIndex += direction;
+			
+			// Loop around if at boundaries
+			if (currentVideoIndex >= 5) {
+				currentVideoIndex = 0;
+			} else if (currentVideoIndex < 0) {
+				currentVideoIndex = 4;
+			}
+			
+			// Load the new video
+			loadVideo(currentVideoIndex, false);
+			
+			// Add active class to new slide and info
+			slides[currentVideoIndex].classList.add('active');
+			infoItems[currentVideoIndex].classList.add('active');
+			
+			// Update counter
+			document.getElementById('currentVideo').textContent = currentVideoIndex + 1;
+		}
+		
+		// Initialize video viewer on page load
+		document.addEventListener('DOMContentLoaded', function() {
+			// Load the first video
+			loadVideo(0);
 		});
 	</script>
 
