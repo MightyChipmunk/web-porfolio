@@ -9647,9 +9647,9 @@ textarea.form-control {
 .game-info-item {
   background: rgba(62, 100, 255, 0.1);
   border: 2px solid rgba(62, 100, 255, 0.3);
-  padding: 20px;
+  padding: 15px 20px;
   border-radius: 12px;
-  margin-bottom: 15px;
+  margin-bottom: 12px;
   opacity: 0.5;
   transition: all 0.3s ease;
   cursor: pointer;
@@ -9674,24 +9674,15 @@ textarea.form-control {
 }
 
 .game-info-item h3 {
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   font-weight: 600;
-  margin: 0 0 10px 0;
+  margin: 0;
   color: #3e64ff;
-}
-
-.game-info-item p {
-  font-size: 0.9rem;
-  margin: 0 0 5px 0;
-  color: #666;
+  text-align: center;
 }
 
 .game-info-item.active h3 {
   color: #3e64ff;
-}
-
-.game-info-item.active p {
-  color: #333;
 }
 
 .game-viewer-wrapper {
@@ -9826,15 +9817,11 @@ textarea.form-control {
   }
   
   .game-info-item {
-    padding: 15px;
+    padding: 12px 15px;
   }
   
   .game-info-item h3 {
-    font-size: 1.2rem;
-  }
-  
-  .game-info-item p {
-    font-size: 0.8rem;
+    font-size: 1.1rem;
   }
 }
 
@@ -9897,15 +9884,11 @@ textarea.form-control {
   }
   
   .game-info-item {
-    padding: 12px;
+    padding: 10px 12px;
   }
   
   .game-info-item h3 {
-    font-size: 1rem;
-  }
-  
-  .game-info-item p {
-    font-size: 0.75rem;
+    font-size: 0.9rem;
   }
   
   .game-viewer-wrapper {

@@ -623,28 +623,54 @@
 						<!-- Game Info - Outside Left -->
 						<div class="game-info-panel">
 							<div class="game-info-item active" data-game="1" onclick="switchToGame(0)">
-								<h3>Prison008</h3>
-								<p>HTML5 웹 게임</p>
-								<p>Luna Labs 플랫폼</p>
+								<h3>XP Hero</h3>
 							</div>
 							<div class="game-info-item" data-game="2" onclick="switchToGame(1)">
-								<h3>XP002</h3>
-								<p>HTML5 웹 게임</p>
-								<p>Luna Labs 플랫폼</p>
+								<h3>Pizza Ready!</h3>
+							</div>
+							<div class="game-info-item" data-game="3" onclick="switchToGame(2)">
+								<h3>Downhill Racer</h3>
+							</div>
+							<div class="game-info-item" data-game="4" onclick="switchToGame(3)">
+								<h3>Snake Clash</h3>
+							</div>
+							<div class="game-info-item" data-game="5" onclick="switchToGame(4)">
+								<h3>Terminal Master</h3>
 							</div>
 						</div>
 						
 						<!-- Game Viewer -->
 						<div class="game-viewer-wrapper">
-							<!-- Game 1: Prison008 -->
-							<div class="game-slide active" data-game="1" data-src="Prison008/Prison008/playground.lunalabs.io/preview/249377/340153/1703aff40e6d4548f15efe206918c6945f053e4a8bd126710bf82d53d1925cc4.html">
+							<!-- Game 1: XP Hero (XP002) -->
+							<div class="game-slide active" data-game="1" data-src="XP002/XP002/playground.lunalabs.io/preview/202603/283318/1703aff40e6d4548f15efe206918c6945f053e4a8bd126710bf82d53d1925cc4.html">
 								<div class="game-frame">
 									<div class="game-loading">게임 로딩 중...</div>
 								</div>
 							</div>
 							
-							<!-- Game 2: XP002 -->
-							<div class="game-slide" data-game="2" data-src="XP002/XP002/playground.lunalabs.io/preview/202603/283318/1703aff40e6d4548f15efe206918c6945f053e4a8bd126710bf82d53d1925cc4.html">
+							<!-- Game 2: Pizza Ready! (Pizza018) -->
+							<div class="game-slide" data-game="2" data-src="Pizza018/Pizza018/playground.lunalabs.io/preview/169092/241661/1703aff40e6d4548f15efe206918c6945f053e4a8bd126710bf82d53d1925cc4.html">
+								<div class="game-frame">
+									<div class="game-loading">게임 로딩 중...</div>
+								</div>
+							</div>
+							
+							<!-- Game 3: Downhill Racer (Downhill003) -->
+							<div class="game-slide" data-game="3" data-src="Downhill003/Downhill003/playground.lunalabs.io/preview/193144/271584/1703aff40e6d4548f15efe206918c6945f053e4a8bd126710bf82d53d1925cc4.html">
+								<div class="game-frame">
+									<div class="game-loading">게임 로딩 중...</div>
+								</div>
+							</div>
+							
+							<!-- Game 4: Snake Clash (Snake021) -->
+							<div class="game-slide" data-game="4" data-src="Snake021/Snake021/playground.lunalabs.io/preview/234469/321726/1703aff40e6d4548f15efe206918c6945f053e4a8bd126710bf82d53d1925cc4.html">
+								<div class="game-frame">
+									<div class="game-loading">게임 로딩 중...</div>
+								</div>
+							</div>
+							
+							<!-- Game 5: Terminal Master (Terminal007) -->
+							<div class="game-slide" data-game="5" data-src="Terminal007/Terminal007/playground.lunalabs.io/preview/227713/313192/1703aff40e6d4548f15efe206918c6945f053e4a8bd126710bf82d53d1925cc4.html">
 								<div class="game-frame">
 									<div class="game-loading">게임 로딩 중...</div>
 								</div>
@@ -663,7 +689,7 @@
 						
 						<!-- Game Counter -->
 						<div class="game-counter">
-							<span id="currentGame">1</span> / <span id="totalGames">2</span>
+							<span id="currentGame">1</span> / <span id="totalGames">5</span>
 						</div>
 					</div>
 				</div>
@@ -728,6 +754,14 @@
 			const slides = document.querySelectorAll('.game-slide');
 			const infoItems = document.querySelectorAll('.game-info-item');
 			
+			// Stop current game completely (remove iframe to stop sound)
+			const currentSlide = slides[currentGameIndex];
+			const currentIframe = currentSlide.querySelector('iframe');
+			if (currentIframe) {
+				currentIframe.remove();
+				loadedGames.delete(currentGameIndex);
+			}
+			
 			// Remove active class from current slide and info
 			slides[currentGameIndex].classList.remove('active');
 			infoItems[currentGameIndex].classList.remove('active');
@@ -735,7 +769,7 @@
 			// Update index
 			currentGameIndex = index;
 			
-			// Reload the game (force reset)
+			// Load the new game
 			loadGame(currentGameIndex, true);
 			
 			// Add active class to new slide and info
@@ -753,6 +787,14 @@
 			const slides = document.querySelectorAll('.game-slide');
 			const infoItems = document.querySelectorAll('.game-info-item');
 			
+			// Stop current game completely (remove iframe to stop sound)
+			const currentSlide = slides[currentGameIndex];
+			const currentIframe = currentSlide.querySelector('iframe');
+			if (currentIframe) {
+				currentIframe.remove();
+				loadedGames.delete(currentGameIndex);
+			}
+			
 			// Remove active class from current slide and info
 			slides[currentGameIndex].classList.remove('active');
 			infoItems[currentGameIndex].classList.remove('active');
@@ -767,7 +809,7 @@
 				currentGameIndex = totalGames - 1;
 			}
 			
-			// Reload the game (force reset)
+			// Load the new game
 			loadGame(currentGameIndex, true);
 			
 			// Add active class to new slide and info
