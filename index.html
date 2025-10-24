@@ -41,11 +41,6 @@
 					<li class="nav-item"><a href="#about-section" class="nav-link"><span>About</span></a></li>
 					<li class="nav-item"><a href="#education-section" class="nav-link"><span>Education</span></a></li>
 					<li class="nav-item"><a href="#projects-section" class="nav-link"><span>Projects</span></a></li>
-					<li class="nav-item"><a href="#side-projects-section" class="nav-link"><span>Side
-								Projects</span></a>
-					</li>
-					<li class="nav-item"><a href="#games-section" class="nav-link"><span>Games</span></a></li>
-					<li class="nav-item"><a href="#blog-section" class="nav-link"><span>My Blog</span></a></li>
 					<li class="nav-item"><a href="#contact-section" class="nav-link"><span>Contact</span></a></li>
 				</ul>
 			</div>
@@ -103,12 +98,13 @@
 					<div class="counter-wrap ftco-animate d-flex mt-md-3">
 						<div class="text">
 							<p class="mb-4">
-								<span class="number" data-number="24">0</span>
-								<span>Project complete</span>
+								<span class="number" data-number="36">0</span>
+								<span>Playables Complete</span>
 							</p>
-							<p><a target="_blank"
-									href="https://drive.google.com/file/d/1uJg0Yun35HWc4YsEKfEX5L6Uyik5MPl_/view?usp=sharing"
-									class="btn btn-primary py-3 px-3">이력서 다운받기</a></p>
+							<p class="mb-4">
+								<span class="number" data-number="46">0</span>
+								<span>Creative Complete</span>
+							</p>
 						</div>
 					</div>
 				</div>
@@ -116,44 +112,6 @@
 		</div>
 	</section>
 
-	<section class="ftco-section ftco-no-pb ftco-counter img" id="section-counter">
-		<div class="container-fluid px-md-5">
-			<div class="row d-md-flex align-items-center">
-				<div class="col-md d-flex justify-content-center counter-wrap ftco-animate">
-					<div class="block-18 shadow">
-						<div class="text">
-							<strong class="number" data-number="365">0</strong>
-							<span>코딩한 일수</span>
-						</div>
-					</div>
-				</div>
-				<div class="col-md d-flex justify-content-center counter-wrap ftco-animate">
-					<div class="block-18 shadow">
-						<div class="text">
-							<strong class="number" data-number="100">0</strong>
-							<span>Complete Projects</span>
-						</div>
-					</div>
-				</div>
-				<div class="col-md d-flex justify-content-center counter-wrap ftco-animate">
-					<div class="block-18 shadow">
-						<div class="text">
-							<strong class="number" data-number="100">0</strong>
-							<span>Happy Customers</span>
-						</div>
-					</div>
-				</div>
-				<div class="col-md d-flex justify-content-center counter-wrap ftco-animate">
-					<div class="block-18 shadow">
-						<div class="text">
-							<strong class="number" data-number="50">0</strong>
-							<span>Cups of coffee</span>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
 
 
 	<section class="ftco-section ftco-no-pb goto-here" id="resume-section">
@@ -523,180 +481,91 @@
 									into your mouth.</p>
 							</div>
 						</div>
+						
+						<!-- Playables Section -->
+						<h2 id="playables-section" class="heading mt-5">Playables</h2>
+						<p class="mb-4">직접 개발한 웹 게임들을 체험해보세요!</p>
+						
+						<!-- Shorts-style Game Viewer -->
+						<div class="game-shorts-container">
+							<!-- Game Info - Outside Left -->
+							<div class="game-info-panel">
+								<div class="game-info-item active" data-game="1" onclick="switchToGame(0)">
+									<h3>XP Hero</h3>
+								</div>
+								<div class="game-info-item" data-game="2" onclick="switchToGame(1)">
+									<h3>Pizza Ready!</h3>
+								</div>
+								<div class="game-info-item" data-game="3" onclick="switchToGame(2)">
+									<h3>Downhill Racer</h3>
+								</div>
+								<div class="game-info-item" data-game="4" onclick="switchToGame(3)">
+									<h3>Snake Clash</h3>
+								</div>
+								<div class="game-info-item" data-game="5" onclick="switchToGame(4)">
+									<h3>Terminal Master</h3>
+								</div>
+							</div>
+							
+							<!-- Game Viewer -->
+							<div class="game-viewer-wrapper">
+								<!-- Game 1: XP Hero (XP002) -->
+								<div class="game-slide active" data-game="1" data-src="XP002/XP002/playground.lunalabs.io/preview/202603/283318/1703aff40e6d4548f15efe206918c6945f053e4a8bd126710bf82d53d1925cc4.html">
+									<div class="game-frame">
+										<div class="game-loading">게임 로딩 중...</div>
+									</div>
+								</div>
+								
+								<!-- Game 2: Pizza Ready! (Pizza018) -->
+								<div class="game-slide" data-game="2" data-src="Pizza018/Pizza018/playground.lunalabs.io/preview/169092/241661/1703aff40e6d4548f15efe206918c6945f053e4a8bd126710bf82d53d1925cc4.html">
+									<div class="game-frame">
+										<div class="game-loading">게임 로딩 중...</div>
+									</div>
+								</div>
+								
+								<!-- Game 3: Downhill Racer (Downhill003) -->
+								<div class="game-slide" data-game="3" data-src="Downhill003/Downhill003/playground.lunalabs.io/preview/193144/271584/1703aff40e6d4548f15efe206918c6945f053e4a8bd126710bf82d53d1925cc4.html">
+									<div class="game-frame">
+										<div class="game-loading">게임 로딩 중...</div>
+									</div>
+								</div>
+								
+								<!-- Game 4: Snake Clash (Snake021) -->
+								<div class="game-slide" data-game="4" data-src="Snake021/Snake021/playground.lunalabs.io/preview/234469/321726/1703aff40e6d4548f15efe206918c6945f053e4a8bd126710bf82d53d1925cc4.html">
+									<div class="game-frame">
+										<div class="game-loading">게임 로딩 중...</div>
+									</div>
+								</div>
+								
+								<!-- Game 5: Terminal Master (Terminal007) -->
+								<div class="game-slide" data-game="5" data-src="Terminal007/Terminal007/playground.lunalabs.io/preview/227713/313192/1703aff40e6d4548f15efe206918c6945f053e4a8bd126710bf82d53d1925cc4.html">
+									<div class="game-frame">
+										<div class="game-loading">게임 로딩 중...</div>
+									</div>
+								</div>
+							</div>
+							
+							<!-- Navigation Buttons - Outside -->
+							<div class="game-nav-controls">
+								<button class="game-nav-btn game-nav-up" id="prevGameBtn" onclick="navigateGame(-1)">
+									<span class="icon-chevron-up"></span>
+								</button>
+								<button class="game-nav-btn game-nav-down" id="nextGameBtn" onclick="navigateGame(1)">
+									<span class="icon-chevron-down"></span>
+								</button>
+							</div>
+							
+							<!-- Game Counter -->
+							<div class="game-counter">
+								<span id="currentGame">1</span> / <span id="totalGames">5</span>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</section>
 
-
-	<section class="ftco-section ftco-project">
-		<div class="container-fluid px-md-0">
-			<div class="row no-gutters justify-content-center pb-5">
-				<div class="col-md-12 heading-section text-center ftco-animate">
-					<h1 class="big big-2">Projects</h1>
-					<h2 id="side-projects-section" class="mb-4">Side Projects</h2>
-					<p>꾸준히 사이드 프로젝트를 진행하며, 다양한 분야의 기술 스택을 경험해왔습니다.</p>
-				</div>
-			</div>
-			<div class="row no-gutters">
-				<div class="col-md-4">
-					<div class="project img ftco-animate d-flex justify-content-center align-items-center"
-						style="background-image: url(images/side-project-1.png);">
-						<div class="overlay"></div>
-						<div class="text text-center p-4">
-							<h3><a target="_blank" href="https://qpi.kr/"> QPI - 소개팅 서비스 소개 페이지 개발</a></h3>
-							<span>UI/UX 디자인부터 웹 호스팅까지 전체 영역을 담당하였습니다.</span>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-4">
-					<div class="project img ftco-animate d-flex justify-content-center align-items-center"
-						style="background-image: url(images/work-2.jpg);">
-						<div class="overlay"></div>
-						<div class="text text-center p-4">
-							<h3><a href="#">Branding &amp; Illustration Design</a></h3>
-							<span>Web Design</span>
-						</div>
-					</div>
-				</div>
-
-				<div class="col-md-4">
-					<div class="project img ftco-animate d-flex justify-content-center align-items-center"
-						style="background-image: url(images/work-3.jpg);">
-						<div class="overlay"></div>
-						<div class="text text-center p-4">
-							<h3><a href="#">Branding &amp; Illustration Design</a></h3>
-							<span>Web Design</span>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-4">
-					<div class="project img ftco-animate d-flex justify-content-center align-items-center"
-						style="background-image: url(images/work-4.jpg);">
-						<div class="overlay"></div>
-						<div class="text text-center p-4">
-							<h3><a href="#">Branding &amp; Illustration Design</a></h3>
-							<span>Web Design</span>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-4">
-					<div class="project img ftco-animate d-flex justify-content-center align-items-center"
-						style="background-image: url(images/work-5.jpg);">
-						<div class="overlay"></div>
-						<div class="text text-center p-4">
-							<h3><a href="#">Branding &amp; Illustration Design</a></h3>
-							<span>Web Design</span>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-4">
-					<div class="project img ftco-animate d-flex justify-content-center align-items-center"
-						style="background-image: url(images/work-6.jpg);">
-						<div class="overlay"></div>
-						<div class="text text-center p-4">
-							<h3><a href="#">Branding &amp; Illustration Design</a></h3>
-							<span>Web Design</span>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-
-	<!-- Games Section -->
-	<section class="ftco-section ftco-project" id="games-section">
-		<div class="container-fluid px-md-0">
-			<div class="row no-gutters justify-content-center pb-3">
-				<div class="col-md-12 heading-section text-center ftco-animate">
-					<h1 class="big big-2">Games</h1>
-					<h2 class="mb-4">Interactive Web Games</h2>
-					<p>직접 개발한 웹 게임들을 체험해보세요!</p>
-				</div>
-			</div>
-			
-			<!-- Shorts-style Game Viewer -->
-			<div class="row no-gutters justify-content-center">
-				<div class="col-md-12">
-					<div class="game-shorts-container">
-						<!-- Game Info - Outside Left -->
-						<div class="game-info-panel">
-							<div class="game-info-item active" data-game="1" onclick="switchToGame(0)">
-								<h3>XP Hero</h3>
-							</div>
-							<div class="game-info-item" data-game="2" onclick="switchToGame(1)">
-								<h3>Pizza Ready!</h3>
-							</div>
-							<div class="game-info-item" data-game="3" onclick="switchToGame(2)">
-								<h3>Downhill Racer</h3>
-							</div>
-							<div class="game-info-item" data-game="4" onclick="switchToGame(3)">
-								<h3>Snake Clash</h3>
-							</div>
-							<div class="game-info-item" data-game="5" onclick="switchToGame(4)">
-								<h3>Terminal Master</h3>
-							</div>
-						</div>
-						
-						<!-- Game Viewer -->
-						<div class="game-viewer-wrapper">
-							<!-- Game 1: XP Hero (XP002) -->
-							<div class="game-slide active" data-game="1" data-src="XP002/XP002/playground.lunalabs.io/preview/202603/283318/1703aff40e6d4548f15efe206918c6945f053e4a8bd126710bf82d53d1925cc4.html">
-								<div class="game-frame">
-									<div class="game-loading">게임 로딩 중...</div>
-								</div>
-							</div>
-							
-							<!-- Game 2: Pizza Ready! (Pizza018) -->
-							<div class="game-slide" data-game="2" data-src="Pizza018/Pizza018/playground.lunalabs.io/preview/169092/241661/1703aff40e6d4548f15efe206918c6945f053e4a8bd126710bf82d53d1925cc4.html">
-								<div class="game-frame">
-									<div class="game-loading">게임 로딩 중...</div>
-								</div>
-							</div>
-							
-							<!-- Game 3: Downhill Racer (Downhill003) -->
-							<div class="game-slide" data-game="3" data-src="Downhill003/Downhill003/playground.lunalabs.io/preview/193144/271584/1703aff40e6d4548f15efe206918c6945f053e4a8bd126710bf82d53d1925cc4.html">
-								<div class="game-frame">
-									<div class="game-loading">게임 로딩 중...</div>
-								</div>
-							</div>
-							
-							<!-- Game 4: Snake Clash (Snake021) -->
-							<div class="game-slide" data-game="4" data-src="Snake021/Snake021/playground.lunalabs.io/preview/234469/321726/1703aff40e6d4548f15efe206918c6945f053e4a8bd126710bf82d53d1925cc4.html">
-								<div class="game-frame">
-									<div class="game-loading">게임 로딩 중...</div>
-								</div>
-							</div>
-							
-							<!-- Game 5: Terminal Master (Terminal007) -->
-							<div class="game-slide" data-game="5" data-src="Terminal007/Terminal007/playground.lunalabs.io/preview/227713/313192/1703aff40e6d4548f15efe206918c6945f053e4a8bd126710bf82d53d1925cc4.html">
-								<div class="game-frame">
-									<div class="game-loading">게임 로딩 중...</div>
-								</div>
-							</div>
-						</div>
-						
-						<!-- Navigation Buttons - Outside -->
-						<div class="game-nav-controls">
-							<button class="game-nav-btn game-nav-up" id="prevGameBtn" onclick="navigateGame(-1)">
-								<span class="icon-chevron-up"></span>
-							</button>
-							<button class="game-nav-btn game-nav-down" id="nextGameBtn" onclick="navigateGame(1)">
-								<span class="icon-chevron-down"></span>
-							</button>
-						</div>
-						
-						<!-- Game Counter -->
-						<div class="game-counter">
-							<span id="currentGame">1</span> / <span id="totalGames">5</span>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-	
 	<!-- Game Navigation Script -->
 	<script>
 		let currentGameIndex = 0;
@@ -852,90 +721,6 @@
 		});
 	</script>
 
-	<section class="ftco-section" id="blog-section">
-		<div class="container">
-			<div class="row justify-content-center mb-5 pb-5">
-				<div class="col-md-7 heading-section text-center ftco-animate">
-					<h1 class="big big-2">Blog</h1>
-					<h2 class="mb-4">My Blog</h2>
-					<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia</p>
-				</div>
-			</div>
-			<div class="row d-flex">
-				<div class="col-md-4 d-flex ftco-animate">
-					<div class="blog-entry justify-content-end">
-						<a href="single.html" class="block-20" style="background-image: url('images/image_1.jpg');">
-						</a>
-						<div class="text mt-3 float-right d-block">
-							<h3 class="heading"><a href="single.html">Why Lead Generation is Key for Business Growth</a>
-							</h3>
-							<div class="d-flex align-items-center mb-3 meta">
-								<p class="mb-0">
-									<span class="mr-2">Sept. 12, 2019</span>
-									<a href="#" class="mr-2">Admin</a>
-									<a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a>
-								</p>
-							</div>
-							<p>A small river named Duden flows by their place and supplies it with the necessary
-								regelialia.</p>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-4 d-flex ftco-animate">
-					<div class="blog-entry justify-content-end">
-						<a href="single.html" class="block-20" style="background-image: url('images/image_2.jpg');">
-						</a>
-						<div class="text mt-3 float-right d-block">
-							<h3 class="heading"><a href="single.html">Why Lead Generation is Key for Business Growth</a>
-							</h3>
-							<div class="d-flex align-items-center mb-3 meta">
-								<p class="mb-0">
-									<span class="mr-2">Sept. 12, 2019</span>
-									<a href="#" class="mr-2">Admin</a>
-									<a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a>
-								</p>
-							</div>
-							<p>A small river named Duden flows by their place and supplies it with the necessary
-								regelialia.</p>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-4 d-flex ftco-animate">
-					<div class="blog-entry">
-						<a href="single.html" class="block-20" style="background-image: url('images/image_3.jpg');">
-						</a>
-						<div class="text mt-3 float-right d-block">
-							<h3 class="heading"><a href="single.html">Why Lead Generation is Key for Business Growth</a>
-							</h3>
-							<div class="d-flex align-items-center mb-3 meta">
-								<p class="mb-0">
-									<span class="mr-2">Sept. 12, 2019</span>
-									<a href="#" class="mr-2">Admin</a>
-									<a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a>
-								</p>
-							</div>
-							<p>A small river named Duden flows by their place and supplies it with the necessary
-								regelialia.</p>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-
-	<section class="ftco-section ftco-hireme img" style="background-image: url(images/bg_1.jpg)">
-		<div class="overlay"></div>
-		<div class="container">
-			<div class="row justify-content-center">
-				<div class="col-md-7 ftco-animate text-center">
-					<h2>함께할 <span>회사를 찾는 중</span> 입니다.</h2>
-					<p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
-					<p class="mb-0"><a href="#" class="btn btn-primary py-3 px-5">연락주세요.</a></p>
-				</div>
-			</div>
-		</div>
-	</section>
-
 	<section class="ftco-section contact-section ftco-no-pb" id="contact-section">
 		<div class="container">
 			<div class="row justify-content-center mb-5 pb-3">
@@ -987,7 +772,7 @@
 						</div>
 						<div>
 							<h3 class="mb-4">Website</h3>
-							<p><a href="#">yoursite.com</a></p>
+							<p><a href="https://velog.io/@kjhdx/posts" target="_blank">velog.io/@kjhdx</a></p>
 						</div>
 					</div>
 				</div>
@@ -1004,10 +789,7 @@
 				<div class="col-md-12 text-center">
 					<p>
 						<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-						Copyright &copy;
-						<script>document.write(new Date().getFullYear());</script> All rights reserved | This template
-						is made with <i class="icon-heart color-danger" aria-hidden="true"></i> by <a
-							href="https://colorlib.com" target="_blank">Colorlib</a>
+						This template is made with <a href="https://colorlib.com" target="_blank">Colorlib</a>
 						<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
 					</p>
 				</div>
@@ -1043,3 +825,4 @@
 </body>
 
 </html>
+

@@ -9927,6 +9927,51 @@ textarea.form-control {
   }
 }
 
+/* Navbar Dropdown Styles */
+.navbar .dropdown-menu {
+  background-color: rgba(0, 0, 0, 0.95);
+  border: none;
+  border-radius: 4px;
+  padding: 0.5rem 0;
+  margin-top: 0.5rem;
+  min-width: 180px;
+}
+
+.navbar .dropdown-item {
+  color: rgba(255, 255, 255, 0.7);
+  padding: 0.6rem 1.5rem;
+  font-size: 14px;
+  transition: all 0.3s ease;
+}
+
+.navbar .dropdown-item:hover,
+.navbar .dropdown-item:focus {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  padding-left: 2rem;
+}
+
+.navbar .dropdown-toggle::after {
+  margin-left: 0.3rem;
+  vertical-align: middle;
+}
+
+@media (max-width: 991px) {
+  .navbar .dropdown-menu {
+    background-color: transparent;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .navbar .dropdown-item {
+    padding-left: 2rem;
+  }
+  
+  .navbar .dropdown-item:hover {
+    padding-left: 2.5rem;
+  }
+}
+
 #ftco-loader .circular {
   -webkit-animation: loader-rotate 2s linear infinite;
   animation: loader-rotate 2s linear infinite;
