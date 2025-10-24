@@ -608,33 +608,207 @@
 	<!-- Games Section -->
 	<section class="ftco-section ftco-project" id="games-section">
 		<div class="container-fluid px-md-0">
-			<div class="row no-gutters justify-content-center pb-5">
+			<div class="row no-gutters justify-content-center pb-3">
 				<div class="col-md-12 heading-section text-center ftco-animate">
 					<h1 class="big big-2">Games</h1>
 					<h2 class="mb-4">Interactive Web Games</h2>
 					<p>직접 개발한 웹 게임들을 체험해보세요!</p>
 				</div>
 			</div>
-			<div class="row no-gutters">
+			
+			<!-- Shorts-style Game Viewer -->
+			<div class="row no-gutters justify-content-center">
 				<div class="col-md-12">
-					<div class="game-container ftco-animate">
-						<div class="game-header text-center mb-4">
-							<h3>Prison008</h3>
-							<p>HTML5 웹 게임 - Luna Labs 플랫폼</p>
+					<div class="game-shorts-container">
+						<!-- Game Info - Outside Left -->
+						<div class="game-info-panel">
+							<div class="game-info-item active" data-game="1" onclick="switchToGame(0)">
+								<h3>Prison008</h3>
+								<p>HTML5 웹 게임</p>
+								<p>Luna Labs 플랫폼</p>
+							</div>
+							<div class="game-info-item" data-game="2" onclick="switchToGame(1)">
+								<h3>XP002</h3>
+								<p>HTML5 웹 게임</p>
+								<p>Luna Labs 플랫폼</p>
+							</div>
 						</div>
-						<div class="game-iframe-wrapper">
-							<iframe src="Prison008/Prison008/playground.lunalabs.io/preview/249377/340153/1703aff40e6d4548f15efe206918c6945f053e4a8bd126710bf82d53d1925cc4.html" 
-									width="100%" 
-									height="600px" 
-									frameborder="0"
-									style="border-radius: 8px; border: 2px solid #3e64ff;">
-							</iframe>
+						
+						<!-- Game Viewer -->
+						<div class="game-viewer-wrapper">
+							<!-- Game 1: Prison008 -->
+							<div class="game-slide active" data-game="1" data-src="Prison008/Prison008/playground.lunalabs.io/preview/249377/340153/1703aff40e6d4548f15efe206918c6945f053e4a8bd126710bf82d53d1925cc4.html">
+								<div class="game-frame">
+									<div class="game-loading">게임 로딩 중...</div>
+								</div>
+							</div>
+							
+							<!-- Game 2: XP002 -->
+							<div class="game-slide" data-game="2" data-src="XP002/XP002/playground.lunalabs.io/preview/202603/283318/1703aff40e6d4548f15efe206918c6945f053e4a8bd126710bf82d53d1925cc4.html">
+								<div class="game-frame">
+									<div class="game-loading">게임 로딩 중...</div>
+								</div>
+							</div>
+						</div>
+						
+						<!-- Navigation Buttons - Outside -->
+						<div class="game-nav-controls">
+							<button class="game-nav-btn game-nav-up" id="prevGameBtn" onclick="navigateGame(-1)">
+								<span class="icon-chevron-up"></span>
+							</button>
+							<button class="game-nav-btn game-nav-down" id="nextGameBtn" onclick="navigateGame(1)">
+								<span class="icon-chevron-down"></span>
+							</button>
+						</div>
+						
+						<!-- Game Counter -->
+						<div class="game-counter">
+							<span id="currentGame">1</span> / <span id="totalGames">2</span>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</section>
+	
+	<!-- Game Navigation Script -->
+	<script>
+		let currentGameIndex = 0;
+		const totalGames = document.querySelectorAll('.game-slide').length;
+		const loadedGames = new Set();
+		
+		// Load a game iframe
+		function loadGame(index, forceReload = false) {
+			const slides = document.querySelectorAll('.game-slide');
+			const slide = slides[index];
+			const gameSrc = slide.getAttribute('data-src');
+			const gameFrame = slide.querySelector('.game-frame');
+			
+			// If force reload, remove existing iframe
+			if (forceReload && loadedGames.has(index)) {
+				const existingIframe = gameFrame.querySelector('iframe');
+				if (existingIframe) {
+					existingIframe.remove();
+				}
+				loadedGames.delete(index);
+			}
+			
+			// If already loaded and not forcing reload, skip
+			if (loadedGames.has(index) && !forceReload) {
+				return;
+			}
+			
+			// Remove loading message if exists
+			const loadingDiv = gameFrame.querySelector('.game-loading');
+			if (loadingDiv) {
+				loadingDiv.remove();
+			}
+			
+			// Create iframe
+			const iframe = document.createElement('iframe');
+			iframe.src = gameSrc;
+			iframe.width = '1920';
+			iframe.height = '1080';
+			iframe.frameBorder = '0';
+			iframe.allowFullscreen = true;
+			iframe.style.width = '1920px';
+			iframe.style.height = '1080px';
+			
+			// Add iframe
+			gameFrame.appendChild(iframe);
+			loadedGames.add(index);
+		}
+		
+		// Switch to specific game (for info panel clicks)
+		function switchToGame(index) {
+			if (index === currentGameIndex) {
+				return; // Already on this game
+			}
+			
+			const slides = document.querySelectorAll('.game-slide');
+			const infoItems = document.querySelectorAll('.game-info-item');
+			
+			// Remove active class from current slide and info
+			slides[currentGameIndex].classList.remove('active');
+			infoItems[currentGameIndex].classList.remove('active');
+			
+			// Update index
+			currentGameIndex = index;
+			
+			// Reload the game (force reset)
+			loadGame(currentGameIndex, true);
+			
+			// Add active class to new slide and info
+			slides[currentGameIndex].classList.add('active');
+			infoItems[currentGameIndex].classList.add('active');
+			
+			// Update counter
+			document.getElementById('currentGame').textContent = currentGameIndex + 1;
+			
+			// Update button visibility
+			updateButtonVisibility();
+		}
+		
+		function navigateGame(direction) {
+			const slides = document.querySelectorAll('.game-slide');
+			const infoItems = document.querySelectorAll('.game-info-item');
+			
+			// Remove active class from current slide and info
+			slides[currentGameIndex].classList.remove('active');
+			infoItems[currentGameIndex].classList.remove('active');
+			
+			// Calculate new index
+			currentGameIndex += direction;
+			
+			// Loop around if at boundaries
+			if (currentGameIndex >= totalGames) {
+				currentGameIndex = 0;
+			} else if (currentGameIndex < 0) {
+				currentGameIndex = totalGames - 1;
+			}
+			
+			// Reload the game (force reset)
+			loadGame(currentGameIndex, true);
+			
+			// Add active class to new slide and info
+			slides[currentGameIndex].classList.add('active');
+			infoItems[currentGameIndex].classList.add('active');
+			
+			// Update counter
+			document.getElementById('currentGame').textContent = currentGameIndex + 1;
+			
+			// Update button visibility
+			updateButtonVisibility();
+		}
+		
+		function updateButtonVisibility() {
+			const prevBtn = document.getElementById('prevGameBtn');
+			const nextBtn = document.getElementById('nextGameBtn');
+			
+			// Optional: hide buttons at boundaries (or keep visible for looping)
+			// Uncomment below if you want to hide buttons at edges
+			// prevBtn.style.display = currentGameIndex === 0 ? 'none' : 'flex';
+			// nextBtn.style.display = currentGameIndex === totalGames - 1 ? 'none' : 'flex';
+		}
+		
+		// Initialize
+		document.addEventListener('DOMContentLoaded', function() {
+			document.getElementById('totalGames').textContent = totalGames;
+			updateButtonVisibility();
+			
+			// Load the first game
+			loadGame(0);
+		});
+		
+		// Keyboard navigation (optional)
+		document.addEventListener('keydown', function(e) {
+			if (e.key === 'ArrowUp') {
+				navigateGame(-1);
+			} else if (e.key === 'ArrowDown') {
+				navigateGame(1);
+			}
+		});
+	</script>
 
 	<section class="ftco-section" id="blog-section">
 		<div class="container">
