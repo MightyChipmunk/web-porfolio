@@ -9624,32 +9624,40 @@ textarea.form-control {
   opacity: 1; }
 
 /* Games Section Styles - YouTube Shorts Style */
+#page-4 {
+  overflow: visible;
+}
+
+.resume-wrap .text {
+  overflow: visible;
+}
+
 .game-shorts-container {
   position: relative;
-  width: 100%;
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 40px 20px;
+  width: auto;
+  max-width: none;
+  margin: 40px 0 0 0;
+  padding: 0;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 40px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 20px;
 }
 
 /* Game Info Panel - Outside Left */
 .game-info-panel {
   display: flex;
   flex-direction: column;
-  min-width: 200px;
-  max-width: 250px;
+  min-width: 132px;
+  max-width: 165px;
 }
 
 .game-info-item {
   background: rgba(62, 100, 255, 0.1);
   border: 2px solid rgba(62, 100, 255, 0.3);
-  padding: 15px 20px;
-  border-radius: 12px;
-  margin-bottom: 12px;
+  padding: 10px 13px;
+  border-radius: 9px;
+  margin-bottom: 9px;
   opacity: 0.5;
   transition: all 0.3s ease;
   cursor: pointer;
@@ -9674,7 +9682,7 @@ textarea.form-control {
 }
 
 .game-info-item h3 {
-  font-size: 1.3rem;
+  font-size: 0.858rem;
   font-weight: 600;
   margin: 0;
   color: #3e64ff;
@@ -9687,8 +9695,8 @@ textarea.form-control {
 
 .game-viewer-wrapper {
   position: relative;
-  width: 960px;
-  height: 540px;
+  width: 396px;
+  height: 704px;
   margin: 0;
   overflow: hidden;
   background: #000;
@@ -9718,8 +9726,8 @@ textarea.form-control {
 }
 
 .game-frame {
-  width: 960px;
-  height: 540px;
+  width: 396px;
+  height: 704px;
   display: flex;
   align-items: flex-start;
   justify-content: flex-start;
@@ -9728,8 +9736,8 @@ textarea.form-control {
 }
 
 .game-frame iframe {
-  width: 1920px;
-  height: 1080px;
+  width: 792px;
+  height: 1408px;
   border: none;
   display: block;
   transform: scale(0.5);
@@ -9751,6 +9759,7 @@ textarea.form-control {
   flex-direction: column;
   gap: 20px;
   margin-left: 0;
+  flex-shrink: 0;
 }
 
 /* Navigation Buttons */
@@ -9829,26 +9838,29 @@ textarea.form-control {
   .game-shorts-container {
     flex-direction: column;
     gap: 20px;
+    align-items: center;
   }
   
   .game-info-panel {
     flex-direction: row;
     min-width: auto;
-    max-width: 100%;
+    max-width: 400px;
     width: 90%;
     gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
   }
   
   .game-info-item {
-    flex: 1;
+    flex: 0 1 auto;
     margin-bottom: 0;
   }
   
   .game-viewer-wrapper {
     width: 90%;
-    max-width: 960px;
+    max-width: 400px;
     height: auto;
-    aspect-ratio: 16/9;
+    aspect-ratio: 9/16;
   }
   
   .game-frame {
@@ -9858,8 +9870,8 @@ textarea.form-control {
   }
   
   .game-frame iframe {
-    width: 1920px;
-    height: 1080px;
+    width: 200%;
+    height: 200%;
     transform: scale(0.5);
     transform-origin: top left;
     position: absolute;
@@ -9876,31 +9888,43 @@ textarea.form-control {
 @media (max-width: 768px) {
   .game-shorts-container {
     padding: 20px 10px;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 100%;
   }
   
   .game-info-panel {
-    width: 100%;
-    gap: 10px;
+    width: 95%;
+    max-width: 320px;
+    gap: 8px;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
   }
   
   .game-info-item {
-    padding: 10px 12px;
+    padding: 8px 10px;
+    flex: 0 1 auto;
   }
   
   .game-info-item h3 {
-    font-size: 0.9rem;
+    font-size: 0.8rem;
   }
   
   .game-viewer-wrapper {
-    width: 100%;
+    width: 95%;
+    max-width: 320px;
     height: auto;
-    aspect-ratio: 16/9;
+    aspect-ratio: 9/16;
+    margin: 0 auto;
   }
   
   .game-frame {
     width: 100%;
     height: 100%;
     position: relative;
+    overflow: hidden;
   }
   
   .game-frame iframe {
