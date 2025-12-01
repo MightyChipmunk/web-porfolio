@@ -276,9 +276,17 @@
 			
 			event.preventDefault();
 
-			$('html,body').animate({
-				scrollTop: $('.goto-here').offset().top
-			}, 500, 'easeInOutExpo');
+			// href 속성이 있으면 해당 섹션으로 이동, 없으면 기본 동작
+			var href = $(this).closest('a').attr('href');
+			if (href && href !== '#') {
+				$('html,body').animate({
+					scrollTop: $(href).offset().top - 70
+				}, 500, 'easeInOutExpo');
+			} else {
+				$('html,body').animate({
+					scrollTop: $('.goto-here').offset().top
+				}, 500, 'easeInOutExpo');
+			}
 			
 			return false;
 		});
