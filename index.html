@@ -329,8 +329,20 @@
 										<h3 id="video-title-1">Video 2</h3>
 									</div>
 									<div class="video-info-item" data-video="2" onclick="switchToVideo(2)">
-										<img src="Creatives/TruckSmasherIcon.webp" alt="Truck Smasher" class="game-icon">
+										<img src="Appicon/Pizza.png" alt="Pizza Ready 1" class="game-icon">
 										<h3 id="video-title-2">Video 3</h3>
+									</div>
+									<div class="video-info-item" data-video="3" onclick="switchToVideo(3)">
+										<img src="Appicon/Pizza.png" alt="Pizza Ready 2" class="game-icon">
+										<h3 id="video-title-3">Video 4</h3>
+									</div>
+									<div class="video-info-item" data-video="4" onclick="switchToVideo(4)">
+										<img src="Appicon/Pizza.png" alt="Pizza Ready 3" class="game-icon">
+										<h3 id="video-title-4">Video 5</h3>
+									</div>
+									<div class="video-info-item" data-video="5" onclick="switchToVideo(5)">
+										<img src="Appicon/Burger.png" alt="Burger Please" class="game-icon">
+										<h3 id="video-title-5">Video 6</h3>
 									</div>
 								</div>
 									
@@ -348,6 +360,21 @@
 										</div>
 									</div>
 									<div class="video-slide" data-video="2">
+										<div class="video-frame">
+											<div class="game-loading">동영상 로딩 중...</div>
+										</div>
+									</div>
+									<div class="video-slide" data-video="3">
+										<div class="video-frame">
+											<div class="game-loading">동영상 로딩 중...</div>
+										</div>
+									</div>
+									<div class="video-slide" data-video="4">
+										<div class="video-frame">
+											<div class="game-loading">동영상 로딩 중...</div>
+										</div>
+									</div>
+									<div class="video-slide" data-video="5">
 										<div class="video-frame">
 											<div class="game-loading">동영상 로딩 중...</div>
 										</div>
@@ -580,7 +607,10 @@
 		const selectedVideos = [
 			{ path: 'Creatives/video114_lumberchopper_en_44s_1080x1920_brown_251002.mp4', name: 'Lumber Chopper' },
 			{ path: 'Creatives/video050_xphero_en_39s_1080x1920_annie_250314.mp4', name: 'XP Hero' },
-			{ path: 'Creatives/4번영상2.mp4', name: 'Truck Smasher' }
+			{ path: 'Creatives/video358_pizzaplease_en_37s_1080x1920_kay_250307.mp4', name: 'Pizza Ready 1' },
+			{ path: 'Creatives/video449_pizzaidle_en_56s_1080x1920_jaeny_250912 (online-video-cutter.com).mp4', name: 'Pizza Ready 2' },
+			{ path: 'Creatives/video363_pizzaplease_en_31s_1080x1920_kay_250307.mp4', name: 'Pizza Ready 3' },
+			{ path: 'Creatives/video687_burgerplease_en_30s_1080x1920_annie_250207.mp4', name: 'Burger Please' }
 		];
 		
 		let currentVideoIndex = 0;
@@ -696,10 +726,10 @@
 			currentVideoIndex += direction;
 			
 			// Loop around if at boundaries
-			if (currentVideoIndex >= 3) {
+			if (currentVideoIndex >= 6) {
 				currentVideoIndex = 0;
 			} else if (currentVideoIndex < 0) {
-				currentVideoIndex = 2;
+				currentVideoIndex = 5;
 			}
 			
 			// Load the new video
