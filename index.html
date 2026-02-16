@@ -8,6 +8,7 @@
 
 	<link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&family=Do+Hyeon&display=swap" rel="stylesheet">
+	<link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-gothic.css" rel="stylesheet">
 
 	<link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">
 	<link rel="stylesheet" href="css/animate.css">
@@ -24,6 +25,14 @@
 	<link rel="stylesheet" href="css/icomoon.css">
 	<link rel="stylesheet" href="css/style.css">
 	<style>
+		@font-face {
+			font-family: 'NanumGothicKR';
+			src: local('NanumGothicBold');
+			unicode-range: U+AC00-D7A3, U+3131-318E, U+2000-206F, U+FF00-FFEF;
+		}
+		body {
+			font-family: 'Poppins', 'NanumGothicKR', Arial, sans-serif !important;
+		}
 		.bg-video-wrapper {
 			position: absolute;
 			top: 0;
@@ -70,7 +79,8 @@
 			color: #666;
 			margin-bottom: 12px;
 			display: block;
-			font-weight: 500;
+			font-family: 'NanumGothicBold' !important;
+			font-weight: 700 !important;
 		}
 		.resume-wrap .text ul {
 			padding-left: 1.2rem;
@@ -86,6 +96,54 @@
 			color: #333;
 			margin-bottom: 8px;
 			display: block;
+		}
+		.resume-wrap .text,
+		.resume-wrap .text p,
+		.resume-wrap .text li,
+		.resume-wrap .text span,
+		.resume-wrap .text h2,
+		.resume-wrap .text strong {
+			color: #000000;
+		}
+		.resume-wrap .text .tech-badge {
+			color: #3e64ff;
+		}
+		.resume-wrap .position {
+			font-family: 'NanumGothicBold';
+			font-size: 19px;
+		}
+		.heading-section p,
+		.heading-section li,
+		.heading-section span,
+		.heading-section h2 {
+			color: #000000;
+		}
+
+		/* Hero section responsive text */
+		.hero-name {
+			color: white;
+			font-weight: 800;
+			font-size: 60px;
+			font-family: 'Do Hyeon', sans-serif;
+		}
+		.hero-title {
+			color: white;
+			font-size: 30px;
+			font-weight: 400;
+			font-family: 'Do Hyeon', sans-serif;
+		}
+		@media (max-width: 767.98px) {
+			.hero-name {
+				font-size: 40px;
+			}
+			.hero-title {
+				font-size: 22px;
+			}
+		}
+
+		/* Contact section bottom spacing */
+		.contact-section {
+			padding-bottom: 4em !important;
 		}
 	</style>
 </head>
@@ -112,25 +170,20 @@
 			</div>
 		</div>
 	</nav>
-	<section class="hero-wrap js-fullheight">
+	<section class="hero-wrap js-fullheight" id="home-section">
 		<div class="bg-video-wrapper">
 			<video id="bg-video-1" class="bg-video active" autoplay muted loop playsinline></video>
 			<video id="bg-video-2" class="bg-video" autoplay muted loop playsinline></video>
 		</div>
-		<!-- <div class="overlay"></div> -->
 		<div class="container">
 			<div class="row no-gutters slider-text js-fullheight justify-content-center" style="align-items: flex-start; padding-top: 200px;">
 				<div class="col-lg-8 col-md-6 ftco-animate d-flex align-items-center">
 					<div class="text text-center">
-						<!-- <div class="icon-wrap mb-4">
-							<span class="flaticon-ideas" style="font-size: 60px; color: white;"></span>
-						</div> -->
-						<h1 style="color: white; font-weight: 800; font-size: 60px; font-family: 'Do Hyeon', sans-serif;">김지훈</h1>
-						<h2 style="color: white; font-size: 30px; font-weight: 400; font-family: 'Do Hyeon', sans-serif;">유니티 클라이언트 개발자</h2>
+						<h1 class="hero-name">김지훈</h1>
+						<h2 class="hero-title">유니티 클라이언트 개발자</h2>
 					</div>
 				</div>
 			</div>
-		</div>
 		</div>
 		<div class="mouse">
 			<a href="#about-section" class="mouse-icon">
@@ -193,8 +246,8 @@
 							</div>
 							<div class="text pl-3">
 								<span class="date">2017 - 2024</span>
-								<h2>컴퓨터공학부</h2>
-								<span class="position">건국대학교 (Graduated)</span>
+								<h2>건국대학교</h2>
+								<span class="position">컴퓨터공학부</span>
 								<ul>
 									<li>컴퓨터 공학의 기초부터 심화까지 체계적으로 학습하며, 프로그래밍 역량과 문제 해결 능력을 함양</li>
 									<li>알고리즘, 자료구조, 소프트웨어 공학 등 개발자로서 필요한 핵심 지식 습득</li>
@@ -240,7 +293,7 @@
 
 								<span class="tech-stack-title">KEY RESPONSIBILITIES & ACHIEVEMENTS</span>
 								<div class="mb-3">
-									<div class="mb-2"><strong>1. 고효율 플레이어블/크리에이티브 광고 제작 (연간 40+건)</strong></div>
+									<div class="mb-2"><strong>1. 고효율 플레이어블/크리에이티브 광고 제작 (40+건)</strong></div>
 									<ul>
 										<li>빠른 배포를 위한 UI/게임 로직 모듈화 및 컴포넌트 재사용 체계 구축</li>
 										<li>4MB 미만의 엄격한 용량 제한을 위한 에셋 압축 및 코드 최적화</li>
@@ -296,91 +349,80 @@
 								<!-- Game Viewer -->
 								<div class="game-shorts-container mt-4">
 									<!-- Game Info Panel -->
-						<div class="game-info-panel">
-							<div class="game-info-item active" data-game="1" onclick="switchToGame(0)">
-								<img src="Appicon/XP.png" alt="XP Hero 1" class="game-icon">
-								<h3>XP Hero 1</h3>
-							</div>
-							<div class="game-info-item" data-game="2" onclick="switchToGame(1)">
-								<img src="Appicon/XP.png" alt="XP Hero 2" class="game-icon">
-								<h3>XP Hero 2</h3>
-							</div>
-							<div class="game-info-item" data-game="3" onclick="switchToGame(2)">
-								<img src="Appicon/Downhill.png" alt="Downhill Racer" class="game-icon">
-								<h3>Downhill Racer</h3>
-							</div>
-							<div class="game-info-item" data-game="4" onclick="switchToGame(3)">
-								<img src="Appicon/Terminal.png" alt="Terminal Master" class="game-icon">
-								<h3>Terminal Master</h3>
-							</div>
-							<div class="game-info-item" data-game="5" onclick="switchToGame(4)">
-								<img src="Appicon/Pizza.png" alt="Pizza Ready!" class="game-icon">
-								<h3>Pizza Ready!</h3>
-							</div>
-							<div class="game-info-item" data-game="6" onclick="switchToGame(5)">
-								<img src="Appicon/Snake.png" alt="Snake Clash" class="game-icon">
-								<h3>Snake Clash</h3>
-							</div>
-						</div>
-						
-									<!-- Game Viewer Wrapper -->
-						<div class="game-viewer-wrapper">
-										<!-- Game 1: XP 1 (Old: Devil Hunter) -->
-							<div class="game-slide active" data-game="1" data-src="Games/playable002_devilhunter_250214-2025-12-23/Add  Boss  Consume_unityads.html">
-								<div class="game-frame">
-									<div class="game-loading">게임 로딩 중...</div>
-								</div>
-							</div>
-							
-										<!-- Game 2: XP 2 -->
-							<div class="game-slide" data-game="2" data-src="Games/playable013_xphero_251118-2025-12-23/playable013swordzoomin_unityads.html">
-								<div class="game-frame">
-									<div class="game-loading">게임 로딩 중...</div>
-								</div>
-							</div>
-							
-										<!-- Game 3: Downhill Racer -->
-							<div class="game-slide" data-game="3" data-src="Games/Playable003_DownHill_250107-2025-12-23/Sign Ver._unityads.html">
-								<div class="game-frame">
-									<div class="game-loading">게임 로딩 중...</div>
-								</div>
-							</div>
-							
-									<!-- Game 4: Terminal Master -->
-						<div class="game-slide" data-game="4" data-src="Games/Playable007_Terminal_250516-2025-12-23/playable007_unityads.html">
-								<div class="game-frame">
-									<div class="game-loading">게임 로딩 중...</div>
-								</div>
-							</div>
-							
-										<!-- Game 5: Pizza Ready! -->
-							<div class="game-slide" data-game="5" data-src="Games/Playable018_PizzaReady_240920-2025-12-23/Default Version_unityads.html">
-								<div class="game-frame">
-									<div class="game-loading">게임 로딩 중...</div>
-								</div>
-							</div>
+									<div class="game-info-panel">
+										<div class="game-info-item active" data-game="1" onclick="switchToGame(0)">
+											<img src="Appicon/XP.png" alt="XP Hero 1" class="game-icon">
+											<h3>XP Hero 1</h3>
+										</div>
+										<div class="game-info-item" data-game="2" onclick="switchToGame(1)">
+											<img src="Appicon/XP.png" alt="XP Hero 2" class="game-icon">
+											<h3>XP Hero 2</h3>
+										</div>
+										<div class="game-info-item" data-game="3" onclick="switchToGame(2)">
+											<img src="Appicon/Downhill.png" alt="Downhill Racer" class="game-icon">
+											<h3>Downhill Racer</h3>
+										</div>
+										<div class="game-info-item" data-game="4" onclick="switchToGame(3)">
+											<img src="Appicon/Terminal.png" alt="Terminal Master" class="game-icon">
+											<h3>Terminal Master</h3>
+										</div>
+										<div class="game-info-item" data-game="5" onclick="switchToGame(4)">
+											<img src="Appicon/Pizza.png" alt="Pizza Ready!" class="game-icon">
+											<h3>Pizza Ready!</h3>
+										</div>
+										<div class="game-info-item" data-game="6" onclick="switchToGame(5)">
+											<img src="Appicon/Snake.png" alt="Snake Clash" class="game-icon">
+											<h3>Snake Clash</h3>
+										</div>
+									</div>
 
-										<!-- Game 6: Snake Clash -->
-							<div class="game-slide" data-game="6" data-src="Games/Playable037_LinkedSnake_251014-2025-12-23/playable037zoomouthuman_unityads.html">
-								<div class="game-frame">
-									<div class="game-loading">게임 로딩 중...</div>
-								</div>
-							</div>
-						</div>
-						
+									<!-- Game Viewer Wrapper -->
+									<div class="game-viewer-wrapper">
+										<div class="game-slide active" data-game="1" data-src="Games/playable002_devilhunter_250214-2025-12-23/Add  Boss  Consume_unityads.html">
+											<div class="game-frame">
+												<div class="game-loading">게임 로딩 중...</div>
+											</div>
+										</div>
+										<div class="game-slide" data-game="2" data-src="Games/playable013_xphero_251118-2025-12-23/playable013swordzoomin_unityads.html">
+											<div class="game-frame">
+												<div class="game-loading">게임 로딩 중...</div>
+											</div>
+										</div>
+										<div class="game-slide" data-game="3" data-src="Games/Playable003_DownHill_250107-2025-12-23/Sign Ver._unityads.html">
+											<div class="game-frame">
+												<div class="game-loading">게임 로딩 중...</div>
+											</div>
+										</div>
+										<div class="game-slide" data-game="4" data-src="Games/Playable007_Terminal_250516-2025-12-23/playable007_unityads.html">
+											<div class="game-frame">
+												<div class="game-loading">게임 로딩 중...</div>
+											</div>
+										</div>
+										<div class="game-slide" data-game="5" data-src="Games/Playable018_PizzaReady_240920-2025-12-23/Default Version_unityads.html">
+											<div class="game-frame">
+												<div class="game-loading">게임 로딩 중...</div>
+											</div>
+										</div>
+										<div class="game-slide" data-game="6" data-src="Games/Playable037_LinkedSnake_251014-2025-12-23/playable037zoomouthuman_unityads.html">
+											<div class="game-frame">
+												<div class="game-loading">게임 로딩 중...</div>
+											</div>
+										</div>
+									</div>
+
 									<!-- Navigation Buttons -->
-						<div class="game-nav-controls">
-							<button class="game-nav-btn game-nav-up" id="prevGameBtn" onclick="navigateGame(-1)">
-								<span class="icon-chevron-up"></span>
-							</button>
-							<button class="game-nav-btn game-nav-down" id="nextGameBtn" onclick="navigateGame(1)">
-								<span class="icon-chevron-down"></span>
-							</button>
-						</div>
-						
-						<!-- Game Counter -->
-						<div class="game-counter">
-							<span id="currentGame">1</span> / <span id="totalGames">6</span>
+									<div class="game-nav-controls">
+										<button class="game-nav-btn game-nav-up" id="prevGameBtn" onclick="navigateGame(-1)">
+											<span class="icon-chevron-up"></span>
+										</button>
+										<button class="game-nav-btn game-nav-down" id="nextGameBtn" onclick="navigateGame(1)">
+											<span class="icon-chevron-down"></span>
+										</button>
+									</div>
+
+									<!-- Game Counter -->
+									<div class="game-counter">
+										<span id="currentGame">1</span> / <span id="totalGames">6</span>
 									</div>
 								</div>
 							</div>
@@ -409,69 +451,68 @@
 								
 								<!-- Video Viewer -->
 								<div class="game-shorts-container mt-4">
-								<!-- Video Info Panel -->
-								<div class="game-info-panel">
-									<div class="video-info-item active" data-video="0" onclick="switchToVideo(0)">
-										<img src="Appicon/Lumber.png" alt="Lumber Chopper" class="game-icon">
-										<h3 id="video-title-0">Video 1</h3>
-									</div>
-									<div class="video-info-item" data-video="1" onclick="switchToVideo(1)">
-										<img src="Appicon/XP.png" alt="XP Hero" class="game-icon">
-										<h3 id="video-title-1">Video 2</h3>
-									</div>
-									<div class="video-info-item" data-video="2" onclick="switchToVideo(2)">
-										<img src="Appicon/Pizza.png" alt="Pizza Ready 1" class="game-icon">
-										<h3 id="video-title-2">Video 3</h3>
-									</div>
-									<div class="video-info-item" data-video="3" onclick="switchToVideo(3)">
-										<img src="Appicon/Pizza.png" alt="Pizza Ready 2" class="game-icon">
-										<h3 id="video-title-3">Video 4</h3>
-									</div>
-									<div class="video-info-item" data-video="4" onclick="switchToVideo(4)">
-										<img src="Appicon/Pizza.png" alt="Pizza Ready 3" class="game-icon">
-										<h3 id="video-title-4">Video 5</h3>
-									</div>
-									<div class="video-info-item" data-video="5" onclick="switchToVideo(5)">
-										<img src="Appicon/Burger.png" alt="Burger Please" class="game-icon">
-										<h3 id="video-title-5">Video 6</h3>
-									</div>
-								</div>
-									
-								<!-- Video Viewer Wrapper -->
-								<div class="game-viewer-wrapper">
-									<!-- Videos will be loaded here -->
-									<div class="video-slide active" data-video="0">
-										<div class="video-frame">
-											<div class="game-loading">동영상 로딩 중...</div>
+									<!-- Video Info Panel -->
+									<div class="game-info-panel">
+										<div class="video-info-item active" data-video="0" onclick="switchToVideo(0)">
+											<img src="Appicon/Lumber.png" alt="Lumber Chopper" class="game-icon">
+											<h3 id="video-title-0">Video 1</h3>
+										</div>
+										<div class="video-info-item" data-video="1" onclick="switchToVideo(1)">
+											<img src="Appicon/XP.png" alt="XP Hero" class="game-icon">
+											<h3 id="video-title-1">Video 2</h3>
+										</div>
+										<div class="video-info-item" data-video="2" onclick="switchToVideo(2)">
+											<img src="Appicon/Pizza.png" alt="Pizza Ready 1" class="game-icon">
+											<h3 id="video-title-2">Video 3</h3>
+										</div>
+										<div class="video-info-item" data-video="3" onclick="switchToVideo(3)">
+											<img src="Appicon/Pizza.png" alt="Pizza Ready 2" class="game-icon">
+											<h3 id="video-title-3">Video 4</h3>
+										</div>
+										<div class="video-info-item" data-video="4" onclick="switchToVideo(4)">
+											<img src="Appicon/Pizza.png" alt="Pizza Ready 3" class="game-icon">
+											<h3 id="video-title-4">Video 5</h3>
+										</div>
+										<div class="video-info-item" data-video="5" onclick="switchToVideo(5)">
+											<img src="Appicon/Burger.png" alt="Burger Please" class="game-icon">
+											<h3 id="video-title-5">Video 6</h3>
 										</div>
 									</div>
-									<div class="video-slide" data-video="1">
-										<div class="video-frame">
-											<div class="game-loading">동영상 로딩 중...</div>
+
+									<!-- Video Viewer Wrapper -->
+									<div class="game-viewer-wrapper">
+										<div class="video-slide active" data-video="0">
+											<div class="video-frame">
+												<div class="game-loading">동영상 로딩 중...</div>
+											</div>
+										</div>
+										<div class="video-slide" data-video="1">
+											<div class="video-frame">
+												<div class="game-loading">동영상 로딩 중...</div>
+											</div>
+										</div>
+										<div class="video-slide" data-video="2">
+											<div class="video-frame">
+												<div class="game-loading">동영상 로딩 중...</div>
+											</div>
+										</div>
+										<div class="video-slide" data-video="3">
+											<div class="video-frame">
+												<div class="game-loading">동영상 로딩 중...</div>
+											</div>
+										</div>
+										<div class="video-slide" data-video="4">
+											<div class="video-frame">
+												<div class="game-loading">동영상 로딩 중...</div>
+											</div>
+										</div>
+										<div class="video-slide" data-video="5">
+											<div class="video-frame">
+												<div class="game-loading">동영상 로딩 중...</div>
+											</div>
 										</div>
 									</div>
-									<div class="video-slide" data-video="2">
-										<div class="video-frame">
-											<div class="game-loading">동영상 로딩 중...</div>
-										</div>
-									</div>
-									<div class="video-slide" data-video="3">
-										<div class="video-frame">
-											<div class="game-loading">동영상 로딩 중...</div>
-										</div>
-									</div>
-									<div class="video-slide" data-video="4">
-										<div class="video-frame">
-											<div class="game-loading">동영상 로딩 중...</div>
-										</div>
-									</div>
-									<div class="video-slide" data-video="5">
-										<div class="video-frame">
-											<div class="game-loading">동영상 로딩 중...</div>
-										</div>
-									</div>
-								</div>
-									
+
 									<!-- Navigation Buttons -->
 									<div class="game-nav-controls">
 										<button class="game-nav-btn game-nav-up" id="prevVideoBtn" onclick="navigateVideo(-1)">
@@ -481,11 +522,11 @@
 											<span class="icon-chevron-down"></span>
 										</button>
 									</div>
-									
-								<!-- Video Counter -->
-								<div class="game-counter">
-									<span id="currentVideo">1</span> / <span id="totalVideos">6</span>
-								</div>
+
+									<!-- Video Counter -->
+									<div class="game-counter">
+										<span id="currentVideo">1</span> / <span id="totalVideos">6</span>
+									</div>
 								</div>
 							</div>
 						</div>
