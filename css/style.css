@@ -9367,8 +9367,8 @@ textarea.form-control {
       color: #fff;
       border: 1px solid transparent; }
 
-.contact-section .contact-info p a {
-  color: #1a1a1a; }
+.contact-section .contact-info p {
+  color: #000000; }
 
 .contact-section .box {
   width: 100%;
@@ -9407,8 +9407,8 @@ textarea.form-control {
     .contact-section .img {
       height: 500px; } }
 
-.contact-section .contact-info p a {
-  color: #3e64ff; }
+.contact-section .contact-info p {
+  color: #000000; }
 
 .contact-section .contact-form {
   width: 100%; }
