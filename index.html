@@ -94,9 +94,13 @@
 		.resume-wrap .text p,
 		.resume-wrap .text li,
 		.resume-wrap .text span,
-		.resume-wrap .text h2,
-		.resume-wrap .text strong {
-			color: #000000;
+		.resume-wrap .text strong
+		.resume-wrap .text h2 {
+			color: #191919;
+		}
+		.resume-wrap .text .game-counter,
+		.resume-wrap .text .game-counter span {
+			color: #fff;
 		}
 		.tech-stack-title {
 			font-size: 15px;
@@ -320,31 +324,6 @@
 									<span class="tech-badge">WebGL</span>
 								</div>
 
-								<ul>
-									<li>다양한 장르의 게임 핵심 메커니즘을 1분 내외의 압축된 게임으로 구현하였습니다.</li>
-									<li>다양한 플랫폼 배포를 위한 플랫폼별 최적화를 수행하였습니다.</li>
-								</ul>
-
-								<div class="mt-3">
-									<span class="tech-stack-title">KEY ACHIEVEMENTS</span>
-									<ul>
-										<li><strong>마케팅 효율 극대화:</strong> 프로젝트 초기 검증 단계에서 높은 CPI로 인해 출시가 불투명했던 프로젝트에 플레이어블 광고를 도입하여, <strong>CPI를 크게 낮추고 글로벌 런칭 결정</strong>에 핵심적인 기여</li>
-										<li><strong>유저 유입 및 전환율 개선:</strong> 라이브 서비스 중인 게임의 마케팅 파이프라인에 투입되어, <strong>일주일 만에 신규 다운로드 수를 10% 이상 상향</strong>시키는 성과 달성</li>
-									</ul>
-								</div>
-								
-								<div class="mt-3">
-									<span class="tech-stack-title">TECHNICAL CHALLENGES</span>
-									<ul>
-										<li><strong>생산성 향상:</strong> 핵심 시스템 모듈화 및 커스텀 에디터 개발로 <strong>개발 기간 단축</strong></li>
-										<li><strong>구조적 설계:</strong> 상황에 맞는 디자인 패턴 적용으로 <strong>코드 모듈화 및 확장성 확보</strong></li>
-										<li><strong>성능 최적화:</strong> 그리드 기반 공간 분할 및 GC, 물리 연산 최적화로 <strong>저사양 웹 환경 프레임 확보</strong></li>
-										<li><strong>그래픽 최적화:</strong> AI 기반 셰이더 경량화로 <strong>WebGL 호환성 확보 및 렌더링 부하 감소</strong></li>
-										<li><strong>빌드 용량 최적화:</strong> 컬러맵 텍스처를 통한 애셋 최적화로 <strong>4MB 미만 용량 구현</strong></li>
-										<li><strong>연출/로직 모듈화 및 배포:</strong> 마케팅 성과가 높았던 연출과 로직을 모듈화하여 배포, <strong>팀 전체의 생산성 향상</strong></li>
-									</ul>
-								</div>
-								
 								<!-- Game Viewer -->
 								<div class="game-shorts-container mt-4">
 									<!-- Game Info Panel -->
@@ -424,6 +403,35 @@
 										<span id="currentGame">1</span> / <span id="totalGames">6</span>
 									</div>
 								</div>
+
+								<ul class="mt-4">
+									<li><strong>Unity</strong>와 <strong>Unity PlayWorks</strong>를 활용하여 웹 게임 형식의 플레이어블 광고를 개발하였습니다.</li>
+									<li>각 프로젝트마다 개발 / 디자이너 / 기획자가 각각 1인씩 참여하여 개발하였습니다.</li>
+								</ul>
+
+								<div class="mt-3">
+									<span class="tech-stack-title">KEY ACHIEVEMENTS</span>
+									<ul>
+										<li><strong>마케팅 효율 극대화:</strong> 프로젝트 초기 검증 단계에서 높은 CPI로 인해 출시가 불투명했던 프로젝트에 플레이어블 광고를 도입하여, <strong>CPI를 크게 낮추고 글로벌 런칭 결정</strong>에 핵심적인 기여</li>
+										<li><strong>유저 유입 및 전환율 개선:</strong> 라이브 서비스 중인 게임의 마케팅 파이프라인에 투입되어, <strong>일주일 만에 신규 다운로드 수를 10% 이상 상향</strong>시키는 성과 달성</li>
+									</ul>
+								</div>
+								
+								<div class="mt-3">
+									<span class="tech-stack-title">TECHNICAL CHALLENGES</span>
+									<ul>
+										<li><strong>생산성 향상:</strong> 핵심 시스템 모듈화 및 커스텀 에디터 개발로 <strong>개발 기간 단축</strong></li>
+										<!-- <li><strong>구조적 설계:</strong> 상황에 맞는 디자인 패턴 적용으로 <strong>코드 모듈화 및 확장성 확보</strong></li> -->
+										<li><strong>성능 최적화:</strong> 그리드 기반 공간 분할 및 GC, 물리 연산 최적화로 <strong>저사양 웹 환경 프레임 확보</strong></li>
+										<li><strong>그래픽 최적화:</strong> AI 기반 셰이더 경량화로 <strong>WebGL 호환성 확보 및 렌더링 부하 감소</strong></li>
+										<li><strong>빌드 용량 최적화:</strong> 컬러맵 텍스처를 통한 애셋 최적화로 <strong>4MB 미만 용량 구현</strong></li>
+										<!-- <li><strong>연출/로직 모듈화 및 배포:</strong> 마케팅 성과가 높았던 연출과 로직을 모듈화하여 배포, <strong>팀 전체의 생산성 향상</strong></li> -->
+									</ul>
+								</div>
+								
+								<div class="mt-2">
+									<a href="playable-detail.html" target="_blank" style="color: #3e64ff; font-size: 18px; text-decoration: underline; font-family: 'NanumGothicExtraBold' !important; font-weight: 900;">프로젝트 상세 보기</a>
+								</div>
 							</div>
 						</div>
 						
@@ -446,28 +454,6 @@
 									<span class="tech-badge">Custom Inspector</span>
 								</div>
 
-								<ul>
-									<li>Unity를 활용하여 사용자의 흥미를 극대화하는 마케팅용 동영상 광고를 제작하였습니다.</li>
-									<li>다양한 게임 메커니즘을 짧은 영상으로 압축하여 높은 수준의 시각적 연출을 구현했습니다.</li>
-								</ul>
-
-								<div class="mt-3">
-									<span class="tech-stack-title">KEY ACHIEVEMENTS</span>
-									<ul>
-										<li><strong>제작 공수 절감:</strong> 비개발자(마케터/아티스트) 전용 연출 도구를 개발·배포하여 <strong>영상 제작 주기 단축</strong></li>
-										<li><strong>고퀄리티 비주얼 구현:</strong> URP/HDRP 파이프라인 및 포스트 프로세싱 활용으로 <strong>마케팅 퍼포먼스 극대화</strong></li>
-									</ul>
-								</div>
-
-								<div class="mt-3">
-									<span class="tech-stack-title">TECHNICAL CHALLENGES</span>
-									<ul>
-										<li><strong>카메라 연출 시스템 구축:</strong> 다양한 연출 구도를 프리셋화하고 즉각적인 전환이 가능하도록 <strong>모듈 형태의 카메라 제어 시스템 설계</strong></li>
-										<li><strong>그래픽 파이프라인 고도화:</strong> 프로젝트 컨셉에 맞춰 URP/HDRP를 선택적으로 운용하며 <strong>최적의 포스트 프로세싱 환경 설정</strong></li>
-										<li><strong>워크플로우 가속화:</strong> 연출 기능을 모듈화하여 신규 프로젝트 투입 시 <strong>즉시 촬영 가능한 프리셋 시스템 구축</strong></li>
-									</ul>
-								</div>
-								
 								<!-- Video Viewer -->
 								<div class="game-shorts-container mt-4">
 									<!-- Video Info Panel -->
@@ -547,6 +533,28 @@
 										<span id="currentVideo">1</span> / <span id="totalVideos">6</span>
 									</div>
 								</div>
+
+								<ul class="mt-4">
+									<li><strong>Unity</strong>를 활용하여 사용자의 흥미를 극대화하는 마케팅용 동영상 광고를 제작하였습니다.</li>
+									<li>다양한 게임 메커니즘을 짧은 영상으로 압축하여 높은 수준의 시각적 연출을 구현했습니다.</li>
+								</ul>
+
+								<div class="mt-3">
+									<span class="tech-stack-title">KEY ACHIEVEMENTS</span>
+									<ul>
+										<li><strong>제작 공수 절감:</strong> 비개발자(마케터/아티스트) 전용 연출 도구를 개발·배포하여 <strong>영상 제작 주기 단축</strong></li>
+										<li><strong>고퀄리티 비주얼 구현:</strong> URP/HDRP 파이프라인 및 포스트 프로세싱 활용으로 <strong>마케팅 퍼포먼스 극대화</strong></li>
+									</ul>
+								</div>
+
+								<div class="mt-3">
+									<span class="tech-stack-title">TECHNICAL CHALLENGES</span>
+									<ul>
+										<li><strong>카메라 연출 시스템 구축:</strong> 다양한 연출 구도를 프리셋화하고 즉각적인 전환이 가능하도록 <strong>모듈 형태의 카메라 제어 시스템 설계</strong></li>
+										<li><strong>그래픽 파이프라인 고도화:</strong> 프로젝트 컨셉에 맞춰 URP/HDRP를 선택적으로 운용하며 <strong>최적의 포스트 프로세싱 환경 설정</strong></li>
+										<li><strong>워크플로우 가속화:</strong> 연출 기능을 모듈화하여 신규 프로젝트 투입 시 <strong>즉시 촬영 가능한 프리셋 시스템 구축</strong></li>
+									</ul>
+								</div>
 							</div>
 						</div>
 						
@@ -566,7 +574,22 @@
 									<span class="tech-badge">Built-in RP</span>
 								</div>
 
-								<ul>
+								<!-- Truck Smasher Viewer -->
+								<div class="game-shorts-container mt-4">
+									<!-- Info Panel -->
+									<div class="game-info-panel">
+										<div class="game-info-item active" style="cursor: default; opacity: 1; background: rgba(62, 100, 255, 0.2); border-color: #3e64ff; box-shadow: 0 4px 12px rgba(62, 100, 255, 0.3);">
+											<img src="Appicon/unnamed.png" alt="Truck Smasher" class="game-icon">
+											<h3>Truck Smasher</h3>
+										</div>
+									</div>
+
+									<video controls autoplay loop muted playsinline class="rounded shadow" style="max-height: 704px; width: 396px; object-fit: contain; background: #000; border-radius: 12px;">
+										<source src="Creatives/4번영상.mp4" type="video/mp4">
+									</video>
+								</div>
+
+								<ul class="mt-4">
 									<li>사내 공모전 출품을 위해 개발자, 디자이너, 기획자 3인이 구성한 팀 프로젝트입니다.</li>
 									<li>기획부터 개발, Google Play 배포까지 3주 내 전 과정을 완료했습니다.</li>
 								</ul>
@@ -586,21 +609,6 @@
 										<li><strong>효율적인 데이터 설계:</strong> 스테이지 및 보스 구성의 효율을 높이는 모듈화된 데이터 구조로 <strong>개발 속도 극대화</strong></li>
 										<li><strong>동적 카메라 및 스케일링:</strong> 성장에 따른 카메라 뷰 및 물리 범위를 유기적으로 보간하여 <strong>일관된 플레이 경험 제공</strong></li>
 									</ul>
-								</div>
-
-								<!-- Truck Smasher Viewer -->
-								<div class="game-shorts-container mt-4">
-									<!-- Info Panel -->
-									<div class="game-info-panel">
-										<div class="game-info-item active" style="cursor: default; opacity: 1; background: rgba(62, 100, 255, 0.2); border-color: #3e64ff; box-shadow: 0 4px 12px rgba(62, 100, 255, 0.3);">
-											<img src="Appicon/unnamed.png" alt="Truck Smasher" class="game-icon">
-											<h3>Truck Smasher</h3>
-										</div>
-									</div>
-
-									<video controls autoplay loop muted playsinline class="rounded shadow" style="max-height: 704px; width: 396px; object-fit: contain; background: #000; border-radius: 12px;">
-										<source src="Creatives/4번영상.mp4" type="video/mp4">
-									</video>
 								</div>
 							</div>
 						</div>

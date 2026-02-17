@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<title>Playable Ads 상세 - 김지훈 포트폴리오</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&family=Do+Hyeon&display=swap" rel="stylesheet">
+	<link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-gothic.css" rel="stylesheet">
+
+	<link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">
+	<link rel="stylesheet" href="css/animate.css">
+	<link rel="stylesheet" href="css/aos.css">
+	<link rel="stylesheet" href="css/ionicons.min.css">
+	<link rel="stylesheet" href="css/flaticon.css">
+	<link rel="stylesheet" href="css/icomoon.css">
+	<link rel="stylesheet" href="css/style.css">
+
+	<style>
+		@font-face {
+			font-family: 'NanumGothicKR';
+			src: local('NanumGothicBold');
+			unicode-range: U+AC00-D7A3, U+3131-318E, U+2000-206F, U+FF00-FFEF;
+		}
+		body {
+			font-family: 'Poppins', 'NanumGothicKR', Arial, sans-serif !important;
+			background: #fff;
+		}
+
+		/* Back Button */
+		.back-btn {
+			display: inline-flex;
+			align-items: center;
+			gap: 8px;
+			color: #3e64ff;
+			font-weight: 600;
+			font-size: 15px;
+			text-decoration: none;
+		}
+		.back-btn:hover {
+			color: #2a4fd6;
+			text-decoration: none;
+		}
+
+		/* Page Header */
+		.detail-header {
+			background: #1a1a2e;
+			padding: 60px 0 50px;
+		}
+		.detail-header h1 {
+			color: #fff;
+			font-size: 36px;
+			font-weight: 800;
+			font-family: 'Do Hyeon', sans-serif;
+			margin-bottom: 10px;
+		}
+		.detail-header .subtitle {
+			color: rgba(255, 255, 255, 0.6);
+			font-size: 15px;
+		}
+		.detail-header .tech-badges {
+			margin-top: 18px;
+		}
+		.detail-header .tech-badge {
+			display: inline-block;
+			background: rgba(255, 255, 255, 0.1);
+			color: rgba(255, 255, 255, 0.85);
+			padding: 3px 12px;
+			border-radius: 4px;
+			font-size: 12px;
+			font-weight: 600;
+			margin-right: 6px;
+			margin-bottom: 6px;
+			text-transform: uppercase;
+			letter-spacing: 0.5px;
+		}
+
+		/* Content Section */
+		.detail-content {
+			padding: 50px 0 80px;
+		}
+
+		/* Section Title */
+		.section-title {
+			font-size: 24px;
+			font-weight: 800;
+			color: #1a1a2e;
+			margin-bottom: 32px;
+			padding-bottom: 12px;
+			border-bottom: 2px solid #3e64ff;
+			display: inline-block;
+			font-family: 'Do Hyeon', sans-serif;
+		}
+
+		/* Achievement Card */
+		.achievement-card {
+			background: none;
+			padding: 0 0 24px;
+			margin-bottom: 24px;
+			border-bottom: 1px solid #e2e8f0;
+		}
+		.achievement-card:last-of-type {
+			border-bottom: none;
+			margin-bottom: 0;
+			padding-bottom: 0;
+		}
+		.achievement-card h3 {
+			font-size: 18px;
+			font-weight: 700;
+			color: #1a1a2e;
+			margin-bottom: 10px;
+			font-family: 'NanumGothicBold', sans-serif;
+		}
+		.achievement-card .highlight {
+			display: inline-block;
+			background: rgba(26, 26, 46, 0.06);
+			color: #1a1a2e;
+			font-weight: 700;
+			padding: 2px 10px;
+			border-radius: 4px;
+			font-size: 13px;
+			margin-bottom: 12px;
+		}
+		.achievement-card p {
+			color: #191919;
+			font-size: 14px;
+			line-height: 1.8;
+			margin-bottom: 0;
+		}
+		.achievement-card .detail-list {
+			list-style: none;
+			padding: 0;
+			margin: 12px 0 0;
+		}
+		.achievement-card .detail-list li {
+			position: relative;
+			padding-left: 16px;
+			margin-bottom: 8px;
+			color: #191919;
+			font-size: 14px;
+			line-height: 1.7;
+		}
+		.achievement-card .detail-list li::before {
+			content: '·';
+			position: absolute;
+			left: 0;
+			top: 0;
+			color: #1a1a2e;
+			font-weight: 700;
+			font-size: 18px;
+		}
+
+		/* Challenge Card */
+		.challenge-card {
+			background: none;
+			padding: 0 0 40px;
+			margin-bottom: 40px;
+			border-bottom: 1px solid #e2e8f0;
+			position: relative;
+		}
+		.challenge-card:last-child {
+			border-bottom: none;
+			margin-bottom: 0;
+			padding-bottom: 0;
+		}
+		.challenge-card .challenge-row {
+			display: flex;
+			align-items: flex-start;
+			gap: 36px;
+		}
+		.challenge-card .challenge-text {
+			flex: 1;
+			min-width: 0;
+		}
+		.challenge-card .challenge-img {
+			flex: 0 0 280px;
+			width: 280px;
+		}
+		.challenge-card .challenge-img img {
+			width: 100%;
+			border-radius: 8px;
+			border: 1px solid #e2e8f0;
+		}
+		.challenge-card .challenge-img .img-placeholder {
+			width: 100%;
+			aspect-ratio: 4 / 3;
+			background: #f1f3f5;
+			border-radius: 8px;
+			border: 2px dashed #cbd5e0;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			color: #a0aec0;
+			font-size: 13px;
+			font-weight: 600;
+		}
+		@media (max-width: 767.98px) {
+			.challenge-card .challenge-row {
+				flex-direction: column;
+			}
+			.challenge-card .challenge-img {
+				flex: none;
+				width: 100%;
+				order: -1;
+			}
+		}
+		.challenge-card .challenge-number {
+			display: none;
+		}
+		.challenge-card .tag {
+			display: inline-block;
+			padding: 3px 10px;
+			border-radius: 4px;
+			font-size: 11px;
+			font-weight: 700;
+			text-transform: uppercase;
+			letter-spacing: 0.8px;
+			margin-bottom: 14px;
+		}
+		.challenge-card .tag.productivity,
+		.challenge-card .tag.architecture,
+		.challenge-card .tag.teamwork {
+			background: rgba(26, 26, 46, 0.08);
+			color: #3e64ff;
+		}
+		.challenge-card .tag.performance,
+		.challenge-card .tag.graphics,
+		.challenge-card .tag.optimization {
+			background: rgba(62, 100, 255, 0.1);
+			color: #3e64ff;
+		}
+		.challenge-card h3 {
+			font-size: 17px;
+			font-weight: 700;
+			color: #1a1a2e;
+			margin-bottom: 14px;
+			font-family: 'NanumGothicBold', sans-serif;
+		}
+		.challenge-card .problem-solution {
+			margin-top: 14px;
+		}
+		.challenge-card .ps-label {
+			font-size: 12px;
+			font-weight: 700;
+			text-transform: uppercase;
+			letter-spacing: 1px;
+			margin-bottom: 6px;
+			display: flex;
+			align-items: center;
+			gap: 6px;
+		}
+		.challenge-card .ps-label.problem {
+			color: #1a1a2e;
+		}
+		.challenge-card .ps-label.solution {
+			color: #1a1a2e;
+		}
+		.challenge-card .ps-label.result {
+			color: #1a1a2e;
+		}
+		.challenge-card .ps-content {
+			color: #191919;
+			font-size: 14px;
+			line-height: 1.8;
+			margin-bottom: 16px;
+		}
+		.challenge-card .ps-content:last-child {
+			margin-bottom: 0;
+		}
+		.challenge-card .ps-content ul {
+			padding-left: 1.2rem;
+			margin: 0;
+		}
+		.challenge-card .ps-content ul li {
+			margin-bottom: 4px;
+			line-height: 1.8;
+		}
+		.challenge-card .ps-content ul li:last-child {
+			margin-bottom: 0;
+		}
+
+		/* Divider */
+		.section-divider {
+			height: 1px;
+			background: #e2e8f0;
+			margin: 50px 0;
+		}
+
+		/* Responsive */
+		@media (max-width: 767.98px) {
+			.detail-header {
+				padding: 40px 0 30px;
+			}
+			.detail-header h1 {
+				font-size: 28px;
+			}
+			.section-title {
+				font-size: 20px;
+			}
+			.achievement-card,
+			.challenge-card {
+				padding: 20px;
+			}
+		}
+	</style>
+</head>
+
+<body>
+
+	<!-- Header -->
+	<section class="detail-header">
+		<div class="container">
+			<a href="index.html#playables-section" class="back-btn mb-4">
+				<i class="ion-ios-arrow-back"></i> 포트폴리오로 돌아가기
+			</a>
+			<h1 class="mt-3">Playable Ads 개발</h1>
+			<p class="subtitle">슈퍼센트 (Supercent) &middot; 2024 - 2026 &middot; 100건 이상의 프로젝트 개발</p>
+			<div class="tech-badges">
+				<span class="tech-badge">Unity</span>
+				<span class="tech-badge">C#</span>
+				<span class="tech-badge">Built-in RP</span>
+				<span class="tech-badge">Unity PlayWorks</span>
+				<span class="tech-badge">WebGL</span>
+			</div>
+		</div>
+	</section>
+
+	<!-- Content -->
+	<section class="detail-content">
+		<div class="container">
+
+			<!-- KEY ACHIEVEMENTS -->
+			<h2 class="section-title">Key Achievements</h2>
+
+			<div class="achievement-card">
+				<h3>마케팅 효율 극대화</h3>
+				<span class="highlight">CPI 절감 &rarr; 글로벌 런칭 결정</span>
+				<p>높은 CPI로 출시가 불투명했던 프로젝트에 플레이어블 광고를 도입하여 <strong>CPI를 크게 낮추고 글로벌 런칭 결정</strong>에 핵심적으로 기여했습니다.</p>
+			<!-- </div>
+
+			<div class="achievement-card"> -->
+				<ul class="mt-4"></ul>
+				<h3>유저 유입 및 전환율 개선</h3>
+				<span class="highlight">신규 다운로드 10% 이상 상향</span>
+				<p>라이브 서비스 중인 게임의 마케팅 파이프라인에 투입되어, <strong>일주일 만에 신규 다운로드 수를 10% 이상 상향</strong>시키는 성과를 달성했습니다.</p>
+			</div>
+
+			<!-- TECHNICAL CHALLENGES -->
+			<h2 class="section-title">Technical Challenges</h2>
+
+			<!-- Challenge 1: 이미지 우측 -->
+			<div class="challenge-card">
+				<span class="challenge-number">01</span>
+				<span class="tag architecture">Architecture</span>
+				<h3>설계 및 생산성 - 디자인 패턴 기반 핵심 시스템 모듈화</h3>
+				<div class="challenge-row">
+					<div class="challenge-text">
+						<div class="problem-solution">
+							<div class="ps-label problem">Problem</div>
+							<div class="ps-content">
+								<ul>
+									<li>프로젝트마다 유사한 시스템을 반복 구현해야 했고, 빠른 개발 주기 속에서 코드가 특정 프로젝트에 강하게 결합되어 재사용이 어려웠습니다.</li>
+									<li>기획 변경 시 수정 범위가 넓어지는 문제가 빈번했습니다.</li>
+								</ul>
+							</div>
+							<div class="ps-label solution">Solution</div>
+							<div class="ps-content">
+								<ul>
+									<li>반복 사용되는 핵심 시스템을 MVC/상태/전략/명령 등의 디자인 패턴을 적용하여 모듈 간 의존성을 최소화한 재사용 가능한 패키지로 분리했습니다.</li>
+								</ul>
+							</div>
+							<div class="ps-label result">Result</div>
+							<div class="ps-content">
+								<ul>
+									<li>신규 프로젝트의 초기 세팅 시간을 대폭 단축하고, 기획 변경 시 영향 범위를 최소화할 수 있었습니다.</li>
+									<li>검증된 모듈을 다른 프로젝트에 빠르게 이식할 수 있게 되어 전체 개발 주기가 크게 개선되었습니다.</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="challenge-img">
+						<img src="GameScreenShots/KakaoTalk_20260217_154625470_01.jpg" alt="게임 스크린샷">
+					</div>
+				</div>
+			</div>
+
+			<!-- Challenge 2: 이미지 좌측 -->
+			<div class="challenge-card">
+				<span class="challenge-number">03</span>
+				<span class="tag performance">Performance</span>
+				<h3>성능 및 그래픽 최적화 - 저사양 웹 환경에서의 렌더링과 프레임 확보</h3>
+				<div class="challenge-row">
+					<div class="challenge-img">
+						<img src="GameScreenShots/KakaoTalk_20260217_154625470_02.jpg" alt="게임 스크린샷">
+					</div>
+					<div class="challenge-text">
+						<div class="problem-solution">
+							<div class="ps-label problem">Problem</div>
+							<div class="ps-content">
+								<ul>
+									<li>플레이어블 광고는 모바일 웹뷰에서 구동되기 때문에 네이티브 앱 대비 성능이 크게 제한됩니다.</li>
+									<li>다수의 오브젝트가 동시에 활성화되는 장르에서 프레임 드롭이 심각했고, 원본 게임의 셰이더가 WebGL 환경에서 호환되지 않거나 렌더링 부하가 과도한 문제도 빈번했습니다.</li>
+								</ul>
+							</div>
+							<div class="ps-label solution">Solution</div>
+							<div class="ps-content">
+								<ul>
+									<li>그리드 기반 공간 분할로 충돌 검사 범위를 최소화하고, 게임 오브젝트와 파티클을 풀링하여 연산량 및 GC를 억제했습니다.</li>
+									<li>유니티의 물리 엔진 대신 미리 베이크한 애니메이션을 사용하며 연산 부하를 줄였습니다.</li>
+									<li>AI를 활용해 복잡한 셰이더를 분석하여 WebGL 호환 경량 셰이더로 변환하여 불필요한 연산을 제거했습니다.</li>
+								</ul>
+							</div>
+							<div class="ps-label result">Result</div>
+							<div class="ps-content">
+								<ul>
+									<li>저사양 모바일 웹 환경에서도 원본에 가까운 비주얼 품질과 안정적인 프레임을 동시에 확보하여, 유저가 끊김 없이 게임을 체험할 수 있는 환경을 구축했습니다.</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Challenge 3: 이미지 우측 -->
+			<div class="challenge-card">
+				<span class="challenge-number">05</span>
+				<span class="tag optimization">Optimization</span>
+				<h3>빌드 용량 최적화 - 4MB 미만 용량 구현</h3>
+				<div class="challenge-row">
+					<div class="challenge-text">
+						<div class="problem-solution">
+							<div class="ps-label problem">Problem</div>
+							<div class="ps-content">
+								<ul>
+									<li>플레이어블 광고는 대부분의 광고 네트워크에서 4MB 이하의 용량 제한이 있습니다.</li>
+									<li>3D 게임의 텍스처, 메시, 애니메이션 등의 에셋을 포함하면 이 제한을 쉽게 초과하게 되어, 품질과 용량 사이의 균형을 맞추는 것이 핵심 과제였습니다.</li>
+								</ul>
+							</div>
+							<div class="ps-label solution">Solution</div>
+							<div class="ps-content">
+								<ul>
+									<li>컬러맵 텍스처 기법을 활용하여 다수의 텍스처를 하나의 팔레트 텍스처로 통합하고, 메시 데이터를 최적화했습니다.</li>
+									<li>불필요한 애니메이션 키프레임을 제거하는 툴을 개발하여 애니메이션의 용량을 최적화하였습니다.</li>
+								</ul>
+							</div>
+							<div class="ps-label result">Result</div>
+							<div class="ps-content">
+								<ul>
+									<li>시각적 품질을 유지하면서 4MB 미만의 빌드 용량을 안정적으로 달성하여, 모든 주요 광고 네트워크의 요구 사항을 충족시켰습니다.</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="challenge-img">
+						<img src="GameScreenShots/KakaoTalk_20260217_154625470_03.jpg" alt="게임 스크린샷">
+					</div>
+				</div>
+			</div>
+
+			<!-- Challenge 4: 이미지 좌측 -->
+			<div class="challenge-card">
+				<span class="challenge-number">06</span>
+				<span class="tag teamwork">Teamwork</span>
+				<h3>연출/로직 모듈화 및 배포 - 팀 전체 생산성 향상</h3>
+				<div class="challenge-row">
+					<div class="challenge-img">
+						<img src="GameScreenShots/KakaoTalk_20260217_154625470_04.jpg" alt="게임 스크린샷">
+					</div>
+					<div class="challenge-text">
+						<div class="problem-solution">
+							<div class="ps-label problem">Problem</div>
+							<div class="ps-content">
+								<ul>
+									<li>마케팅 성과가 높았던 특정 연출 기법이나 게임 로직이 개별 프로젝트에 종속되어 있어, 다른 팀원이 유사한 연출을 구현하려면 처음부터 다시 개발해야 하는 비효율이 발생했습니다.</li>
+								</ul>
+							</div>
+							<div class="ps-label solution">Solution</div>
+							<div class="ps-content">
+								<ul>
+									<li>성과가 검증된 연출과 로직을 프로젝트에서 분리하여 독립적인 모듈로 재설계했습니다.</li>
+									<li>각 모듈에 사용 가이드와 커스터마이징 포인트를 명시하고, 팀 내 패키지로 배포하여 누구나 쉽게 적용할 수 있도록 했습니다.</li>
+								</ul>
+							</div>
+							<div class="ps-label result">Result</div>
+							<div class="ps-content">
+								<ul>
+									<li>팀 전체의 개발 생산성이 향상되었으며, 검증된 연출을 빠르게 적용함으로써 신규 프로젝트의 초기 마케팅 성과를 높이는 데 기여했습니다.</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</section>
+
+	<!-- loader -->
+	<div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px">
+			<circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" />
+			<circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10"
+				stroke="#F96D00" />
+		</svg></div>
+
+	<script src="js/jquery.min.js"></script>
+	<script src="js/jquery-migrate-3.0.1.min.js"></script>
+	<script src="js/popper.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/jquery.easing.1.3.js"></script>
+	<script src="js/jquery.waypoints.min.js"></script>
+	<script src="js/jquery.stellar.min.js"></script>
+	<script src="js/owl.carousel.min.js"></script>
+	<script src="js/jquery.magnific-popup.min.js"></script>
+	<script src="js/aos.js"></script>
+	<script src="js/jquery.animateNumber.min.js"></script>
+	<script src="js/scrollax.min.js"></script>
+	<script src="js/main.js"></script>
+
+</body>
+
+</html>
