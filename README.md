@@ -1,70 +1,26 @@
-<p align="center">
-  <h1 align="center">Developer's Portfolio ✨</h1>
+# 김지훈 포트폴리오
 
-  <p align="center">
-Profolio는 개발자를 위한, 쉽고 빠르게 제작 할 수 있는 정적 포트폴리오 템플릿 입니다. <br/>Github 페이지로 호스팅 됩니다. <br/>웹 사이트는 <a href="https://congchu.github.io/web-porfolio/">DEMO</a>에서 확인하실 수 있습니다.
-  <br/>
-  <br/> 더 많은 템플릿은 <a href="https://github.com/congchu/portfolio-collection" >portfolio-collection</a> 저장소에서 보실 수 있습니다.
-    <br/>
-    <br/>
-    <img src="https://img.shields.io/badge/-Bootstrap-05122A?style=flat&logo=bootstrap&logoColor=563D7C"/>
-    <img src="https://img.shields.io/badge/-CSS-05122A?style=flat&logo=CSS3&logoColor=1572B6"/>
-    <img src="https://img.shields.io/badge/-HTML-05122A?style=flat&logo=HTML5"/>
-  <br/>
-  <br/>
-  <img src="https://github.com/congchu/web-porfolio/blob/main/demo/20210428.gif?raw=true"/>
-</p>
+유니티 클라이언트 개발자 김지훈의 포트폴리오 사이트입니다. 빌드 과정 없는 정적 HTML 사이트이며, `main` 브랜치가 GitHub Pages로 자동 배포됩니다.
 
-## Overview ⭐️
+- 사이트: https://mightychipmunk.github.io/web-porfolio/
 
-- static website로 Github pages 활용한 웹 호스팅 가능
-- 개발자 맞춤형 포트폴리오 웹 페이지
-- 제작자 표기 시, 무료로 활용가능
+## 구성
 
-## Prerequisites 🍪
+| 경로 | 내용 |
+|---|---|
+| `index.html` | 메인 페이지 (About / Education / Experience / Projects / Contact) |
+| `playable-detail.html`, `creative-detail.html` | 프로젝트 상세 페이지 |
+| `Games/` | 플레이어블 광고 빌드 (Unity PlayWorks 단일 HTML). 메인 페이지에서 iframe으로 로드 |
+| `Creatives/` | 크리에이티브 영상. `Creatives/hero/`는 히어로 배경 전용 저용량(540p) 버전 |
+| `Appicon/`, `GameScreenShots/`, `CreativeScreenShots/`, `images/` | 이미지 리소스 |
+| `css/`, `js/`, `fonts/` | 템플릿 스타일·스크립트 (Bootstrap 4 기반, `css/style.css`에 포함) |
 
-- PC에 git이 설치되어 있어야하며, Github 계정이 있어야 합니다.
-- HTML 문법을 몰라도 텍스트만 교체하여 활용 가능합니다.
-- HTML 문법을 알면 레이아웃이나 디자인을 변경할 수 있습니다.
-- CSS를 몰라도 제작 가능하지만, CSS에 친숙하다면 디자인도 자유롭게 변경할 수 있습니다.
+## 배포
 
-## Setup And Deployment 🔧
+`main` 브랜치에 push 하면 GitHub Pages가 자동으로 배포합니다. Jekyll 처리는 `.nojekyll`로 비활성화되어 있습니다.
 
-1. 내 프로젝트로 Fork합니다.
-2. repository를 clone하여 로컬로 내려받습니다.
+GitHub Pages는 게시 사이트 1GB, 월 대역폭 100GB 제한이 있으므로 페이지에서 실제로 사용하는 영상만 저장소에 두고, 단일 파일은 50MB 이하로 유지합니다.
 
-   ```
-   git clone {저장소URL}
-   ```
+## 크레딧
 
-3. 내용을 원하는대로 수정합니다.
-4. github commit & push 합니다.
-
-```bash
-git commit -m 'initial project'
-git push - u origin master
-```
-
-6. github Settings에서 pages로 이동하여, Source를 main branch로 바꿔줍니다.
-7. publish 되었다는 URL로 접속하여 확인합니다 (시간이 좀 걸리니, 5분정도 기다려주세요)
-
-## Documentation 📑
-
-튜토리얼 문서는 [웹 포트폴리오 제작 튜토리얼](https://www.notion.so/cucus/85e3bec77d904f1fa282cec4756232c3)에서 확인해주세요.
-
-## Deploy History 🌳
-
-2021-12-28
-
-- 지킬 셋팅 제거
-- 커스텀 도메인 연결 제거
-- 데모 사이트 및 이미지 경로 변경
-
-2021-04-22
-
-- 전체 레이아웃 수정
-- header 사진 변경
-
-2021-04-20
-
-- 프로젝트 생성
+Colorlib의 "Ronaldo" Bootstrap 4 템플릿(CC BY 3.0)과 [congchu/web-porfolio](https://github.com/congchu/web-porfolio) 템플릿을 기반으로 제작했습니다.

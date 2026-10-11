@@ -1,0 +1,13 @@
+# OS / archive leftovers
+.DS_Store
+Thumbs.db
+desktop.ini
+__MACOSX/
+
+# Editors
+.vscode/
+.idea/
+
+# Misc
+*.log
+node_modules/
