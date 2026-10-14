@@ -319,6 +319,45 @@
 		@media (max-width: 575.98px) {
 			.steam-media-thumb { flex-basis: calc((100% - 16px) / 3); }
 		}
+		/* 좌측 목차: 프로젝트 세부 항목 */
+		/* 프로젝트 영역을 볼 때만 펼쳐짐 (.expanded) */
+		#navi .navi-sub {
+			max-height: 0;
+			margin: 0 0 0 4px;
+			padding-left: 10px;
+			overflow: hidden;
+			opacity: 0;
+			transition: max-height 0.35s ease, opacity 0.25s ease, margin 0.35s ease;
+		}
+		#navi li.expanded > .navi-sub {
+			max-height: 400px;
+			margin: 8px 0 4px 4px;
+			opacity: 1;
+		}
+		#navi .navi-sub li {
+			margin-bottom: 6px;
+			font-size: 14px;
+			font-weight: 500;
+		}
+		#navi .navi-sub li a {
+			color: #777;
+		}
+		#navi .navi-sub li a:hover {
+			color: #3e64ff;
+		}
+		#navi .navi-sub li a.current {
+			color: #3e64ff;
+			font-weight: 700;
+		}
+		#navi li a.current-parent {
+			color: #3e64ff;
+		}
+		@media (max-width: 767.98px) {
+			#navi .navi-sub {
+				display: none;
+			}
+		}
+
 		/* 프로젝트 상세 보기 버튼 */
 		.resume-wrap .text a.detail-link-btn {
 			display: inline-flex;
@@ -535,7 +574,17 @@
 						<ul>
 							<li><a href="#page-1">Education</a></li>
 							<li><a href="#page-2">Experience</a></li>
-							<li><a href="#page-3">Projects</a></li>
+							<li><a href="#page-3">Projects</a>
+								<ul class="navi-sub">
+									<li><a href="#playables-section">Playable Ads</a></li>
+									<li><a href="#creatives-section">Creative Ads</a></li>
+									<li><a href="#trucksmasher-section">Truck Smasher</a></li>
+									<li><a href="#pengshot-section">펭샷</a></li>
+									<li><a href="#pindemonium-section">PINDEMONIUM</a></li>
+									<li><a href="#pipeline-section">1인 개발 파이프라인</a></li>
+									<li><a href="#vending-section">TaskBar VendingMachine</a></li>
+								</ul>
+							</li>
 						</ul>
 					</nav>
 				</div>
@@ -860,7 +909,7 @@
 						</div>
 						
 						<!-- Truck Smasher Project -->
-						<div class="resume-wrap d-flex ftco-animate">
+						<div id="trucksmasher-section" class="resume-wrap d-flex ftco-animate">
 							<div class="icon logo"><img src="Appicon/TruckSmasher.png" alt=""></div>
 							<div class="text pl-3">
 								<span class="date">2025.02 - 2025.03</span>
@@ -875,7 +924,7 @@
 
 								<!-- Truck Smasher Viewer -->
 								<div class="mt-4">
-									<video controls autoplay loop muted playsinline class="rounded shadow" style="max-height: 704px; width: 100%; max-width: 396px; object-fit: contain; background: #000; border-radius: 12px;">
+									<video controls autoplay loop muted playsinline class="rounded shadow" style="display: block; aspect-ratio: 1080 / 1350; max-height: 704px; width: 100%; max-width: 396px; object-fit: contain; background: #000; border-radius: 12px;">
 										<source src="Creatives/4번영상.mp4" type="video/mp4">
 									</video>
 								</div>
@@ -1016,7 +1065,7 @@
 
 						<!-- 1인 개발 파이프라인 Project -->
 						<div id="pipeline-section" class="resume-wrap d-flex ftco-animate">
-							<div class="icon empty"></div>
+							<div class="icon logo round"><img src="images/logos/steam.svg" alt=""></div>
 							<div class="text pl-3">
 								<span class="date">2026.09</span>
 								<h2>1인 개발 파이프라인</h2>
@@ -1606,6 +1655,42 @@
 	<script src="js/main.js"></script>
 
 	<script>
+		// 좌측 목차 (main.js 스크롤 스파이 이후 실행)
+		(function() {
+			const $links = $('#navi a');
+			const $projects = $('#navi a[href="#page-3"]');
+
+			// 상단 고정 메뉴 바로 아래에 섹션 머리가 오도록 이동.
+			// 이동 중 레이아웃이 바뀌어도(이미지·영상 로딩) 매 프레임 목표 위치를 다시 계산해 정확히 도착
+			function targetTop($target) {
+				const navHeight = $('#ftco-navbar').outerHeight() || 70;
+				return Math.max(0, $target.offset().top - navHeight - 20);
+			}
+			$links.off('click').on('click', function(e) {
+				e.preventDefault();
+				const href = $(this).attr('href');
+				const $target = $(href);
+				if (!$target.length) return;
+				// 시간 고정이 아닌 속도 기준: 거리 / 속도로 시간을 정해 가까운 곳은 더 빨리 도착 (너무 멀면 상한)
+				const distance = Math.abs(targetTop($target) - $(window).scrollTop());
+				const duration = Math.min(450, Math.max(120, distance / 8));
+				$('html, body').stop().animate({ scrollTop: targetTop($target) }, {
+					duration: duration,
+					step: function(now, fx) { fx.end = targetTop($target); }
+				});
+				if (history.replaceState) history.replaceState(null, '', href);
+			});
+
+			// 프로젝트 영역을 보는 동안에만 세부 목차를 펼치고, 상위 "Projects"도 강조
+			function updateProjectsNav() {
+				const subActive = $('#navi .navi-sub a.current').length > 0;
+				$projects.toggleClass('current-parent', subActive);
+				$projects.parent().toggleClass('expanded', subActive || $projects.hasClass('current'));
+			}
+			$(window).on('scroll', updateProjectsNav);
+			updateProjectsNav();
+		})();
+
 		// 스크린샷 갤러리마다 별도의 팝업 슬라이드로 묶음 (프로젝트끼리 섞이지 않도록)
 		$('.screenshot-gallery').each(function() {
 			$(this).magnificPopup({
