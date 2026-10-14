@@ -43,6 +43,7 @@
 			height: 100%;
 			z-index: -1;
 			overflow: hidden;
+			background: #000;  /* 영상 알파를 낮추면 검게 어두워지도록 */
 		}
 		.bg-video {
 			position: absolute;
@@ -60,6 +61,14 @@
 		}
 		.bg-video.active {
 			opacity: 1;
+		}
+		/* 스팀 게임 영상: 블러 없이 알파만으로 어둡게 (값을 낮출수록 어두워짐) */
+		.bg-video.no-blur {
+			transform: translate(-50%, -50%);
+			filter: none;
+		}
+		.bg-video.no-blur.active {
+			opacity: 0.45;
 		}
 		/* New styles for better hierarchy */
 		.tech-badge {
@@ -141,6 +150,11 @@
 			font-size: 30px;
 			font-weight: 400;
 			font-family: 'Do Hyeon', sans-serif;
+		}
+		/* 블러 없는 배경 영상 위에서도 읽히도록 그림자 */
+		.hero-name,
+		.hero-title {
+			text-shadow: 0 2px 12px rgba(0, 0, 0, 0.75), 0 0 2px rgba(0, 0, 0, 0.6);
 		}
 		@media (max-width: 767.98px) {
 			.hero-name {
@@ -581,7 +595,7 @@
 									<li><a href="#trucksmasher-section">Truck Smasher</a></li>
 									<li><a href="#pengshot-section">펭샷</a></li>
 									<li><a href="#pindemonium-section">PINDEMONIUM</a></li>
-									<li><a href="#pipeline-section">1인 개발 파이프라인</a></li>
+									<li><a href="#pipeline-section">Steam 1인 개발 파이프라인</a></li>
 									<li><a href="#vending-section">TaskBar VendingMachine</a></li>
 								</ul>
 							</li>
@@ -1063,12 +1077,12 @@
 							</div>
 						</div>
 
-						<!-- 1인 개발 파이프라인 Project -->
+						<!-- Steam 1인 개발 파이프라인 Project -->
 						<div id="pipeline-section" class="resume-wrap d-flex ftco-animate">
 							<div class="icon logo round"><img src="images/logos/steam.svg" alt=""></div>
 							<div class="text pl-3">
 								<span class="date">2026.09</span>
-								<h2>1인 개발 파이프라인</h2>
+								<h2>Steam 1인 개발 파이프라인</h2>
 								<span class="project-subtitle">1인 개발 | PINDEMONIUM 이후 구축 → TaskBar VendingMachine에 적용</span>
 
 								<div class="mb-3">
@@ -1081,7 +1095,7 @@
 								</div>
 
 								<!-- 파이프라인 다이어그램: 개발 → 애셋 제작 → 배포 -->
-								<div class="pipeline-flow mt-4" role="img" aria-label="개발(GameCore 서브모듈), 애셋 제작(Higgsfield, ElevenLabs), 배포(Claude 스킬)로 이어지는 1인 개발 파이프라인">
+								<div class="pipeline-flow mt-4" role="img" aria-label="개발(GameCore 서브모듈), 애셋 제작(Higgsfield, ElevenLabs), 배포(Claude 스킬)로 이어지는 Steam 1인 개발 파이프라인">
 									<div class="pipeline-step">
 										<div class="step-head"><b class="step-no">1</b> 개발</div>
 										<div class="step-tool">GameCore 서브모듈</div>
@@ -1666,18 +1680,42 @@
 				const navHeight = $('#ftco-navbar').outerHeight() || 70;
 				return Math.max(0, $target.offset().top - navHeight - 20);
 			}
+			// 스냅 이동: easeInOutCubic 트윈, 시간은 거리 / 속도로 정해 가까운 곳은 더 빨리 도착 (너무 멀면 상한)
+			// 이동 중 다시 클릭하면 현재 위치에서 새 목표로 다시 시작하고, 사용자가 직접 스크롤하면 즉시 멈춤
+			let snapFrame = null;
+			const easeInOutCubic = t => t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+
+			function cancelSnap() {
+				if (snapFrame !== null) {
+					cancelAnimationFrame(snapFrame);
+					snapFrame = null;
+				}
+			}
+			function snapTo($target) {
+				cancelSnap();
+				const start = window.scrollY;
+				const distance = Math.abs(targetTop($target) - start);
+				const duration = Math.min(450, Math.max(150, distance / 8));
+				const startTime = performance.now();
+
+				function frame(now) {
+					const t = Math.min(1, (now - startTime) / duration);
+					const end = targetTop($target);  // 이미지·영상 로딩으로 위치가 바뀌어도 따라감
+					window.scrollTo(0, start + (end - start) * easeInOutCubic(t));
+					snapFrame = t < 1 ? requestAnimationFrame(frame) : null;
+				}
+				snapFrame = requestAnimationFrame(frame);
+			}
+			window.addEventListener('wheel', cancelSnap, { passive: true });
+			window.addEventListener('touchstart', cancelSnap, { passive: true });
+			window.addEventListener('keydown', cancelSnap);
+
 			$links.off('click').on('click', function(e) {
 				e.preventDefault();
 				const href = $(this).attr('href');
 				const $target = $(href);
 				if (!$target.length) return;
-				// 시간 고정이 아닌 속도 기준: 거리 / 속도로 시간을 정해 가까운 곳은 더 빨리 도착 (너무 멀면 상한)
-				const distance = Math.abs(targetTop($target) - $(window).scrollTop());
-				const duration = Math.min(450, Math.max(120, distance / 8));
-				$('html, body').stop().animate({ scrollTop: targetTop($target) }, {
-					duration: duration,
-					step: function(now, fx) { fx.end = targetTop($target); }
-				});
+				snapTo($target);
 				if (history.replaceState) history.replaceState(null, '', href);
 			});
 
@@ -1780,20 +1818,28 @@
 		(function() {
 			// 히어로 배경 전용 저용량(540p, 무음) 버전. 원본 영상은 Creative Ads 뷰어에서 사용
 			const bgVideos = [
-				'Creatives/hero/lumberchopper.mp4',
-				'Creatives/hero/xphero.mp4',
-				'Creatives/hero/trucksmasher.mp4'
+				{ src: 'Creatives/hero/lumberchopper.mp4', duration: 6000, blur: true },
+				{ src: 'Creatives/hero/xphero.mp4', duration: 6000, blur: true },
+				{ src: 'Creatives/hero/trucksmasher.mp4', duration: 8000, blur: true },
+				{ src: 'Creatives/hero/pindemonium.mp4', duration: 6000, blur: false },
+				{ src: 'Creatives/hero/vendingmachine.mp4', duration: 6000, blur: false }
 			];
 
 			let currentIdx = 0;
 			const video1 = document.getElementById('bg-video-1');
 			const video2 = document.getElementById('bg-video-2');
+
+			// 영상 소스 교체 시 블러 여부도 함께 적용 (스팀 게임 영상은 블러 없음)
+			function setSource(video, item) {
+				video.src = item.src;
+				video.classList.toggle('no-blur', !item.blur);
+			}
 			
 			// 초기 로드
 			if(video1 && bgVideos.length > 0) {
-				video1.src = bgVideos[0];
+				setSource(video1, bgVideos[0]);
 				if(bgVideos.length > 1 && video2) {
-					video2.src = bgVideos[1];
+					setSource(video2, bgVideos[1]);
 				}
 			}
 
@@ -1805,7 +1851,9 @@
 				const nextVideo = activeVideo === video1 ? video2 : video1;
 				const nextIdx = (currentIdx + 1) % bgVideos.length;
 				
-				// 다음 비디오 활성화
+				// 다음 비디오를 처음부터 재생하며 활성화 (대기 중에 미리 재생된 부분 건너뜀 방지)
+				nextVideo.currentTime = 0;
+				nextVideo.play().catch(e => {});
 				nextVideo.classList.add('active');
 				activeVideo.classList.remove('active');
 				
@@ -1815,20 +1863,17 @@
 				// 전환 완료 후 이전 비디오 소스 업데이트
 				setTimeout(() => {
 					const futureIdx = (currentIdx + 1) % bgVideos.length;
-					activeVideo.src = bgVideos[futureIdx];
+					setSource(activeVideo, bgVideos[futureIdx]);
 					activeVideo.load();
 					activeVideo.play().catch(e => {});
 				}, 1500);
 
-				// 다음 전환 시간 설정 (트럭 스매셔는 길게)
-				// 현재 트럭 스매셔(idx 2)가 재생 중이면 다음 전환까지 더 오래 대기
-				const isTruckSmasher = currentIdx === 2;
-				const delay = isTruckSmasher ? 12000 : 8000;
-				setTimeout(updateVideo, delay);
+				// 다음 전환까지 현재 영상의 재생 시간만큼 대기
+				setTimeout(updateVideo, bgVideos[currentIdx].duration);
 			};
 
 			// 첫 실행
-			setTimeout(updateVideo, 8000);
+			setTimeout(updateVideo, bgVideos[0].duration);
 		})();
 	</script>
 </body>
