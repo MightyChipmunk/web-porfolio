@@ -11,6 +11,7 @@
 | `index.html` | 메인 페이지 (About / Education / Experience / Projects / Contact) |
 | `playable-detail.html`, `creative-detail.html` | 프로젝트 상세 페이지 |
 | `Games/` | 플레이어블 광고 빌드 (Unity PlayWorks 단일 HTML). 메인 페이지에서 iframe으로 로드 |
+| `Steam/` | 1인 개발 스팀 게임(핀데모니엄, TaskBar VendingMachine)의 웹용 경량 트레일러(720p)·스크린샷(webp). 원본 패키지는 `Games/*_Portfolio/`에 두되 git에서 제외 |
 | `Creatives/` | 크리에이티브 영상. `Creatives/hero/`는 히어로 배경 전용 저용량(540p) 버전 |
 | `Appicon/`, `GameScreenShots/`, `CreativeScreenShots/`, `images/` | 이미지 리소스 |
 | `css/`, `js/`, `fonts/` | 템플릿 스타일·스크립트 (Bootstrap 4 기반, `css/style.css`에 포함) |

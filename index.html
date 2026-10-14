@@ -15,7 +15,7 @@
 
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&family=Nanum+Gothic:wght@400;700;800&family=Do+Hyeon&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&family=IBM+Plex+Sans+KR:wght@300;400;500;600;700&family=Do+Hyeon&display=swap" rel="stylesheet">
 
 	<link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">
 	<link rel="stylesheet" href="css/animate.css">
@@ -33,7 +33,7 @@
 	<link rel="stylesheet" href="css/style.css">
 	<style>
 		body {
-			font-family: 'Poppins', 'Nanum Gothic', Arial, sans-serif !important;
+			font-family: 'Poppins', 'IBM Plex Sans KR', Arial, sans-serif !important;
 		}
 		.bg-video-wrapper {
 			position: absolute;
@@ -81,7 +81,7 @@
 			color: #666;
 			margin-bottom: 12px;
 			display: block;
-			font-family: 'Nanum Gothic', sans-serif !important;
+			font-family: 'IBM Plex Sans KR', sans-serif !important;
 			font-weight: 700 !important;
 		}
 		.resume-wrap .text ul {
@@ -100,6 +100,9 @@
 		.resume-wrap .text h2 {
 			color: #191919;
 		}
+		.resume-wrap .text a strong {
+			color: inherit;
+		}
 		.resume-wrap .text .game-counter,
 		.resume-wrap .text .game-counter span {
 			color: #fff;
@@ -115,7 +118,7 @@
 			color: #3e64ff;
 		}
 		.resume-wrap .position {
-			font-family: 'Nanum Gothic', sans-serif;
+			font-family: 'IBM Plex Sans KR', sans-serif;
 			font-weight: 700;
 			font-size: 19px;
 		}
@@ -148,6 +151,296 @@
 			}
 		}
 
+		/* 세로형 게임 스크린샷 갤러리 (클릭 시 magnific-popup으로 확대) */
+		.screenshot-gallery {
+			display: grid;
+			grid-template-columns: repeat(4, 1fr);
+			gap: 12px;
+			max-width: 640px;
+		}
+		.screenshot-gallery a {
+			display: block;
+			border-radius: 10px;
+			overflow: hidden;
+			box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+			transition: transform 0.2s ease;
+		}
+		.screenshot-gallery a:hover {
+			transform: translateY(-4px);
+		}
+		.screenshot-gallery img {
+			display: block;
+			width: 100%;
+			aspect-ratio: 9 / 16;
+			object-fit: cover;
+		}
+		@media (max-width: 575.98px) {
+			.screenshot-gallery {
+				grid-template-columns: repeat(2, 1fr);
+			}
+		}
+
+		/* 스팀 스토어식 미디어 뷰어: 큰 화면 + 좌우 스크롤 썸네일 */
+		.steam-media {
+			max-width: 760px;
+			outline: none;
+		}
+		.steam-media-main {
+			position: relative;
+			aspect-ratio: 16 / 9;
+			background: #000;
+			border-radius: 12px;
+			overflow: hidden;
+			box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+		}
+		.steam-media-video,
+		.steam-media-image {
+			position: absolute;
+			inset: 0;
+			width: 100%;
+			height: 100%;
+			object-fit: contain;
+		}
+		.steam-media-image {
+			cursor: zoom-in;
+		}
+		.steam-media-video[hidden],
+		.steam-media-image[hidden] {
+			display: none;
+		}
+		.steam-media-nav {
+			position: absolute;
+			top: 50%;
+			transform: translateY(-50%);
+			width: 40px;
+			height: 40px;
+			border: none;
+			border-radius: 50%;
+			background: rgba(0, 0, 0, 0.5);
+			color: #fff;
+			font-size: 22px;
+			line-height: 40px;
+			cursor: pointer;
+			opacity: 0.8;
+			transition: opacity 0.2s ease, background 0.2s ease;
+		}
+		.steam-media-nav.prev { left: 12px; }
+		.steam-media-nav.next { right: 12px; }
+		.steam-media-main:hover .steam-media-nav,
+		.steam-media:focus-within .steam-media-nav {
+			opacity: 1;
+		}
+		.steam-media-nav:hover {
+			background: rgba(62, 100, 255, 0.85);
+		}
+		/* 동영상 재생 중에는 컨트롤 바와 겹치지 않도록 화살표를 위로 */
+		.steam-media.is-video .steam-media-nav {
+			top: 40%;
+		}
+		.steam-media-strip {
+			display: flex;
+			gap: 8px;
+			margin-top: 10px;
+			padding-bottom: 8px;
+			overflow-x: auto;
+			scroll-behavior: smooth;
+			scroll-snap-type: x proximity;
+			scrollbar-width: thin;
+		}
+		.steam-media-thumb {
+			position: relative;
+			flex: 0 0 calc((100% - 32px) / 5);
+			aspect-ratio: 16 / 9;
+			padding: 0;
+			border: 2px solid transparent;
+			border-radius: 6px;
+			overflow: hidden;
+			background: #000;
+			cursor: pointer;
+			opacity: 0.6;
+			scroll-snap-align: start;
+			transition: opacity 0.2s ease, border-color 0.2s ease;
+		}
+		.steam-media-thumb:hover {
+			opacity: 0.9;
+		}
+		.steam-media-thumb.active {
+			opacity: 1;
+			border-color: #3e64ff;
+		}
+		.steam-media-thumb img {
+			display: block;
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+		}
+		.steam-media-thumb .ion-ios-play {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			width: 32px;
+			height: 32px;
+			padding-left: 3px;
+			border-radius: 50%;
+			background: rgba(0, 0, 0, 0.55);
+			font-size: 20px;
+			line-height: 32px;
+			text-align: center;
+		}
+		/* 트레일러 중앙의 큰 재생 버튼 (재생 시작 후 숨김) */
+		.steam-media-play {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			width: 72px;
+			height: 72px;
+			padding-left: 6px;
+			border: 2px solid #fff;
+			border-radius: 50%;
+			background: rgba(0, 0, 0, 0.45);
+			font-size: 40px;
+			line-height: 68px;
+			cursor: pointer;
+			transition: background 0.2s ease, transform 0.2s ease;
+		}
+		.steam-media-play:hover {
+			background: rgba(62, 100, 255, 0.85);
+			transform: translate(-50%, -50%) scale(1.06);
+		}
+		.steam-media-play[hidden] {
+			display: none;
+		}
+		/* .resume-wrap .text span 의 검정 글자색을 덮어써서 재생·화살표 아이콘을 흰색으로 */
+		.resume-wrap .text .steam-media span {
+			color: #fff;
+		}
+		@media (max-width: 575.98px) {
+			.steam-media-thumb { flex-basis: calc((100% - 16px) / 3); }
+		}
+		/* 프로젝트 상세 보기 버튼 */
+		.resume-wrap .text a.detail-link-btn {
+			display: inline-flex;
+			align-items: center;
+			gap: 8px;
+			padding: 10px 22px;
+			border-radius: 999px;
+			background: #3e64ff;
+			color: #fff;
+			font-size: 16px;
+			font-weight: 700;
+			box-shadow: 0 4px 12px rgba(62, 100, 255, 0.35);
+			transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+		}
+		.resume-wrap .text a.detail-link-btn:hover {
+			background: #2a4fe6;
+			color: #fff;
+			transform: translateY(-2px);
+			box-shadow: 0 6px 16px rgba(62, 100, 255, 0.45);
+		}
+		.resume-wrap .text a.detail-link-btn i {
+			transition: transform 0.2s ease;
+		}
+		.resume-wrap .text a.detail-link-btn:hover i {
+			transform: translateX(3px);
+		}
+
+		/* 1인 개발 파이프라인 다이어그램 (모바일에서는 세로로 쌓임) */
+		.pipeline-flow {
+			display: flex;
+			align-items: stretch;
+			max-width: 760px;
+		}
+		.pipeline-step {
+			flex: 1;
+			padding: 14px 16px;
+			border: 1px solid #dfe5ff;
+			border-radius: 12px;
+			background: #f6f8ff;
+		}
+		.pipeline-step .step-head {
+			font-size: 16px;
+			font-weight: 700;
+			color: #191919;
+		}
+		.pipeline-step .step-no {
+			display: inline-block;
+			width: 24px;
+			height: 24px;
+			margin-right: 6px;
+			border-radius: 50%;
+			background: #3e64ff;
+			color: #fff;
+			font-size: 13px;
+			line-height: 24px;
+			text-align: center;
+		}
+		.pipeline-step .step-tool {
+			margin-top: 6px;
+			color: #3e64ff;
+			font-size: 14px;
+			font-weight: 700;
+		}
+		.resume-wrap .text .pipeline-step .step-items {
+			margin: 8px 0 0;
+			padding-left: 0;
+			list-style: none;
+		}
+		.resume-wrap .text .pipeline-step .step-items li {
+			margin-bottom: 2px;
+			font-size: 13px;
+			line-height: 1.5;
+		}
+		.pipeline-arrow {
+			display: flex;
+			align-items: center;
+			padding: 0 8px;
+			color: #3e64ff;
+			font-size: 22px;
+		}
+		@media (max-width: 767.98px) {
+			.pipeline-flow {
+				flex-direction: column;
+			}
+			.pipeline-arrow {
+				justify-content: center;
+				padding: 2px 0;
+			}
+			.pipeline-arrow i {
+				transform: rotate(90deg);
+			}
+		}
+
+		/* 연혁 아이콘: 회사/프로젝트 로고 (없으면 빈 칸으로 정렬만 유지) */
+		.resume-wrap .icon.empty {
+			flex-shrink: 0;
+			background: none;
+		}
+		.resume-wrap .icon.logo {
+			flex-shrink: 0;
+			background: none;
+			border-radius: 12px;
+			overflow: hidden;
+			box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+		}
+		.resume-wrap .icon.logo.round {
+			border-radius: 50%;
+		}
+		/* 버튼처럼 보이지 않도록 테두리·그림자 없이 이미지만 표시 */
+		.resume-wrap .icon.logo.plain {
+			border-radius: 0;
+			box-shadow: none;
+		}
+		.resume-wrap .icon.logo.plain img {
+			object-fit: contain;
+		}
+		.resume-wrap .icon.logo img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+		}
+
 		/* Contact section bottom spacing */
 		.contact-section {
 			padding-bottom: 4em !important;
@@ -160,14 +453,13 @@
 
 	<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar ftco-navbar-light site-navbar-target" id="ftco-navbar">
 		<div class="container">
-			<a class="navbar-brand" href="index.html"><span>K</span>imJiHoon</a>
 			<button class="navbar-toggler js-fh5co-nav-toggle fh5co-nav-toggle" type="button" data-toggle="collapse"
 				data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="oi oi-menu"></span> Menu
 			</button>
 
 			<div class="collapse navbar-collapse" id="ftco-nav">
-				<ul class="navbar-nav nav ml-auto">
+				<ul class="navbar-nav nav mr-auto">
 					<li class="nav-item"><a href="#home-section" class="nav-link"><span>Home</span></a></li>
 					<li class="nav-item"><a href="#about-section" class="nav-link"><span>About</span></a></li>
 					<li class="nav-item"><a href="#education-section" class="nav-link"><span>Education</span></a></li>
@@ -251,9 +543,7 @@
 					<div id="page-1" class="page one">
 						<h2 class="heading">Education</h2>
 						<div class="resume-wrap d-flex ftco-animate">
-							<div class="icon d-flex align-items-center justify-content-center">
-								<span class="flaticon-ideas"></span>
-							</div>
+							<div class="icon logo plain"><img src="images/logos/konkuk.png" alt=""></div>
 							<div class="text pl-3">
 								<span class="date">2017 - 2024</span>
 								<h2>건국대학교</h2>
@@ -265,9 +555,7 @@
 							</div>
 						</div>
 						<div class="resume-wrap d-flex ftco-animate">
-							<div class="icon d-flex align-items-center justify-content-center">
-								<span class="flaticon-ideas"></span>
-							</div>
+							<div class="icon logo plain"><img src="images/logos/metaverse-academy.png" alt=""></div>
 							<div class="text pl-3">
 								<span class="date">2022.06 - 2022.12</span>
 								<h2>메타버스 아카데미</h2>
@@ -283,11 +571,9 @@
 					<div id="page-2" class="page two">
 						<h2 class="heading">Work Experience</h2>
 						<div class="resume-wrap d-flex ftco-animate">
-							<div class="icon d-flex align-items-center justify-content-center">
-								<span class="flaticon-ideas"></span>
-							</div>
+							<div class="icon logo round"><img src="images/logos/supercent.png" alt=""></div>
 							<div class="text pl-3">
-								<span class="date">2024.02 - 현재</span>
+								<span class="date">2024.02 - 2026.04</span>
 								<h2>슈퍼센트 (Supercent)</h2>
 								
 								<span class="position">Unity Client Developer</span>
@@ -305,15 +591,27 @@
 							</div>
 
 						</div>
+						<div class="resume-wrap d-flex ftco-animate">
+							<div class="icon logo"><img src="images/logos/111percent.png" alt=""></div>
+							<div class="text pl-3">
+								<span class="date">2026.04 - 2026.07</span>
+								<h2>111퍼센트 (111 Percent)</h2>
+
+								<span class="position">Unity Client Developer</span>
+								<br><span class="position">펭샷 (PengShot) 개발</span>
+								<ul>
+									<li>3인 멀티플레이 협동 슈터 게임 <strong>펭샷(PengShot)</strong> 개발에 참여했습니다.</li>
+									<li><strong>인게임 연출 강화</strong> 및 <strong>아웃게임 메타시스템 개발</strong>을 담당했습니다.</li>
+								</ul>
+							</div>
+						</div>
 					</div>
 					<div id="page-3" class="page three">
 						<h2 id="projects-section" class="heading">Projects</h2>
-						
+
 						<!-- Playables Project -->
 						<div id="playables-section" class="resume-wrap d-flex ftco-animate">
-							<div class="icon d-flex align-items-center justify-content-center">
-								<span class="flaticon-ideas"></span>
-							</div>
+							<div class="icon logo round"><img src="images/logos/supercent.png" alt=""></div>
 							<div class="text pl-3">
 								<span class="date">2024 - 2026</span>
 								<h2>Playable Ads 개발</h2>
@@ -411,6 +709,10 @@
 									<li><strong>Unity</strong>와 <strong>Unity PlayWorks</strong>를 활용하여 웹 게임 형식의 플레이어블 광고를 개발하였습니다.</li>
 									<li>각 프로젝트마다 개발 / 디자이너 / 기획자가 각각 1인씩 참여하여 개발하였습니다.</li>
 								</ul>
+								<div class="mt-1 mb-2">
+									<a href="playable-detail.html" target="_blank" class="detail-link-btn">프로젝트 상세 보기 <i class="ion-ios-arrow-forward"></i></a>
+								</div>
+
 
 								<div class="mt-3">
 									<span class="tech-stack-title">KEY ACHIEVEMENTS</span>
@@ -431,18 +733,12 @@
 										<!-- <li><strong>연출/로직 모듈화 및 배포:</strong> 마케팅 성과가 높았던 연출과 로직을 모듈화하여 배포, <strong>팀 전체의 생산성 향상</strong></li> -->
 									</ul>
 								</div>
-								
-								<div class="mt-2">
-									<a href="playable-detail.html" target="_blank" style="color: #3e64ff; font-size: 18px; text-decoration: underline; font-family: 'Nanum Gothic', sans-serif !important; font-weight: 800;">프로젝트 상세 보기</a>
-								</div>
 							</div>
 						</div>
 						
 						<!-- Creative Ads Project -->
 						<div id="creatives-section" class="resume-wrap d-flex ftco-animate">
-							<div class="icon d-flex align-items-center justify-content-center">
-								<span class="flaticon-ideas"></span>
-							</div>
+							<div class="icon logo round"><img src="images/logos/supercent.png" alt=""></div>
 							<div class="text pl-3">
 								<span class="date">2024 - 2026</span>
 								<h2>Creative Ads 개발</h2>
@@ -453,8 +749,6 @@
 									<span class="tech-badge">C#</span>
 									<span class="tech-badge">URP</span>
 									<span class="tech-badge">HDRP</span>
-									<span class="tech-badge">Post Processing</span>
-									<span class="tech-badge">Custom Inspector</span>
 								</div>
 
 								<!-- Video Viewer -->
@@ -541,6 +835,10 @@
 									<li><strong>Unity</strong>를 활용하여 사용자의 흥미를 극대화하는 마케팅용 동영상 광고를 제작하였습니다.</li>
 									<li>다양한 게임 메커니즘을 짧은 영상으로 압축하여 높은 수준의 시각적 연출을 구현했습니다.</li>
 								</ul>
+								<div class="mt-1 mb-2">
+									<a href="creative-detail.html" target="_blank" class="detail-link-btn">프로젝트 상세 보기 <i class="ion-ios-arrow-forward"></i></a>
+								</div>
+
 
 								<div class="mt-3">
 									<span class="tech-stack-title">KEY ACHIEVEMENTS</span>
@@ -558,18 +856,12 @@
 										<li><strong>워크플로우 가속화:</strong> 연출 기능을 모듈화하여 신규 프로젝트 투입 시 <strong>즉시 촬영 가능한 프리셋 시스템 구축</strong></li>
 									</ul>
 								</div>
-
-								<div class="mt-2">
-									<a href="creative-detail.html" target="_blank" style="color: #3e64ff; font-size: 18px; text-decoration: underline; font-family: 'Nanum Gothic', sans-serif !important; font-weight: 800;">프로젝트 상세 보기</a>
-								</div>
 							</div>
 						</div>
 						
 						<!-- Truck Smasher Project -->
 						<div class="resume-wrap d-flex ftco-animate">
-							<div class="icon d-flex align-items-center justify-content-center">
-								<span class="flaticon-ideas"></span>
-							</div>
+							<div class="icon logo"><img src="Appicon/TruckSmasher.png" alt=""></div>
 							<div class="text pl-3">
 								<span class="date">2025.02 - 2025.03</span>
 								<h2>Truck Smasher <a href="https://play.google.com/store/apps/details?id=io.supercent.trucksmashers" target="_blank" class="ml-2" style="font-size: 0.7em; color: #3e64ff; vertical-align: middle;">Play Store <i class="icon-external-link"></i></a></h2>
@@ -582,15 +874,7 @@
 								</div>
 
 								<!-- Truck Smasher Viewer -->
-								<div class="game-shorts-container mt-4">
-									<!-- Info Panel -->
-									<div class="game-info-panel">
-										<div class="game-info-item active" style="cursor: default; opacity: 1; background: rgba(62, 100, 255, 0.2); border-color: #3e64ff; box-shadow: 0 4px 12px rgba(62, 100, 255, 0.3);">
-											<img src="Appicon/TruckSmasher.png" alt="Truck Smasher" class="game-icon">
-											<h3>Truck Smasher</h3>
-										</div>
-									</div>
-
+								<div class="mt-4">
 									<video controls autoplay loop muted playsinline class="rounded shadow" style="max-height: 704px; width: 100%; max-width: 396px; object-fit: contain; background: #000; border-radius: 12px;">
 										<source src="Creatives/4번영상.mp4" type="video/mp4">
 									</video>
@@ -615,6 +899,257 @@
 										<li><strong>최적화된 커스텀 핸들링:</strong> 휠 콜라이더를 배제한 스크립트 기반 이동 로직으로 <strong>연산 부하 최소화 및 조작감 확보</strong></li>
 										<li><strong>효율적인 데이터 설계:</strong> 스테이지 및 보스 구성의 효율을 높이는 모듈화된 데이터 구조로 <strong>개발 속도 극대화</strong></li>
 										<li><strong>동적 카메라 및 스케일링:</strong> 성장에 따른 카메라 뷰 및 물리 범위를 유기적으로 보간하여 <strong>일관된 플레이 경험 제공</strong></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+
+						<!-- PengShot Project -->
+						<div id="pengshot-section" class="resume-wrap d-flex ftco-animate">
+							<div class="icon logo"><img src="GameScreenShots/PengShot/icon.png" alt=""></div>
+							<div class="text pl-3">
+								<span class="date">2026.04 - 2026.07</span>
+								<h2>펭샷 (PengShot)</h2>
+								<span class="project-subtitle">111퍼센트 (111 Percent) | 3인 멀티플레이 협동 슈터</span>
+
+								<div class="mb-3">
+									<span class="tech-badge">Unity</span>
+									<span class="tech-badge">C#</span>
+									<span class="tech-badge">URP</span>
+									<span class="tech-badge">Photon Quantum</span>
+									<span class="tech-badge">Firebase</span>
+									<span class="tech-badge">Google Sheets</span>
+								</div>
+
+								<div class="screenshot-gallery mt-4">
+									<a href="GameScreenShots/PengShot/forward.webp" title="Forward!">
+										<img src="GameScreenShots/PengShot/forward.webp" alt="펭샷 인게임 전투 화면" loading="lazy">
+									</a>
+									<a href="GameScreenShots/PengShot/evolve.webp" title="Evolve!">
+										<img src="GameScreenShots/PengShot/evolve.webp" alt="펭샷 강화 카드 선택 화면" loading="lazy">
+									</a>
+									<a href="GameScreenShots/PengShot/gearup.webp" title="Gear Up!">
+										<img src="GameScreenShots/PengShot/gearup.webp" alt="펭샷 장비 제작 화면" loading="lazy">
+									</a>
+									<a href="GameScreenShots/PengShot/survive.webp" title="Survive?">
+										<img src="GameScreenShots/PengShot/survive.webp" alt="펭샷 보스전 화면" loading="lazy">
+									</a>
+								</div>
+
+								<ul class="mt-4">
+									<li>3명의 플레이어가 함께 몰려오는 적을 막아내는 <strong>멀티플레이 협동 슈터</strong> 게임입니다.</li>
+									<li><strong>인게임 연출 강화</strong>와 <strong>아웃게임 메타시스템 개발</strong>을 담당했습니다.</li>
+								</ul>
+
+								<div class="mt-3">
+									<span class="tech-stack-title">TECHNICAL CHALLENGES</span>
+									<ul>
+										<li><strong>결정론적 실시간 멀티플레이:</strong> ECS 기반 엔진 <a href="https://www.photonengine.com/quantum" target="_blank" rel="noopener"><strong>Photon Quantum</strong></a>으로, 모든 클라이언트가 같은 입력에서 같은 결과를 내는 <strong>3인 실시간 협동 플레이 구현</strong></li>
+										<li><strong>유저 데이터 저장:</strong> <strong>Firebase</strong>로 유저 데이터 저장</li>
+										<li><strong>구글 시트 기반 데이터 관리:</strong> 게임 데이터와 로컬라이제이션 텍스트를 <strong>구글 시트</strong>에서 함께 관리</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+
+						<!-- Pindemonium Project -->
+						<div id="pindemonium-section" class="resume-wrap d-flex ftco-animate">
+							<div class="icon logo round"><img src="Steam/Pindemonium/icon.png" alt=""></div>
+							<div class="text pl-3">
+								<span class="date">2026.08 - 2026.09</span>
+								<h2>PINDEMONIUM <a href="https://store.steampowered.com/app/5343970/PINDEMONIUM/" target="_blank" class="ml-2" style="font-size: 0.7em; color: #3e64ff; vertical-align: middle;">Steam <i class="icon-external-link"></i></a></h2>
+								<span class="project-subtitle">1인 개발 (개발 기간 7주) | 로그라이크 핀볼 덱빌더 | Steam 출시 (2026.10)</span>
+
+								<div class="mb-3">
+									<span class="tech-badge">Unity</span>
+									<span class="tech-badge">C#</span>
+									<span class="tech-badge">Steam</span>
+								</div>
+
+								<div class="steam-media mt-4" tabindex="0">
+									<div class="steam-media-main">
+										<video class="steam-media-video" controls muted playsinline preload="none" poster="Steam/Pindemonium/trailer-poster.webp">
+											<source src="Steam/Pindemonium/trailer.mp4" type="video/mp4">
+										</video>
+										<img class="steam-media-image" alt="" hidden>
+										<button type="button" class="steam-media-nav prev" aria-label="이전"><span class="ion-ios-arrow-back"></span></button>
+										<button type="button" class="steam-media-nav next" aria-label="다음"><span class="ion-ios-arrow-forward"></span></button>
+									</div>
+									<div class="steam-media-strip">
+										<button type="button" class="steam-media-thumb is-video active" data-type="video" aria-label="트레일러"><img src="Steam/Pindemonium/trailer-poster.webp" alt=""><span class="ion-ios-play"></span></button>
+										<button type="button" class="steam-media-thumb" data-type="image" data-src="Steam/Pindemonium/gameplay_early.webp" aria-label="게임 플레이"><img src="Steam/Pindemonium/gameplay_early.webp" alt="핀데모니엄 게임 플레이 화면" loading="lazy"></button>
+										<button type="button" class="steam-media-thumb" data-type="image" data-src="Steam/Pindemonium/shop_megapack.webp" aria-label="상점 - 메가 랜덤 팩"><img src="Steam/Pindemonium/shop_megapack.webp" alt="핀데모니엄 상점 화면" loading="lazy"></button>
+										<button type="button" class="steam-media-thumb" data-type="image" data-src="Steam/Pindemonium/flipper_select.webp" aria-label="플리퍼 선택"><img src="Steam/Pindemonium/flipper_select.webp" alt="핀데모니엄 플리퍼 선택 화면" loading="lazy"></button>
+										<button type="button" class="steam-media-thumb" data-type="image" data-src="Steam/Pindemonium/passive_frost.webp" aria-label="패시브 연출 - 결빙"><img src="Steam/Pindemonium/passive_frost.webp" alt="핀데모니엄 결빙 패시브 연출" loading="lazy"></button>
+										<button type="button" class="steam-media-thumb" data-type="image" data-src="Steam/Pindemonium/passive_chain.webp" aria-label="패시브 연출 - 연쇄 빔"><img src="Steam/Pindemonium/passive_chain.webp" alt="핀데모니엄 연쇄 빔 패시브 연출" loading="lazy"></button>
+										<button type="button" class="steam-media-thumb" data-type="image" data-src="Steam/Pindemonium/passive_fire.webp" aria-label="패시브 연출 - 용암화"><img src="Steam/Pindemonium/passive_fire.webp" alt="핀데모니엄 용암화 패시브 연출" loading="lazy"></button>
+									</div>
+								</div>
+
+								<ul class="mt-4">
+									<li>공이 모두 떨어지기 전에 스테이지별 목표 점수를 달성하고, 스테이지 사이 상점에서 패시브와 업그레이드를 모아 빌드를 완성하는 <strong>로그라이크 핀볼 덱빌더</strong>입니다.</li>
+									<li>기획부터 개발, 아트 리소스 정리, Steam 스토어 등록까지 <strong>1인으로 진행</strong>했습니다.</li>
+								</ul>
+
+								<div class="mt-3">
+									<span class="tech-stack-title">GAME FEATURES</span>
+									<ul>
+										<li><strong>물리 기반 핀볼 테이블:</strong> 범퍼·슬링샷·스피너·세이서 등 <strong>8종 파츠</strong>, 범퍼는 부수면 대량 득점</li>
+										<li><strong>위치·타이밍 기반 플리퍼 판정:</strong> 볼이 맞은 위치와 입력 타이밍으로 <strong>Perfect / SweetSpot / Normal 3단계</strong>를 판정하고, 판정 구간 밖에서는 힘이 연속적으로 줄어 손맛을 살림</li>
+										<li><strong>콤보 시스템:</strong> 연속 타격으로 쌓이는 <strong>콤보 배율</strong>, 오래 맞히지 못하면 초기화</li>
+										<li><strong>빌드 다양성:</strong> <strong>패시브 40종 이상</strong>과 업그레이드·카드 팩, 고유 장단점을 가진 <strong>플리퍼 10종</strong> 해금</li>
+										<li><strong>콘텐츠 구성:</strong> 4라운드 <strong>12스테이지</strong>와 클리어 후 엔드리스 모드, Steam 도전과제 지원</li>
+									</ul>
+								</div>
+
+								<div class="mt-3">
+									<span class="tech-stack-title">TECHNICAL CHALLENGES</span>
+									<ul>
+										<li><strong>하이브리드 물리:</strong> Unity Physics2D에 스크립트 임펄스를 더하고, 레인·소서 같은 특수 기믹은 경로를 따라가는 <strong>Kinematic 제어</strong>로 구현</li>
+										<li><strong>데이터 주도 아이템·기믹 구조:</strong> 아이템 효과 <strong>54종을 ScriptableObject로 정의</strong>해 코드 수정 없이 밸런스 조정, 맵 기믹 8종은 공통 베이스 클래스로 충돌 처리 순서를 통일하고 점수는 델리게이트로만 전달해 <strong>기믹과 점수 시스템 분리</strong></li>
+										<li><strong>콜백 기반 의존성 주입:</strong> 싱글톤·DI 컨테이너 없이 Func/Action 콜백으로 주입해 <strong>순환 참조 없는 구조</strong></li>
+										<li><strong>런타임 성능 최적화:</strong> 오브젝트 풀링, GetComponent 제거, UniTask로 <strong>GC 할당과 런타임 비용 절감</strong></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+
+						<!-- 1인 개발 파이프라인 Project -->
+						<div id="pipeline-section" class="resume-wrap d-flex ftco-animate">
+							<div class="icon empty"></div>
+							<div class="text pl-3">
+								<span class="date">2026.09</span>
+								<h2>1인 개발 파이프라인</h2>
+								<span class="project-subtitle">1인 개발 | PINDEMONIUM 이후 구축 → TaskBar VendingMachine에 적용</span>
+
+								<div class="mb-3">
+									<span class="tech-badge">Unity</span>
+									<span class="tech-badge">C#</span>
+									<span class="tech-badge">UniTask</span>
+									<span class="tech-badge">Git Submodule</span>
+									<span class="tech-badge">Claude</span>
+									<span class="tech-badge">MCP</span>
+								</div>
+
+								<!-- 파이프라인 다이어그램: 개발 → 애셋 제작 → 배포 -->
+								<div class="pipeline-flow mt-4" role="img" aria-label="개발(GameCore 서브모듈), 애셋 제작(Higgsfield, ElevenLabs), 배포(Claude 스킬)로 이어지는 1인 개발 파이프라인">
+									<div class="pipeline-step">
+										<div class="step-head"><b class="step-no">1</b> 개발</div>
+										<div class="step-tool">GameCore 서브모듈</div>
+										<ul class="step-items">
+											<li>세이브 · UI · 오브젝트 풀</li>
+											<li>오디오 · Steam 연동</li>
+										</ul>
+									</div>
+									<div class="pipeline-arrow" aria-hidden="true"><i class="ion-ios-arrow-forward"></i></div>
+									<div class="pipeline-step">
+										<div class="step-head"><b class="step-no">2</b> 애셋 제작</div>
+										<div class="step-tool">AI · MCP</div>
+										<ul class="step-items">
+											<li>Higgsfield: 스프라이트 · 스팀 페이지 애셋</li>
+											<li>ElevenLabs: BGM · SFX</li>
+										</ul>
+									</div>
+									<div class="pipeline-arrow" aria-hidden="true"><i class="ion-ios-arrow-forward"></i></div>
+									<div class="pipeline-step">
+										<div class="step-head"><b class="step-no">3</b> 배포</div>
+										<div class="step-tool">Claude 스킬</div>
+										<ul class="step-items">
+											<li>스팀 페이지 애셋 생성</li>
+											<li>스팀 빌드 업로드</li>
+										</ul>
+									</div>
+								</div>
+
+								<ul class="mt-4">
+									<li>스팀 게임을 혼자서 빠르게 출시하기 위해 <strong>개발 → 애셋 제작 → 배포</strong> 전 과정을 재사용 프레임워크와 AI 자동화로 묶은 파이프라인입니다.</li>
+									<li><strong>결과:</strong> 핀데모니엄 <strong>7주</strong> → 파이프라인을 적용한 TaskBar VendingMachine <strong>4주</strong>로 개발 기간 단축</li>
+								</ul>
+
+								<div class="mt-3">
+									<span class="tech-stack-title">① 개발 · GAMECORE</span>
+									<ul>
+										<li><strong>재사용 가능한 모듈 구조:</strong> 공통 코드를 <strong>git 서브모듈</strong>로 분리하고, 패키지가 없으면 해당 모듈이 컴파일에서 자동으로 빠지도록 <strong>asmdef 조건</strong> 설정 (로컬라이제이션 등 공통 모듈 포함)</li>
+										<li><strong>안전한 세이브:</strong> Steam Cloud와 로컬에 함께 저장하고 읽을 때는 가장 최근 것을 선택, <strong>원자적 쓰기</strong>로 파일 손상을 막고 더 높은 버전의 세이브는 덮어쓰지 않고 백업</li>
+										<li><strong>제네릭 런타임 모듈:</strong> UI 매니저·오브젝트 풀·오디오·Steam 연동을 <strong>제네릭으로 구현</strong>해 키의 의미는 각 게임이 정의, 비동기는 코루틴 없이 <strong>UniTask</strong>로 통일</li>
+										<li><strong>빌드 자동화:</strong> 릴리스 빌드 전 개발용 패키지를 자동으로 빼고, 이때 생기는 도메인 리로드는 <strong>상태 머신</strong>으로 넘겨 빌드와 패키지 복원을 이어서 진행</li>
+									</ul>
+								</div>
+
+								<div class="mt-3">
+									<span class="tech-stack-title">② 애셋 제작 · AI</span>
+									<ul>
+										<li><strong>스프라이트 · 스팀 페이지 애셋:</strong> <strong>Higgsfield MCP</strong>로 게임 스프라이트와 스팀 스토어 페이지 이미지 생성</li>
+										<li><strong>사운드:</strong> <strong>ElevenLabs MCP</strong>로 BGM과 SFX 생성</li>
+									</ul>
+								</div>
+
+								<div class="mt-3">
+									<span class="tech-stack-title">③ 배포 · 자동화</span>
+									<ul>
+										<li><strong>Steam 연동 서브모듈:</strong> Steam 연동 기능을 <strong>서브모듈로 분리</strong>해 게임마다 재사용</li>
+										<li><strong>Claude 스킬 자동화:</strong> 스팀 페이지에 필요한 애셋 생성과 <strong>스팀 빌드 업로드</strong>를 스킬로 분리해 자동화</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+
+						<!-- TaskBar VendingMachine Project -->
+						<div id="vending-section" class="resume-wrap d-flex ftco-animate">
+							<div class="icon logo plain"><img src="Steam/TaskBarVendingMachine/icon.png" alt=""></div>
+							<div class="text pl-3">
+								<span class="date">2026.09 - 2026.10</span>
+								<h2>TaskBar VendingMachine <a href="https://store.steampowered.com/app/5375180/TaskBar_VendingMachine/" target="_blank" class="ml-2" style="font-size: 0.7em; color: #3e64ff; vertical-align: middle;">Steam <i class="icon-external-link"></i></a></h2>
+								<span class="project-subtitle">1인 개발 (개발 기간 4주) | 작업 표시줄 방치형 경영 게임 | Steam 출시 (2026.10)</span>
+
+								<div class="mb-3">
+									<span class="tech-badge">Unity</span>
+									<span class="tech-badge">C#</span>
+									<span class="tech-badge">Steam</span>
+								</div>
+
+								<div class="steam-media mt-4" tabindex="0">
+									<div class="steam-media-main">
+										<video class="steam-media-video" controls muted playsinline preload="none" poster="Steam/TaskBarVendingMachine/trailer-poster.webp">
+											<source src="Steam/TaskBarVendingMachine/trailer.mp4" type="video/mp4">
+										</video>
+										<img class="steam-media-image" alt="" hidden>
+										<button type="button" class="steam-media-nav prev" aria-label="이전"><span class="ion-ios-arrow-back"></span></button>
+										<button type="button" class="steam-media-nav next" aria-label="다음"><span class="ion-ios-arrow-forward"></span></button>
+									</div>
+									<div class="steam-media-strip">
+										<button type="button" class="steam-media-thumb is-video active" data-type="video" aria-label="트레일러"><img src="Steam/TaskBarVendingMachine/trailer-poster.webp" alt=""><span class="ion-ios-play"></span></button>
+										<button type="button" class="steam-media-thumb" data-type="image" data-src="Steam/TaskBarVendingMachine/desktop.webp" aria-label="바탕화면 위 작업 표시줄 자판기"><img src="Steam/TaskBarVendingMachine/desktop.webp" alt="작업 표시줄 위 자판기 화면" loading="lazy"></button>
+										<button type="button" class="steam-media-thumb" data-type="image" data-src="Steam/TaskBarVendingMachine/sale.webp" aria-label="손님 판매"><img src="Steam/TaskBarVendingMachine/sale.webp" alt="손님 판매 장면" loading="lazy"></button>
+										<button type="button" class="steam-media-thumb" data-type="image" data-src="Steam/TaskBarVendingMachine/slots.webp" aria-label="칸별 재고·가격 관리"><img src="Steam/TaskBarVendingMachine/slots.webp" alt="칸별 재고 및 가격 관리 화면" loading="lazy"></button>
+										<button type="button" class="steam-media-thumb" data-type="image" data-src="Steam/TaskBarVendingMachine/news.webp" aria-label="일간 신문"><img src="Steam/TaskBarVendingMachine/news.webp" alt="일간 신문 화면" loading="lazy"></button>
+										<button type="button" class="steam-media-thumb" data-type="image" data-src="Steam/TaskBarVendingMachine/skin.webp" aria-label="자판기 스킨"><img src="Steam/TaskBarVendingMachine/skin.webp" alt="자판기 스킨 화면" loading="lazy"></button>
+										<button type="button" class="steam-media-thumb" data-type="image" data-src="Steam/TaskBarVendingMachine/codex.webp" aria-label="손님 도감"><img src="Steam/TaskBarVendingMachine/codex.webp" alt="손님 도감 화면" loading="lazy"></button>
+									</div>
+								</div>
+
+								<ul class="mt-4">
+									<li>윈도우 <strong>작업 표시줄 위에 상주하는 도트 자판기</strong>를 운영하는 방치형 게임으로, 작업이나 웹서핑을 하는 동안에도 손님이 찾아와 음료를 사 갑니다.</li>
+									<li>기획부터 개발, Steam 스토어 등록까지 <strong>1인으로 진행</strong>했습니다.</li>
+								</ul>
+
+								<div class="mt-3">
+									<span class="tech-stack-title">GAME FEATURES</span>
+									<ul>
+										<li><strong>데스크톱 상주형 구조:</strong> 작업 표시줄 위에 떠 있는 게임 창과 <strong>투명 모드</strong>로 작업을 방해하지 않는 플레이</li>
+										<li><strong>실시간 운영:</strong> 실제 시계에 맞춰 손님이 방문하고, 재고·유통기한·가격 관리와 <strong>8종 업그레이드</strong></li>
+										<li><strong>일간 신문:</strong> 폭염·설탕세 등 <strong>다음 유행을 예고</strong>하는 이벤트</li>
+										<li><strong>수집 & 꾸미기:</strong> <strong>손님 도감 47명</strong>, 자판기 스킨·배경 각 8종</li>
+									</ul>
+								</div>
+
+								<div class="mt-3">
+									<span class="tech-stack-title">TECHNICAL CHALLENGES</span>
+									<ul>
+										<li><strong>작업 표시줄 위 투명 창 (Win32):</strong> Win32 API로 테두리 없는 <strong>투명 창을 항상 위에</strong> 띄우고, 빈 곳 클릭은 뒤 창으로 통과시키며 전체화면 앱이 뜨면 자동으로 숨김</li>
+										<li><strong>셸 API 프리즈 해결:</strong> Explorer 동기 IPC로 인한 메인 스레드 프리즈를 <strong>워커 스레드 폴링 + 최신값 공유</strong> 방식으로 해결</li>
+										<li><strong>Unity와 분리한 시뮬레이션:</strong> 게임 규칙을 <strong>순수 C#</strong>으로 작성해 <strong>단위 테스트 160개</strong>로 검증하고, 게임을 꺼 둔 동안의 판매도 같은 코드를 다시 재생해 <strong>오프라인 정산</strong></li>
+										<li><strong>비정수 배율 픽셀 아트 렌더링:</strong> 한 단계 위 정수 배율로 그린 뒤 축소해 <strong>1.5배·2.2배에서도 도트가 깨지지 않게</strong> 렌더링</li>
 									</ul>
 								</div>
 							</div>
@@ -987,7 +1522,6 @@
 				<div class="col-md-7 heading-section text-center ftco-animate">
 					<h1 class="big big-2">Contact</h1>
 					<h2 class="mb-4">Contact Me</h2>
-					<p>기술적 도전을 즐기며, 데이터와 유저 반응을 기반으로 성장하는 개발자가 되겠습니다.</p>
 				</div>
 			</div>
 
@@ -1070,6 +1604,92 @@
 	<script src="js/scrollax.min.js"></script>
 
 	<script src="js/main.js"></script>
+
+	<script>
+		// 스크린샷 갤러리마다 별도의 팝업 슬라이드로 묶음 (프로젝트끼리 섞이지 않도록)
+		$('.screenshot-gallery').each(function() {
+			$(this).magnificPopup({
+				delegate: 'a',
+				type: 'image',
+				closeOnContentClick: true,
+				closeBtnInside: false,
+				fixedContentPos: true,
+				mainClass: 'mfp-no-margins mfp-with-zoom',
+				gallery: { enabled: true, navigateByImgClick: true, preload: [0, 1] },
+				image: { verticalFit: true },
+				zoom: { enabled: true, duration: 300 }
+			});
+		});
+
+		// 스팀 스토어식 미디어 뷰어: 썸네일/화살표/방향키/스와이프로 트레일러와 스크린샷 전환
+		document.querySelectorAll('.steam-media').forEach(function(viewer) {
+			const video = viewer.querySelector('.steam-media-video');
+			const image = viewer.querySelector('.steam-media-image');
+			const strip = viewer.querySelector('.steam-media-strip');
+			const thumbs = Array.from(viewer.querySelectorAll('.steam-media-thumb'));
+			let current = 0;
+
+			// 트레일러 중앙 재생 버튼: 정지 상태에서만 표시
+			const playBtn = document.createElement('button');
+			playBtn.type = 'button';
+			playBtn.className = 'steam-media-play';
+			playBtn.setAttribute('aria-label', '트레일러 재생');
+			playBtn.innerHTML = '<span class="ion-ios-play"></span>';
+			video.after(playBtn);
+			playBtn.addEventListener('click', () => video.play());
+			video.addEventListener('play', () => { playBtn.hidden = true; });
+			video.addEventListener('pause', () => { playBtn.hidden = video.hidden; });
+
+			function show(index) {
+				current = (index + thumbs.length) % thumbs.length;
+				const thumb = thumbs[current];
+				const isVideo = thumb.dataset.type === 'video';
+
+				thumbs.forEach(t => t.classList.toggle('active', t === thumb));
+				viewer.classList.toggle('is-video', isVideo);
+				video.hidden = !isVideo;
+				image.hidden = isVideo;
+				playBtn.hidden = !isVideo || !video.paused;
+				if (isVideo) {
+					image.removeAttribute('src');
+				} else {
+					video.pause();
+					image.src = thumb.dataset.src;
+					image.alt = thumb.querySelector('img').alt;
+				}
+
+				// 페이지는 그대로 두고 썸네일 줄만 가로로 스크롤
+				const left = thumb.offsetLeft - (strip.clientWidth - thumb.offsetWidth) / 2;
+				strip.scrollTo({ left: Math.max(0, left) });
+			}
+
+			thumbs.forEach((thumb, i) => thumb.addEventListener('click', () => show(i)));
+			viewer.querySelector('.steam-media-nav.prev').addEventListener('click', () => show(current - 1));
+			viewer.querySelector('.steam-media-nav.next').addEventListener('click', () => show(current + 1));
+
+			viewer.addEventListener('keydown', function(e) {
+				if (e.key === 'ArrowLeft') { e.preventDefault(); show(current - 1); }
+				else if (e.key === 'ArrowRight') { e.preventDefault(); show(current + 1); }
+			});
+
+			// 스크린샷은 클릭 시 원본 크기로 확대
+			image.addEventListener('click', function() {
+				$.magnificPopup.open({ items: { src: image.src }, type: 'image', closeOnContentClick: true });
+			});
+
+			// 모바일 좌우 스와이프 (스크린샷 화면에서만, 동영상 컨트롤 조작과 겹치지 않도록)
+			let touchX = null;
+			image.addEventListener('touchstart', e => { touchX = e.touches[0].clientX; }, { passive: true });
+			image.addEventListener('touchend', function(e) {
+				if (touchX === null) return;
+				const dx = e.changedTouches[0].clientX - touchX;
+				if (Math.abs(dx) > 40) show(current + (dx < 0 ? 1 : -1));
+				touchX = null;
+			});
+
+			show(0);
+		});
+	</script>
 
 	<script>
 		(function() {
