@@ -1,6 +1,8 @@
-// 포트폴리오 PDF 내보내기: index.html 을 인쇄용 스타일(css/print.css)로 렌더링해 PDF로 저장
+// PDF 내보내기: 페이지를 인쇄용 스타일로 렌더링해 PDF로 저장
 //
-//   node tools/export-pdf.mjs [출력 경로]
+//   node tools/export-pdf.mjs                      → 포트폴리오 (index.html, css/print.css)
+//   node tools/export-pdf.mjs --page=resume.html   → 이력서
+//   node tools/export-pdf.mjs --out=경로.pdf        → 출력 경로 지정 (기존처럼 첫 번째 인자로 줘도 됨)
 //
 // 설치 필요 없음 (Node 22+ 내장 WebSocket 사용). Chrome 또는 Edge가 필요하며,
 // 다른 위치에 있으면 CHROME_PATH 환경 변수로 지정.
@@ -13,8 +15,14 @@ import { dirname, extname, join, normalize, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..');
-const OUTPUT = resolve(process.argv[2] ?? join(ROOT, 'dist', '김지훈_포트폴리오.pdf'));
 const SITE = 'https://mightychipmunk.github.io/web-porfolio/';
+
+const args = process.argv.slice(2);
+const option = name => args.find(arg => arg.startsWith(`--${name}=`))?.slice(name.length + 3);
+const PAGE = option('page') ?? 'index.html';
+const DEFAULT_NAMES = { 'index.html': '김지훈_포트폴리오.pdf', 'resume.html': '김지훈_이력서.pdf' };
+const OUTPUT = resolve(option('out') ?? args.find(arg => !arg.startsWith('--'))
+	?? join(ROOT, 'dist', DEFAULT_NAMES[PAGE] ?? PAGE.replace(/\.html$/, '.pdf')));
 
 const BROWSERS = [
 	process.env.CHROME_PATH,
@@ -108,7 +116,8 @@ const PREPARE = `(async () => {
 		if (/^(https?:|mailto:|tel:)/.test(href)) return;
 		a.href = new URL(href, ${JSON.stringify(SITE)}).href;
 	});
-	const images = [...document.images].filter(img => img.closest('.print-only, #about-section, #resume-section'));
+	// 인쇄 레이아웃에서 실제로 보이는 이미지만 (display:none 인 화면 전용 요소는 제외)
+	const images = [...document.images].filter(img => img.getClientRects().length);
 	const bgImages = [...document.querySelectorAll('.img-about .img')].map(el => {
 		const url = getComputedStyle(el).backgroundImage.slice(5, -2);
 		return new Promise(done => { const img = new Image(); img.onload = img.onerror = done; img.src = url; });
@@ -134,8 +143,12 @@ const PREPARE = `(async () => {
 	return images.filter(img => img.getAttribute('src') && !img.naturalWidth).map(img => img.src);
 })()`;
 
+// 이력서에는 외부 링크를 넣지 않으므로 사이트 주소도 빼고 이름만
+const FOOTER_LABEL = PAGE === 'resume.html'
+	? '김지훈 · 유니티 클라이언트 개발자'
+	: `김지훈 · 유니티 클라이언트 개발자 · ${SITE.replace('https://', '').replace(/\/$/, '')}`;
 const FOOTER = `<div style="width:100%; padding:0 14mm; font-size:7.5px; color:#888; display:flex; justify-content:space-between; font-family:sans-serif;">
-	<span>김지훈 · 유니티 클라이언트 개발자 · ${SITE.replace('https://', '').replace(/\/$/, '')}</span>
+	<span>${FOOTER_LABEL}</span>
 	<span><span class="pageNumber"></span> / <span class="totalPages"></span></span>
 </div>`;
 
@@ -150,7 +163,7 @@ try {
 	await page.send('Emulation.setEmulatedMedia', { media: 'print' });
 
 	const loaded = page.once('Page.loadEventFired');
-	await page.send('Page.navigate', { url: `http://127.0.0.1:${server.address().port}/index.html` });
+	await page.send('Page.navigate', { url: `http://127.0.0.1:${server.address().port}/${encodeURI(PAGE)}` });
 	await loaded;
 
 	const { result } = await page.send('Runtime.evaluate', { expression: PREPARE, awaitPromise: true, returnByValue: true });

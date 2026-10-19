@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="utf-8">
+	<title>김지훈 이력서 - 유니티 클라이언트 개발자</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="유니티 클라이언트 개발자 김지훈의 이력서">
+	<link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=IBM+Plex+Sans+KR:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+	<!--
+		이력서 (A4). 연락처는 이메일·전화만 넣고 주소 등 그 외 개인 정보와 외부 링크는 넣지 않음 (상세 내용은 포트폴리오에서).
+		PDF 생성: node tools/export-pdf.mjs --page=resume.html
+	-->
+	<style>
+		:root {
+			--accent: #3e64ff;
+			--text: #191919;
+			--muted: #666;
+			--line: #e3e6ef;
+		}
+
+		@page {
+			size: A4;
+			margin: 13mm 15mm 15mm;
+		}
+
+		* {
+			box-sizing: border-box;
+		}
+
+		html {
+			background: #eef0f4;
+		}
+
+		body {
+			margin: 0;
+			color: var(--text);
+			font-family: 'Poppins', 'IBM Plex Sans KR', Arial, sans-serif;
+			font-size: 9pt;
+			line-height: 1.45;
+			-webkit-print-color-adjust: exact;
+			print-color-adjust: exact;
+		}
+
+		/* 화면에서는 A4 용지처럼 보이게 */
+		.sheet {
+			max-width: 210mm;
+			margin: 24px auto;
+			padding: 14mm 15mm 16mm;
+			background: #fff;
+			box-shadow: 0 6px 24px rgba(0, 0, 0, 0.08);
+		}
+
+		a {
+			color: var(--accent);
+			text-decoration: none;
+		}
+
+		strong {
+			font-weight: 700;
+		}
+
+		/* 머리말: 사진 + 이름 + 소개 */
+		.profile {
+			display: flex;
+			gap: 7mm;
+			align-items: flex-start;
+			padding-bottom: 4mm;
+			border-bottom: 2px solid var(--accent);
+		}
+
+		/* 사진: images/resume-photo.jpg (원본 images/김지훈.jpg에서 얼굴·어깨만 3:4로 자른 이력서용) */
+		.profile img {
+			flex: 0 0 35mm;
+			width: 35mm;
+			height: 46.7mm;
+			object-fit: cover;
+			border-radius: 4px;
+		}
+
+		.profile h1 {
+			margin: 0;
+			font-size: 24pt;
+			font-weight: 800;
+			line-height: 1.2;
+		}
+
+		.profile .role {
+			margin: 0.5mm 0 3mm;
+			font-size: 12pt;
+			font-weight: 600;
+			color: var(--accent);
+		}
+
+		.profile .contact {
+			display: flex;
+			gap: 5mm;
+			margin: -1.5mm 0 3mm;
+			font-size: 9pt;
+			color: var(--muted);
+		}
+
+		.profile .intro p {
+			margin: 0 0 1.5mm;
+		}
+
+		/* 섹션 */
+		section {
+			margin-top: 3.5mm;
+		}
+
+		section > h2 {
+			margin: 0 0 2mm;
+			padding-bottom: 1.5mm;
+			font-size: 12pt;
+			font-weight: 700;
+			color: var(--accent);
+			border-bottom: 1px solid var(--line);
+			break-after: avoid;
+		}
+
+		/* 항목: 왼쪽 기간, 오른쪽 내용 */
+		.entry {
+			display: grid;
+			grid-template-columns: 30mm 1fr;
+			gap: 0 4mm;
+			margin-bottom: 2.5mm;
+			break-inside: avoid;
+		}
+
+		.entry .period {
+			font-weight: 600;
+			color: var(--muted);
+			font-size: 8.5pt;
+			padding-top: 0.8mm;
+		}
+
+		.entry h3 {
+			margin: 0;
+			font-size: 11pt;
+			font-weight: 700;
+		}
+
+		.entry h3 .sub {
+			margin-left: 1.5mm;
+			font-size: 9pt;
+			font-weight: 500;
+			color: var(--muted);
+		}
+
+		.entry .meta {
+			margin: 0.3mm 0 1.2mm;
+			font-size: 8.5pt;
+			color: var(--muted);
+		}
+
+		.entry ul {
+			margin: 0;
+			padding-left: 4.5mm;
+		}
+
+		.entry li {
+			margin-bottom: 0.6mm;
+		}
+
+		.entry .desc {
+			margin: 0;
+		}
+
+		section > h2 .total {
+			margin-left: 2mm;
+			font-size: 9pt;
+			font-weight: 500;
+			color: var(--muted);
+		}
+
+		.entry .duration {
+			font-weight: 500;
+		}
+
+		/* 기술 스택 */
+		.skills {
+			display: grid;
+			grid-template-columns: 30mm 1fr;
+			gap: 1.2mm 4mm;
+			margin: 0;
+		}
+
+		.skills dt {
+			font-weight: 600;
+			color: var(--muted);
+			font-size: 8.5pt;
+			padding-top: 0.4mm;
+		}
+
+		.skills dd {
+			margin: 0;
+		}
+
+		@media print {
+			html {
+				background: #fff;
+			}
+
+			.sheet {
+				max-width: none;
+				margin: 0;
+				padding: 0;
+				box-shadow: none;
+			}
+		}
+
+		@media (max-width: 640px) {
+			.sheet {
+				margin: 0;
+				padding: 20px 16px;
+			}
+
+			.profile {
+				flex-direction: column;
+			}
+
+			.entry,
+			.skills {
+				grid-template-columns: 1fr;
+			}
+		}
+	</style>
+</head>
+
+<body>
+	<main class="sheet">
+		<header class="profile">
+			<img src="images/resume-photo.jpg" alt="김지훈 프로필 사진">
+			<div>
+				<h1>김지훈</h1>
+				<p class="role">유니티 클라이언트 개발자</p>
+				<p class="contact"><span>이메일 21qqq4@gmail.com</span><span>전화 010-6302-9812</span></p>
+				<div class="intro">
+					<p>항상 더 재밌는 게임을 만들기 위해 고민하는 유니티 클라이언트 개발자입니다.</p>
+					<p>지난 약 3년간 캐주얼 게임 업계에서 근무하며 게이머는 물론 일반 유저까지 만족할 수 있는 연출을 구현해 왔습니다. 이와 함께 빠른 호흡의 캐주얼 시장에 맞춰 신속하게 개발을 진행하면서도, 엄격한 기술적 제약 속에서 안정적인 최적화를 이뤄내며 개발 역량을 쌓았습니다.</p>
+					<p>단순히 코드를 작성하는 데 그치지 않고 '어떻게 하면 유저가 게임을 더 즐겁게 받아들일까' 항상 고민하고 있습니다. 프로젝트를 통해 얻은 피드백과 노하우를 다음 프로젝트 개발에 적용하며 게임을 더 재밌게, 그리고 더 빠르게 만들기 위해 노력하고 있습니다.</p>
+					<p>급변하는 시장 속에서, 게임 개발자의 흔들리지 않는 가치는 '재밌는 게임을 만드는 것'이라고 생각합니다. 끊임없이 고민하고 도전하며 계속해서 성장하는 개발자가 되겠습니다.</p>
+				</div>
+			</div>
+		</header>
+
+		<section>
+			<h2>학력 · 교육</h2>
+
+			<div class="entry">
+				<div class="period">2017 – 2024</div>
+				<div>
+					<h3>건국대학교 <span class="sub">컴퓨터공학부</span></h3>
+				</div>
+			</div>
+
+			<div class="entry">
+				<div class="period">2022.06 – 2022.12</div>
+				<div>
+					<h3>메타버스 아카데미 <span class="sub">한국전파진흥협회 (RAPA)</span></h3>
+					<p class="meta">Unity 엔진을 활용한 3D 콘텐츠 제작 및 게임 개발 심화 과정 수료</p>
+				</div>
+			</div>
+		</section>
+
+		<section>
+			<h2>경력 <span class="total">총 2년 7개월</span></h2>
+
+			<div class="entry">
+				<div class="period">2026.04 – 2026.07<br><span class="duration">4개월</span></div>
+				<div>
+					<h3>111퍼센트 <span class="sub">협동 슈팅 개발 셀 · 사원</span></h3>
+					<ul>
+						<li>출시 예정 프로젝트의 완성도를 높이기 위해 지원 인력으로 합류</li>
+						<li>주요 기능 구현과 전반적인 완성도 개선에 협력하며 프로젝트 출시 지원</li>
+					</ul>
+				</div>
+			</div>
+
+			<div class="entry">
+				<div class="period">2024.02 – 2026.04<br><span class="duration">2년 3개월</span></div>
+				<div>
+					<h3>슈퍼센트 <span class="sub">광고개발 · 사원</span></h3>
+					<ul>
+						<li>사내와 협력사 게임들의 마케팅을 위한 플레이어블 광고 개발</li>
+						<li>광고 영상 촬영용 프로젝트 개발</li>
+					</ul>
+				</div>
+			</div>
+		</section>
+
+		<section>
+			<h2>개인 프로젝트</h2>
+
+			<div class="entry">
+				<div class="period">2026.09 – 2026.10</div>
+				<div>
+					<h3>TaskBar VendingMachine <span class="sub">1인 개발 (4주) · Steam 출시</span></h3>
+					<p class="desc">윈도우 작업 표시줄 위에 상주하는 도트 자판기를 운영하는 방치형 경영 게임</p>
+				</div>
+			</div>
+
+			<div class="entry">
+				<div class="period">2026.08 – 2026.09</div>
+				<div>
+					<h3>PINDEMONIUM <span class="sub">1인 개발 (7주) · Steam 출시</span></h3>
+					<p class="desc">스테이지 사이 상점에서 패시브와 업그레이드를 모아 빌드를 완성하는 로그라이크 핀볼 덱빌더</p>
+				</div>
+			</div>
+		</section>
+
+		<section>
+			<h2>기술 스택</h2>
+			<dl class="skills">
+				<dt>엔진 · 언어</dt>
+				<dd>Unity, C#</dd>
+				<dt>렌더 파이프라인</dt>
+				<dd>URP, HDRP, Built-in RP</dd>
+				<dt>멀티플레이 · 백엔드</dt>
+				<dd>Photon Quantum (ECS), Firebase</dd>
+				<dt>플랫폼</dt>
+				<dd>모바일(Android), PC(Steam)</dd>
+				<dt>라이브러리 · SDK</dt>
+				<dd>UniTask, Unity PlayWorks, Steamworks</dd>
+				<dt>도구 · 협업</dt>
+				<dd>Git, Google Sheets, AI 도구(Claude, MCP)</dd>
+			</dl>
+		</section>
+	</main>
+</body>
+
+</html>
