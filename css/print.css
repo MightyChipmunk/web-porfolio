@@ -1,0 +1,452 @@
+/*
+ * 인쇄 / PDF 전용 스타일 (index.html 에서 media="print" 로 로드)
+ * - 메뉴·목차·히어로 영상·뷰어 컨트롤은 숨기고, 영상과 플레이어블은 대표 이미지 + 웹 링크로 대체
+ * - 1쪽: 표지 + About + 학력 + 경력 / 2쪽부터: 프로젝트 하나당 한 페이지 (하이브리드 퍼즐과 Truck Smasher는 한 페이지에 위아래로)
+ * PDF 생성: node tools/export-pdf.mjs
+ */
+
+@page {
+	size: A4;
+	margin: 14mm 14mm 16mm;
+}
+
+/* 부트스트랩 인쇄 규칙(body·.container min-width: 992px) 해제: 그대로 두면 A4 폭에 맞추느라 페이지 전체가 약 69%로 축소됨 */
+body,
+.container {
+	min-width: 0 !important;
+}
+
+html,
+body {
+	background: #fff !important;
+	-webkit-print-color-adjust: exact;
+	print-color-adjust: exact;
+}
+
+body {
+	font-size: 9.5pt;
+	line-height: 1.5;
+}
+
+/* 화면 전용 요소 */
+#ftco-navbar,
+#ftco-loader,
+#home-section,
+#navi,
+.mouse,
+.heading-section h1.big,
+.game-shorts-container,
+.steam-media-main,
+.steam-media-thumb .ion-ios-play,
+#trucksmasher-video,
+#contact-section,
+.ftco-footer {
+	display: none !important;
+}
+
+.print-only {
+	display: block !important;
+}
+
+/* 스크롤 등장 애니메이션 무시 */
+.ftco-animate {
+	opacity: 1 !important;
+	visibility: visible !important;
+	animation: none !important;
+	transform: none !important;
+}
+
+.container {
+	max-width: none !important;
+	width: 100% !important;
+	padding: 0 !important;
+}
+
+.row {
+	margin: 0 !important;
+}
+
+.ftco-section {
+	padding: 0 !important;
+}
+
+a {
+	color: #3e64ff !important;
+	text-decoration: none !important;
+}
+
+/* 표지 */
+.print-cover {
+	padding-bottom: 4mm;
+	margin-bottom: 5mm;
+	border-bottom: 2px solid #3e64ff;
+}
+
+.print-cover h1 {
+	margin: 0;
+	font-size: 22pt;
+	font-weight: 800;
+	color: #000;
+}
+
+.print-cover .print-role {
+	margin: 0.5mm 0 1.5mm;
+	font-size: 12pt;
+	font-weight: 600;
+	color: #3e64ff;
+}
+
+.print-cover .print-web {
+	margin: 0;
+	font-size: 8.5pt;
+	color: #555;
+}
+
+/* About: 사진은 작게, 소개 글은 넓게 */
+.ftco-about .row {
+	flex-wrap: nowrap !important;
+	align-items: flex-start;
+}
+
+.ftco-about .row > .col-md-6:first-child {
+	flex: 0 0 18% !important;
+	max-width: 18% !important;
+	padding: 0 6mm 0 0 !important;
+}
+
+.ftco-about .row > .col-md-6:last-child {
+	flex: 1 1 auto !important;
+	max-width: none !important;
+	padding: 0 !important;
+}
+
+.ftco-about .img-about,
+.ftco-about .img-about .img {
+	height: auto !important;
+	min-height: 0 !important;
+	aspect-ratio: 3 / 4;
+	background-size: cover;
+	background-position: center top;
+	border-radius: 6px;
+}
+
+.ftco-about .overlay {
+	display: none !important;
+}
+
+.ftco-about .heading-section h2 {
+	font-size: 14pt !important;
+	margin-bottom: 2mm !important;
+}
+
+.ftco-about .heading-section p {
+	margin-bottom: 1mm !important;
+	font-size: 8.2pt !important;
+	line-height: 1.45 !important;
+}
+
+.ftco-about ul.about-info {
+	display: grid !important;
+	grid-template-columns: 1fr 1fr;
+	column-gap: 4mm;
+	margin-top: 2mm !important;
+}
+
+.ftco-about ul.about-info li {
+	margin-bottom: 0 !important;
+	font-size: 8.5pt !important;
+}
+
+.ftco-about .heading-section .py-5,
+.ftco-about .py-5 {
+	padding: 0 !important;
+}
+
+/* 학력·경력·프로젝트 */
+#resume-section {
+	margin-top: 2mm;
+}
+
+#resume-section .row > .col-md-3 {
+	display: none !important;
+}
+
+#resume-section .row > .col-md-9 {
+	flex: 0 0 100% !important;
+	max-width: 100% !important;
+	padding: 0 !important;
+}
+
+.page {
+	margin-bottom: 4mm !important;
+}
+
+.page .heading {
+	font-size: 12pt !important;
+	margin-bottom: 1.5mm !important;
+}
+
+/* 학력·경력은 1쪽에 함께 들어가도록 촘촘하게 */
+/* 슈퍼센트 KEY ACHIEVEMENTS는 PDF에서 생략 */
+#page-2 .tech-stack-title,
+#page-2 .tech-stack-title + ul {
+	display: none !important;
+}
+
+#page-1 .resume-wrap,
+#page-2 .resume-wrap {
+	margin-bottom: 1mm !important;
+	padding-bottom: 1mm !important;
+	font-size: 8.2pt;
+	border-bottom: none !important;
+}
+
+#page-1 .resume-wrap h2,
+#page-2 .resume-wrap h2 {
+	font-size: 11pt !important;
+	margin-bottom: 0 !important;
+}
+
+#page-1 .resume-wrap li,
+#page-2 .resume-wrap li {
+	margin-bottom: 0.5mm !important;
+	line-height: 1.45 !important;
+}
+
+#page-1 .resume-wrap .date,
+#page-2 .resume-wrap .date {
+	margin-bottom: 0 !important;
+}
+
+#page-1 .resume-wrap .position,
+#page-2 .resume-wrap .position {
+	font-size: 10pt !important;
+}
+
+#page-1 .resume-wrap ul,
+#page-2 .resume-wrap ul {
+	margin-bottom: 1.5mm !important;
+}
+
+#page-3 {
+	break-before: page;
+}
+
+/* 프로젝트마다 새 페이지 (첫 프로젝트는 "Projects" 제목과 같은 페이지).
+   하이브리드 퍼즐과 Truck Smasher는 한 페이지에 위아래로 (둘 다 들어가도록 이미지를 옆으로 배치) */
+#page-3 {
+	display: flex;
+	flex-direction: column;
+}
+
+#page-3 > .resume-wrap {
+	break-before: page;
+}
+
+#puzzle-section .print-only,
+#trucksmasher-section .print-only {
+	float: right;
+	width: auto;
+	margin: 0 0 2mm 5mm;
+}
+
+#puzzle-section .print-shots,
+#trucksmasher-section .print-shots {
+	margin-top: 0;
+	grid-template-columns: repeat(3, 24mm);
+	gap: 2mm 3mm;
+}
+
+#trucksmasher-section .print-shots.landscape {
+	grid-template-columns: 34mm;
+}
+
+#puzzle-section .print-link,
+#trucksmasher-section .print-link {
+	float: none;
+	clear: both;
+	margin: 2mm 0 0 !important;
+}
+
+#page-3 > #vending-section,
+#page-3 > #trucksmasher-section {
+	break-before: auto;
+}
+
+#vending-section { order: 1; }
+#pipeline-section { order: 2; }
+#pindemonium-section { order: 3; }
+#pengshot-section { order: 4; }
+#puzzle-section { order: 5; }
+#trucksmasher-section { order: 6; }
+#playables-section { order: 7; }
+#creatives-section { order: 8; }
+
+.resume-wrap {
+	margin-bottom: 6mm !important;
+	padding-bottom: 4mm !important;
+}
+
+.resume-wrap h2 {
+	font-size: 15pt !important;
+	break-after: avoid;
+}
+
+.resume-wrap li,
+.pipeline-flow,
+.print-shots figure,
+.steam-media-thumb,
+.screenshot-gallery a {
+	break-inside: avoid;
+}
+
+.tech-stack-title {
+	break-after: avoid;
+}
+
+.resume-wrap .text .mt-4 {
+	margin-top: 4mm !important;
+}
+
+/* 스팀 미디어: 썸네일 줄을 3열 이미지 그리드로 (6장까지) */
+.steam-media {
+	max-width: none !important;
+}
+
+.steam-media-strip {
+	display: grid !important;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 3mm;
+	overflow: visible !important;
+	margin: 0 !important;
+	padding: 0 !important;
+}
+
+.steam-media-thumb:nth-child(n + 7) {
+	display: none !important;
+}
+
+.steam-media-thumb {
+	opacity: 1 !important;
+	border: none !important;
+	border-radius: 4px !important;
+}
+
+/* 세로 이미지는 모두 같은 칸 크기(폭 32mm)로 */
+.screenshot-gallery {
+	grid-template-columns: repeat(4, 32mm) !important;
+	max-width: none !important;
+	gap: 3mm !important;
+}
+
+.screenshot-gallery a {
+	box-shadow: none !important;
+	border-radius: 4px !important;
+}
+
+/* 영상·플레이어블 대표 이미지 */
+.print-shots {
+	display: grid !important;
+	grid-template-columns: repeat(3, 32mm);
+	gap: 3mm 4mm;
+	margin: 4mm 0 0;
+}
+
+.print-shots.landscape {
+	grid-template-columns: 34mm;
+}
+
+.print-shots figure {
+	margin: 0;
+}
+
+.print-shots img {
+	display: block;
+	width: 100%;
+	aspect-ratio: 9 / 16;
+	object-fit: cover;
+	border-radius: 4px;
+}
+
+.print-shots.landscape img {
+	aspect-ratio: 4 / 5;
+}
+
+.print-shots figcaption {
+	margin-top: 1mm;
+	font-size: 8.5pt;
+	font-weight: 600;
+	text-align: center;
+	color: #333;
+}
+
+.print-link {
+	margin: 2.5mm 0 0 !important;
+	font-size: 9.5pt;
+	color: #555;
+}
+
+/* 웹용 넓은 간격을 인쇄용으로 촘촘하게 */
+.resume-wrap .text ul {
+	margin-bottom: 2mm !important;
+	padding-left: 5mm !important;
+}
+
+.resume-wrap .text ul li {
+	margin-bottom: 0.8mm !important;
+	line-height: 1.45 !important;
+}
+
+.resume-wrap .text .mb-3 {
+	margin-bottom: 1.5mm !important;
+}
+
+.resume-wrap .text .mt-3 {
+	margin-top: 2mm !important;
+}
+
+.resume-wrap .text .mt-1,
+.resume-wrap .text .mb-2 {
+	margin: 0 !important;
+}
+
+.resume-wrap .date {
+	margin-bottom: 0 !important;
+}
+
+.resume-wrap h2 {
+	margin-bottom: 0.5mm !important;
+}
+
+.tech-badge {
+	padding: 0 2mm !important;
+	margin: 0 1mm 0 0 !important;
+	font-size: 7.5pt !important;
+}
+
+.tech-stack-title {
+	margin-bottom: 1mm !important;
+}
+
+/* "프로젝트 상세 보기" 버튼: 인쇄에서는 글자 링크로 */
+.resume-wrap .text a.detail-link-btn {
+	padding: 0 !important;
+	background: none !important;
+	box-shadow: none !important;
+	font-size: 10pt !important;
+	color: #3e64ff !important;
+}
+
+/* 파이프라인 도식: 인쇄 폭(약 690px)에서도 가로 배치 유지 */
+.pipeline-flow {
+	flex-direction: row !important;
+	max-width: none !important;
+}
+
+.pipeline-arrow {
+	padding: 0 4px !important;
+}
+
+.pipeline-arrow i {
+	transform: none !important;
+}

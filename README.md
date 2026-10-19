@@ -15,6 +15,18 @@
 | `Creatives/` | 크리에이티브 영상. `Creatives/hero/`는 히어로 배경 전용 저용량(540p) 버전 |
 | `Appicon/`, `GameScreenShots/`, `CreativeScreenShots/`, `images/` | 이미지 리소스 |
 | `css/`, `js/`, `fonts/` | 템플릿 스타일·스크립트 (Bootstrap 4 기반, `css/style.css`에 포함) |
+| `css/print.css`, `images/print/` | 인쇄·PDF 전용 스타일과 영상·플레이어블 대표 이미지 |
+| `tools/export-pdf.mjs` | PDF 내보내기 스크립트 |
+
+## PDF 내보내기
+
+```bash
+node tools/export-pdf.mjs
+```
+
+`dist/김지훈_포트폴리오.pdf`로 저장됩니다(git 제외). Node 22 이상과 Chrome 또는 Edge가 필요하며 추가 설치는 없습니다. 출력 경로는 첫 번째 인자로, 브라우저 경로는 `CHROME_PATH` 환경 변수로 바꿀 수 있습니다.
+
+인쇄 화면 구성은 `css/print.css`가 담당합니다. 메뉴·영상 뷰어는 숨기고, 영상과 플레이어블은 `images/print/`의 대표 이미지와 웹 링크로 대체합니다. 브라우저에서 Ctrl+P로 인쇄해도 같은 스타일이 적용되지만, 스크립트는 이미지를 JPEG로 바꿔 넣어 용량이 훨씬 작습니다(WebP는 PDF에 무손실 PNG로 들어감).
 
 ## 배포
 

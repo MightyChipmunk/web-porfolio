@@ -26,7 +26,12 @@
 
 	<link rel="stylesheet" href="css/icomoon.css">
 	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/print.css" media="print">
 	<style>
+		/* 인쇄·PDF 전용 블록 (css/print.css에서 표시) */
+		.print-only {
+			display: none;
+		}
 		body {
 			font-family: 'Poppins', 'IBM Plex Sans KR', Arial, sans-serif !important;
 		}
@@ -552,6 +557,13 @@
 
 <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
 
+	<!-- 인쇄·PDF 표지 -->
+	<header class="print-only print-cover">
+		<h1>김지훈</h1>
+		<p class="print-role">유니티 클라이언트 개발자</p>
+		<p class="print-web">영상과 플레이어블 광고는 웹 포트폴리오에서 직접 보고 플레이할 수 있습니다: <a href="https://mightychipmunk.github.io/web-porfolio/">mightychipmunk.github.io/web-porfolio</a></p>
+	</header>
+
 	<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar ftco-navbar-light site-navbar-target" id="ftco-navbar">
 		<div class="container">
 			<button class="navbar-toggler js-fh5co-nav-toggle fh5co-nav-toggle" type="button" data-toggle="collapse"
@@ -979,6 +991,7 @@
 								<div class="mb-3">
 									<span class="tech-badge">Unity</span>
 									<span class="tech-badge">C#</span>
+									<span class="tech-badge">Built-in RP</span>
 								</div>
 
 								<!-- Video Viewer -->
@@ -1034,6 +1047,15 @@
 									</div>
 								</div>
 
+								<!-- 인쇄·PDF용 대표 이미지 -->
+								<div class="print-only">
+									<div class="print-shots">
+										<figure><img src="images/print/puzzle-woolloop.webp" alt="Wool Loop" loading="lazy"><figcaption>Wool Loop</figcaption></figure>
+										<figure><img src="images/print/puzzle-busmatch.webp" alt="Bus Match" loading="lazy"><figcaption>Bus Match</figcaption></figure>
+										<figure><img src="images/print/puzzle-foodloop.webp" alt="Food Loop" loading="lazy"><figcaption>Food Loop</figcaption></figure>
+									</div>
+								</div>
+
 								<ul class="mt-4">
 									<li>플레이어블 광고 개발로 검증된 빠른 개발 속도와 연출 역량을 바탕으로, 신규 하이브리드 퍼즐 프로젝트의 <strong>프로토타입 개발</strong>을 담당했습니다.</li>
 									<li><strong>6주간 프로토타입 3종</strong>(Wool Loop, Bus Match, Food Loop)을 개발했습니다.</li>
@@ -1047,6 +1069,8 @@
 										<li><strong>테마별 연출 구현:</strong> 털실·버스·음식 등 테마가 바뀔 때마다 <strong>오브젝트 특성에 맞는 전용 연출</strong>을 구현해 프로토타입 완성도 확보</li>
 									</ul>
 								</div>
+								<!-- 인쇄·PDF: 영상 링크는 항목 맨 아래 -->
+								<p class="print-only print-link">▶ 영상 보기: <a href="https://mightychipmunk.github.io/web-porfolio/#puzzle-section">mightychipmunk.github.io/web-porfolio/#puzzle-section</a></p>
 							</div>
 						</div>
 
@@ -1144,6 +1168,19 @@
 									<div class="game-counter">
 										<span id="currentGame">1</span> / <span id="totalGames">6</span>
 									</div>
+								</div>
+
+								<!-- 인쇄·PDF용 대표 이미지 -->
+								<div class="print-only">
+									<div class="print-shots">
+										<figure><img src="images/print/playable-1.webp" alt="XP Hero 1" loading="lazy"><figcaption>XP Hero 1</figcaption></figure>
+										<figure><img src="images/print/playable-2.webp" alt="XP Hero 2" loading="lazy"><figcaption>XP Hero 2</figcaption></figure>
+										<figure><img src="images/print/playable-3.webp" alt="Downhill Racer" loading="lazy"><figcaption>Downhill Racer</figcaption></figure>
+										<figure><img src="images/print/playable-4.webp" alt="Terminal Master" loading="lazy"><figcaption>Terminal Master</figcaption></figure>
+										<figure><img src="images/print/playable-5.webp" alt="Pizza Ready!" loading="lazy"><figcaption>Pizza Ready!</figcaption></figure>
+										<figure><img src="images/print/playable-6.webp" alt="Snake Clash" loading="lazy"><figcaption>Snake Clash</figcaption></figure>
+									</div>
+									<p class="print-link">▶ 직접 플레이하기: <a href="https://mightychipmunk.github.io/web-porfolio/#playables-section">mightychipmunk.github.io/web-porfolio/#playables-section</a></p>
 								</div>
 
 								<ul class="mt-4">
@@ -1271,6 +1308,19 @@
 									</div>
 								</div>
 
+								<!-- 인쇄·PDF용 대표 이미지 -->
+								<div class="print-only">
+									<div class="print-shots">
+										<figure><img src="images/print/creative-lumberchopper.webp" alt="Lumber Chopper" loading="lazy"><figcaption>Lumber Chopper</figcaption></figure>
+										<figure><img src="images/print/creative-xphero.webp" alt="XP Hero" loading="lazy"><figcaption>XP Hero</figcaption></figure>
+										<figure><img src="images/print/creative-pizzaready1.webp" alt="Pizza Ready 1" loading="lazy"><figcaption>Pizza Ready 1</figcaption></figure>
+										<figure><img src="images/print/creative-pizzaready2.webp" alt="Pizza Ready 2" loading="lazy"><figcaption>Pizza Ready 2</figcaption></figure>
+										<figure><img src="images/print/creative-pizzaready3.webp" alt="Pizza Ready 3" loading="lazy"><figcaption>Pizza Ready 3</figcaption></figure>
+										<figure><img src="images/print/creative-burgerplease.webp" alt="Burger Please" loading="lazy"><figcaption>Burger Please</figcaption></figure>
+									</div>
+									<p class="print-link">▶ 영상 보기: <a href="https://mightychipmunk.github.io/web-porfolio/#creatives-section">mightychipmunk.github.io/web-porfolio/#creatives-section</a></p>
+								</div>
+
 								<ul class="mt-4">
 									<li><strong>Unity</strong>를 활용하여 사용자의 흥미를 극대화하는 마케팅용 동영상 광고를 제작하였습니다.</li>
 									<li>다양한 게임 메커니즘을 짧은 영상으로 압축하여 높은 수준의 시각적 연출을 구현했습니다.</li>
@@ -1303,7 +1353,7 @@
 							<div class="icon logo"><img src="Appicon/TruckSmasher.png" alt=""></div>
 							<div class="text pl-3">
 								<span class="date">2025.02 - 2025.03</span>
-								<h2>Truck Smasher <a href="https://play.google.com/store/apps/details?id=io.supercent.trucksmashers" target="_blank" rel="noopener" class="ml-2" style="font-size: 0.7em; color: #3e64ff; vertical-align: middle;">Play Store <i class="icon-external-link"></i></a></h2>
+								<h2>Truck Smasher</h2>
 								<span class="project-subtitle">슈퍼센트 (Supercent) | 3인 팀 프로젝트</span>
 								
 								<div class="mb-3">
@@ -1317,6 +1367,13 @@
 									<video id="trucksmasher-video" controls loop muted playsinline preload="none" poster="Creatives/trucksmasher-poster.webp" class="rounded shadow" style="display: block; aspect-ratio: 1080 / 1350; max-height: 704px; width: 100%; max-width: 396px; object-fit: contain; background: #000; border-radius: 12px;">
 										<source src="Creatives/trucksmasher.mp4" type="video/mp4">
 									</video>
+								</div>
+
+								<!-- 인쇄·PDF용 대표 이미지 -->
+								<div class="print-only">
+									<div class="print-shots landscape">
+										<figure><img src="Creatives/trucksmasher-poster.webp" alt="Truck Smasher" loading="lazy"><figcaption>Truck Smasher</figcaption></figure>
+									</div>
 								</div>
 
 								<ul class="mt-4">
@@ -1340,6 +1397,8 @@
 										<li><strong>동적 카메라 및 스케일링:</strong> 성장에 따른 카메라 뷰 및 물리 범위를 유기적으로 보간하여 <strong>일관된 플레이 경험 제공</strong></li>
 									</ul>
 								</div>
+								<!-- 인쇄·PDF: 영상 링크는 항목 맨 아래 -->
+								<p class="print-only print-link">▶ 영상 보기: <a href="https://mightychipmunk.github.io/web-porfolio/#trucksmasher-section">mightychipmunk.github.io/web-porfolio/#trucksmasher-section</a></p>
 							</div>
 						</div>
 					</div>
@@ -1711,6 +1770,12 @@
 	<script src="js/jquery.magnific-popup.min.js"></script>
 
 	<script src="js/main.js"></script>
+	<script>
+		// 인쇄(Ctrl+P) 전에 지연 로딩 이미지를 모두 불러옴
+		window.addEventListener('beforeprint', function() {
+			document.querySelectorAll('img[loading="lazy"]').forEach(function(img) { img.loading = 'eager'; });
+		});
+	</script>
 
 	<script>
 		// 좌측 목차 (main.js 스크롤 스파이 이후 실행)
