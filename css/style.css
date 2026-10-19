@@ -9936,19 +9936,29 @@ textarea.form-control {
     align-items: center;
   }
   
+  /* 좁은 화면: 선택 목록을 한 줄 가로 스크롤로 (줄바꿈되면 뷰어가 아래로 밀림) */
   .game-info-panel {
     flex-direction: row;
     min-width: auto;
     max-width: 400px;
     width: 90%;
     gap: 10px;
-    flex-wrap: wrap;
-    justify-content: center;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    overflow-x: auto;
+    scroll-snap-type: x proximity;
+    scrollbar-width: none;
+    padding: 4px 2px;
+  }
+
+  .game-info-panel::-webkit-scrollbar {
+    display: none;
   }
   
   .game-info-item, .video-info-item {
-    flex: 0 1 auto;
+    flex: 0 0 auto;
     margin-bottom: 0;
+    scroll-snap-align: center;
   }
   
   .game-viewer-wrapper {
@@ -9993,14 +10003,10 @@ textarea.form-control {
     width: 95%;
     max-width: 320px;
     gap: 8px;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
   }
   
   .game-info-item, .video-info-item {
     padding: 8px 10px;
-    flex: 0 1 auto;
   }
   
   .game-info-item h3, .video-info-item h3 {

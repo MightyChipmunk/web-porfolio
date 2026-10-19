@@ -20,15 +20,10 @@
 	<link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">
 	<link rel="stylesheet" href="css/animate.css">
 
-	<link rel="stylesheet" href="css/owl.carousel.min.css">
-	<link rel="stylesheet" href="css/owl.theme.default.min.css">
 	<link rel="stylesheet" href="css/magnific-popup.css">
-
-	<link rel="stylesheet" href="css/aos.css">
 
 	<link rel="stylesheet" href="css/ionicons.min.css">
 
-	<link rel="stylesheet" href="css/flaticon.css">
 	<link rel="stylesheet" href="css/icomoon.css">
 	<link rel="stylesheet" href="css/style.css">
 	<style>
@@ -366,9 +361,63 @@
 		#navi li a.current-parent {
 			color: #3e64ff;
 		}
+		/* 모바일: 목차를 상단에 고정된 가로 스크롤 줄로 (세로 목록은 본문 위에서 스크롤과 함께 사라짐) */
 		@media (max-width: 767.98px) {
-			#navi .navi-sub {
+			#resume-section > .container > .row > .col-md-3 {
+				display: contents;
+			}
+			#navi {
+				flex: 0 0 100%;
+				max-width: 100%;
+				top: var(--navbar-height, 56px);
+				z-index: 10;
+				margin: 0 0 24px;
+				padding: 8px 0;
+				background: #fff;
+				border-bottom: 1px solid #eee;
+			}
+			#navi > ul {
+				display: flex;
+				gap: 6px;
+				padding: 0 15px;
+				overflow-x: auto;
+				scrollbar-width: none;
+			}
+			#navi > ul::-webkit-scrollbar {
 				display: none;
+			}
+			#navi > ul > li:last-child,
+			#navi .navi-sub,
+			#navi li.expanded > .navi-sub {
+				display: contents;
+			}
+			#navi li,
+			#navi .navi-sub li {
+				flex: 0 0 auto;
+				margin: 0;
+				font-size: 13px;
+				font-weight: 600;
+			}
+			#navi li a,
+			#navi .navi-sub li a {
+				display: block;
+				padding: 6px 12px;
+				border-radius: 999px;
+				background: #f1f3ff;
+				color: #555;
+				white-space: nowrap;
+			}
+			#navi li a.current,
+			#navi .navi-sub li a.current {
+				margin-left: 0;
+				background: #3e64ff;
+				color: #fff;
+			}
+			#navi li a.current:after {
+				display: none;
+			}
+			#navi li a.current-parent:not(.current) {
+				color: #3e64ff;
 			}
 		}
 
@@ -503,7 +552,6 @@
 
 <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
 
-
 	<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar ftco-navbar-light site-navbar-target" id="ftco-navbar">
 		<div class="container">
 			<button class="navbar-toggler js-fh5co-nav-toggle fh5co-nav-toggle" type="button" data-toggle="collapse"
@@ -579,8 +627,6 @@
 		</div>
 	</section>
 
-
-
 	<section class="ftco-section ftco-no-pb goto-here" id="resume-section">
 		<div class="container">
 			<div class="row">
@@ -645,7 +691,7 @@
 								<br><span class="position">펭샷 (PengShot) 개발</span>
 								<ul>
 									<li>3인 멀티플레이 협동 슈터 게임 <strong>펭샷(PengShot)</strong> 개발에 참여했습니다.</li>
-									<li>Photon Quantum(ECS) 환경에서의 <strong>인게임 공격 연출 개선</strong>과, 미니게임·배틀패스 등 <strong>아웃게임 메타시스템 개발</strong>을 담당했습니다.</li>
+									<li>Photon Quantum(ECS) 환경에서의 <strong>인게임 연출 강화</strong>와, 미니게임·배틀패스 등 <strong>아웃게임 메타시스템 개발</strong>을 담당했습니다.</li>
 								</ul>
 							</div>
 						</div>
@@ -657,15 +703,15 @@
 								
 								<span class="position">Unity Client Developer</span>
 								<br><span class="position">광고 개발 부서</span>
-								<ul class="mb-4"><li>마케팅을 위한 플레이어블 및 크리에이티브 프로젝트 개발을 담당하며 2년간 100건 이상의 프로젝트를 개발했습니다.</li><li>빠른 주기로 프로젝트를 런칭하고 시장 반응을 확인하며, 얻은 피드백을 다음 프로젝트에 반영하여 결과물을 개선해 왔습니다.</li></ul>
+								<ul class="mb-4"><li>마케팅을 위한 플레이어블 및 크리에이티브 프로젝트 개발을 담당하며 2년간 100건 이상의 프로젝트를 개발했습니다.</li><li>빠른 주기로 프로젝트를 런칭하고 시장 반응을 확인하며, 얻은 피드백을 다음 프로젝트에 반영하여 결과물을 개선해 왔습니다.</li><li>이후 신규 하이브리드 퍼즐 프로젝트에 투입되어 <strong>6주간 프로토타입 3종</strong>을 개발했습니다.</li></ul>
 								
 								<span class="tech-stack-title">KEY ACHIEVEMENTS</span>
 								<ul>
-									<li><strong>100건 이상</strong>의 프로젝트 개발</li>
 									<!-- <li><strong>리소스 최적화:</strong> 4MB 미만의 빌드 용량 제한 준수 및 데이터 압축</li>
 									<li><strong>프레임 안정화:</strong> 저사양 모바일 웹 환경에서 끊김 없는 구동 환경 확보</li> -->
 									<li><strong>사내 모듈 제작:</strong> 비개발자용 연출 도구 및 개발자를 위한 연출/유틸리티 모듈 제작</li>
 									<li><strong>데이터 기반 개선:</strong> 광고 지표 분석을 통한 게임 로직 및 연출 보완</li>
+									<li><strong>신규 프로젝트 프로토타이핑:</strong> 하이브리드 퍼즐 프로토타입 3종을 6주 만에 개발</li>
 								</ul>
 							</div>
 
@@ -679,7 +725,7 @@
 							<div class="icon logo plain"><img src="Steam/TaskBarVendingMachine/icon.png" alt=""></div>
 							<div class="text pl-3">
 								<span class="date">2026.09 - 2026.10</span>
-								<h2>TaskBar VendingMachine <a href="https://store.steampowered.com/app/5375180/TaskBar_VendingMachine/" target="_blank" class="ml-2" style="font-size: 0.7em; color: #3e64ff; vertical-align: middle;">Steam <i class="icon-external-link"></i></a></h2>
+								<h2>TaskBar VendingMachine <a href="https://store.steampowered.com/app/5375180/TaskBar_VendingMachine/" target="_blank" rel="noopener" class="ml-2" style="font-size: 0.7em; color: #3e64ff; vertical-align: middle;">Steam <i class="icon-external-link"></i></a></h2>
 								<span class="project-subtitle">1인 개발 (개발 기간 4주) | 작업 표시줄 방치형 경영 게임 | Steam 출시 (2026.10)</span>
 
 								<div class="mb-3">
@@ -752,8 +798,8 @@
 									<span class="tech-badge">MCP</span>
 								</div>
 
-								<!-- 파이프라인 다이어그램: 개발 → 애셋 제작 → 배포 -->
-								<div class="pipeline-flow mt-4" role="img" aria-label="개발(보일러플레이트 서브모듈), 애셋 제작(Higgsfield, ElevenLabs), 배포(Claude 스킬)로 이어지는 Steam 1인 개발 파이프라인">
+								<!-- 파이프라인 다이어그램: 개발 → 에셋 제작 → 배포 -->
+								<div class="pipeline-flow mt-4" role="img" aria-label="개발(보일러플레이트 서브모듈), 에셋 제작(Higgsfield, ElevenLabs), 배포(Claude 스킬)로 이어지는 Steam 1인 개발 파이프라인">
 									<div class="pipeline-step">
 										<div class="step-head"><b class="step-no">1</b> 개발</div>
 										<div class="step-tool">보일러플레이트 서브모듈</div>
@@ -764,7 +810,7 @@
 									</div>
 									<div class="pipeline-arrow" aria-hidden="true"><i class="ion-ios-arrow-forward"></i></div>
 									<div class="pipeline-step">
-										<div class="step-head"><b class="step-no">2</b> 애셋 제작</div>
+										<div class="step-head"><b class="step-no">2</b> 에셋 제작</div>
 										<div class="step-tool">AI · MCP</div>
 										<ul class="step-items">
 											<li>Higgsfield: 스프라이트</li>
@@ -776,14 +822,14 @@
 										<div class="step-head"><b class="step-no">3</b> 배포</div>
 										<div class="step-tool">Claude 스킬</div>
 										<ul class="step-items">
-											<li>스팀 페이지 애셋 생성</li>
+											<li>스팀 페이지 에셋 생성</li>
 											<li>스팀 빌드 업로드</li>
 										</ul>
 									</div>
 								</div>
 
 								<ul class="mt-4">
-									<li>스팀 게임을 혼자서 빠르게 출시하기 위해 <strong>개발 → 애셋 제작 → 배포</strong> 전 과정을 보일러플레이트 서브모듈과 AI 자동화로 묶은 파이프라인입니다.</li>
+									<li>스팀 게임을 혼자서 빠르게 출시하기 위해 <strong>개발 → 에셋 제작 → 배포</strong> 전 과정을 보일러플레이트 서브모듈과 AI 자동화로 묶은 파이프라인입니다.</li>
 									<li><strong>결과:</strong> 기존 <strong>7주</strong>가 걸리던 개발을 다음 프로젝트에서 <strong>4주</strong>로 단축</li>
 								</ul>
 
@@ -798,7 +844,7 @@
 								</div>
 
 								<div class="mt-3">
-									<span class="tech-stack-title">② 애셋 제작 · AI</span>
+									<span class="tech-stack-title">② 에셋 제작 · AI</span>
 									<ul>
 										<li><strong>스프라이트:</strong> <strong>Higgsfield MCP</strong>로 게임 스프라이트 생성</li>
 										<li><strong>사운드:</strong> <strong>ElevenLabs MCP</strong>로 BGM과 SFX 생성</li>
@@ -808,7 +854,7 @@
 								<div class="mt-3">
 									<span class="tech-stack-title">③ 배포 · 자동화</span>
 									<ul>
-										<li><strong>Claude 스킬 자동화:</strong> 스팀 페이지에 필요한 애셋 생성과 <strong>스팀 빌드 업로드</strong>를 스킬로 분리해 자동화</li>
+										<li><strong>Claude 스킬 자동화:</strong> 스팀 페이지에 필요한 에셋 생성과 <strong>스팀 빌드 업로드</strong>를 스킬로 분리해 자동화</li>
 									</ul>
 								</div>
 							</div>
@@ -819,7 +865,7 @@
 							<div class="icon logo round"><img src="Steam/Pindemonium/icon.png" alt=""></div>
 							<div class="text pl-3">
 								<span class="date">2026.08 - 2026.09</span>
-								<h2>PINDEMONIUM <a href="https://store.steampowered.com/app/5343970/PINDEMONIUM/" target="_blank" class="ml-2" style="font-size: 0.7em; color: #3e64ff; vertical-align: middle;">Steam <i class="icon-external-link"></i></a></h2>
+								<h2>PINDEMONIUM <a href="https://store.steampowered.com/app/5343970/PINDEMONIUM/" target="_blank" rel="noopener" class="ml-2" style="font-size: 0.7em; color: #3e64ff; vertical-align: middle;">Steam <i class="icon-external-link"></i></a></h2>
 								<span class="project-subtitle">1인 개발 (개발 기간 7주) | 로그라이크 핀볼 덱빌더 | Steam 출시 (2026.10)</span>
 
 								<div class="mb-3">
@@ -856,10 +902,10 @@
 								<div class="mt-3">
 									<span class="tech-stack-title">GAME FEATURES</span>
 									<ul>
-										<li><strong>로그라이크 핀볼:</strong> 발라트로를 레퍼런스로 삼은 로그라이크 핀볼</li>
+										<li><strong>레퍼런스:</strong> 발라트로의 로그라이크 덱빌딩 구조를 핀볼에 접목</li>
 										<li><strong>스테이지 & 상점:</strong> 스테이지 사이 상점에서 맵 요소와 공을 강화</li>
 										<li><strong>콤보 시스템:</strong> 연속 타격으로 쌓이는 콤보 배율, 오래 맞히지 못하면 초기화</li>
-										<li><strong>퍼펙트 패리:</strong> 타 게임의 퍼펙트 패리 개념을 차용해, 볼이 정확한 타이밍에 플리퍼에 맞으면 추가 연출과 위력 강화</li>
+										<li><strong>퍼펙트 패리:</strong> 타 게임의 퍼펙트 패리 개념을 차용해, 공이 정확한 타이밍에 플리퍼에 맞으면 추가 연출과 위력 강화</li>
 									</ul>
 								</div>
 
@@ -914,7 +960,7 @@
 								<div class="mt-3">
 									<span class="tech-stack-title">TECHNICAL CHALLENGES</span>
 									<ul>
-										<li><strong>ECS 환경의 공격 연출 개선:</strong> 결정론적 멀티플레이 엔진 <a href="https://www.photonengine.com/quantum" target="_blank" rel="noopener"><strong>Photon Quantum</strong></a>의 ECS 시뮬레이션 위에서 <strong>인게임 공격 연출 개선</strong></li>
+										<li><strong>ECS 환경의 인게임 연출 강화:</strong> 결정론적 멀티플레이 엔진 <a href="https://www.photonengine.com/quantum" target="_blank" rel="noopener"><strong>Photon Quantum</strong></a>의 ECS 시뮬레이션 위에서 <strong>인게임 연출 강화</strong></li>
 										<li><strong>아웃게임 메타시스템:</strong> <strong>미니게임·배틀패스</strong> 등 인게임 외 기능을 구현하고, <strong>Firebase</strong>로 유저 데이터 연동</li>
 										<li><strong>구글 시트 기반 데이터 관리:</strong> 게임 데이터와 로컬라이제이션 텍스트를 <strong>구글 시트</strong>에서 함께 관리</li>
 									</ul>
@@ -1102,12 +1148,11 @@
 
 								<ul class="mt-4">
 									<li><strong>Unity</strong>와 <strong>Unity PlayWorks</strong>를 활용하여 웹 게임 형식의 플레이어블 광고를 개발하였습니다.</li>
-									<li>각 프로젝트마다 개발 / 디자이너 / 기획자가 각각 1인씩 참여하여 개발하였습니다.</li>
+									<li>각 프로젝트마다 개발자 / 디자이너 / 기획자가 각각 1인씩 참여하여 개발하였습니다.</li>
 								</ul>
 								<div class="mt-1 mb-2">
-									<a href="playable-detail.html" target="_blank" class="detail-link-btn">프로젝트 상세 보기 <i class="ion-ios-arrow-forward"></i></a>
+									<a href="playable-detail.html" target="_blank" rel="noopener" class="detail-link-btn">프로젝트 상세 보기 <i class="ion-ios-arrow-forward"></i></a>
 								</div>
-
 
 								<div class="mt-3">
 									<span class="tech-stack-title">KEY ACHIEVEMENTS</span>
@@ -1124,7 +1169,7 @@
 										<!-- <li><strong>구조적 설계:</strong> 상황에 맞는 디자인 패턴 적용으로 <strong>코드 모듈화 및 확장성 확보</strong></li> -->
 										<li><strong>성능 최적화:</strong> 그리드 기반 공간 분할 및 GC, 물리 연산 최적화로 <strong>저사양 웹 환경 프레임 확보</strong></li>
 										<li><strong>그래픽 최적화:</strong> AI 기반 셰이더 경량화로 <strong>WebGL 호환성 확보 및 렌더링 부하 감소</strong></li>
-										<li><strong>빌드 용량 최적화:</strong> 컬러맵 텍스처를 통한 애셋 최적화로 <strong>4MB 미만 용량 구현</strong></li>
+										<li><strong>빌드 용량 최적화:</strong> 컬러맵 텍스처를 통한 에셋 최적화로 <strong>4MB 미만 용량 구현</strong></li>
 										<!-- <li><strong>연출/로직 모듈화 및 배포:</strong> 마케팅 성과가 높았던 연출과 로직을 모듈화하여 배포, <strong>팀 전체의 생산성 향상</strong></li> -->
 									</ul>
 								</div>
@@ -1231,9 +1276,8 @@
 									<li>다양한 게임 메커니즘을 짧은 영상으로 압축하여 높은 수준의 시각적 연출을 구현했습니다.</li>
 								</ul>
 								<div class="mt-1 mb-2">
-									<a href="creative-detail.html" target="_blank" class="detail-link-btn">프로젝트 상세 보기 <i class="ion-ios-arrow-forward"></i></a>
+									<a href="creative-detail.html" target="_blank" rel="noopener" class="detail-link-btn">프로젝트 상세 보기 <i class="ion-ios-arrow-forward"></i></a>
 								</div>
-
 
 								<div class="mt-3">
 									<span class="tech-stack-title">KEY ACHIEVEMENTS</span>
@@ -1259,7 +1303,7 @@
 							<div class="icon logo"><img src="Appicon/TruckSmasher.png" alt=""></div>
 							<div class="text pl-3">
 								<span class="date">2025.02 - 2025.03</span>
-								<h2>Truck Smasher <a href="https://play.google.com/store/apps/details?id=io.supercent.trucksmashers" target="_blank" class="ml-2" style="font-size: 0.7em; color: #3e64ff; vertical-align: middle;">Play Store <i class="icon-external-link"></i></a></h2>
+								<h2>Truck Smasher <a href="https://play.google.com/store/apps/details?id=io.supercent.trucksmashers" target="_blank" rel="noopener" class="ml-2" style="font-size: 0.7em; color: #3e64ff; vertical-align: middle;">Play Store <i class="icon-external-link"></i></a></h2>
 								<span class="project-subtitle">슈퍼센트 (Supercent) | 3인 팀 프로젝트</span>
 								
 								<div class="mb-3">
@@ -1271,7 +1315,7 @@
 								<!-- Truck Smasher Viewer -->
 								<div class="mt-4">
 									<video id="trucksmasher-video" controls loop muted playsinline preload="none" poster="Creatives/trucksmasher-poster.webp" class="rounded shadow" style="display: block; aspect-ratio: 1080 / 1350; max-height: 704px; width: 100%; max-width: 396px; object-fit: contain; background: #000; border-radius: 12px;">
-										<source src="Creatives/4번영상.mp4" type="video/mp4">
+										<source src="Creatives/trucksmasher.mp4" type="video/mp4">
 									</video>
 								</div>
 
@@ -1306,6 +1350,13 @@
 	
 	<!-- Game Navigation Script -->
 	<script>
+		// 좁은 화면에서 선택 목록이 가로 스크롤일 때, 선택된 항목이 보이도록 목록만 가로로 이동 (페이지 스크롤은 그대로)
+		function revealInPanel(item, panel = item.parentElement) {
+			if (panel.scrollWidth <= panel.clientWidth) return;
+			const offset = item.getBoundingClientRect().left - panel.getBoundingClientRect().left;
+			panel.scrollTo({ left: panel.scrollLeft + offset - (panel.clientWidth - item.offsetWidth) / 2, behavior: 'smooth' });
+		}
+
 		let currentGameIndex = 0;
 		const totalGames = document.querySelectorAll('.game-slide').length;
 		const loadedGames = new Set();
@@ -1381,6 +1432,7 @@
 			// Add active class to new slide and info
 			slides[currentGameIndex].classList.add('active');
 			infoItems[currentGameIndex].classList.add('active');
+			revealInPanel(infoItems[currentGameIndex]);
 			
 			// Update counter
 			document.getElementById('currentGame').textContent = currentGameIndex + 1;
@@ -1421,6 +1473,7 @@
 			// Add active class to new slide and info
 			slides[currentGameIndex].classList.add('active');
 			infoItems[currentGameIndex].classList.add('active');
+			revealInPanel(infoItems[currentGameIndex]);
 			
 			// Update counter
 			document.getElementById('currentGame').textContent = currentGameIndex + 1;
@@ -1545,6 +1598,7 @@
 				load(current);
 				slides[current].classList.add('active');
 				infoItems[current].classList.add('active');
+				revealInPanel(infoItems[current]);
 				currentLabel.textContent = current + 1;
 			}
 
@@ -1563,12 +1617,12 @@
 
 		document.addEventListener('DOMContentLoaded', function() {
 			initVideoViewer(document.getElementById('creatives-section'), [
-				{ path: 'Creatives/video114_lumberchopper_en_44s_1080x1920_brown_251002.mp4', name: 'Lumber Chopper' },
-				{ path: 'Creatives/video050_xphero_en_39s_1080x1920_annie_250314.mp4', name: 'XP Hero' },
-				{ path: 'Creatives/video358_pizzaplease_en_37s_1080x1920_kay_250307.mp4', name: 'Pizza Ready 1' },
-				{ path: 'Creatives/video449_pizzaidle_en_56s_1080x1920_jaeny_250912 (online-video-cutter.com).mp4', name: 'Pizza Ready 2' },
-				{ path: 'Creatives/video363_pizzaplease_en_31s_1080x1920_kay_250307.mp4', name: 'Pizza Ready 3' },
-				{ path: 'Creatives/video687_burgerplease_en_30s_1080x1920_annie_250207.mp4', name: 'Burger Please' }
+				{ path: 'Creatives/lumberchopper.mp4', name: 'Lumber Chopper' },
+				{ path: 'Creatives/xphero.mp4', name: 'XP Hero' },
+				{ path: 'Creatives/pizzaready1.mp4', name: 'Pizza Ready 1' },
+				{ path: 'Creatives/pizzaready2.mp4', name: 'Pizza Ready 2' },
+				{ path: 'Creatives/pizzaready3.mp4', name: 'Pizza Ready 3' },
+				{ path: 'Creatives/burgerplease.mp4', name: 'Burger Please' }
 			]);
 			initVideoViewer(document.getElementById('puzzle-section'), [
 				{ path: 'Creatives/puzzle/woolloop.mp4', name: 'Wool Loop' },
@@ -1577,7 +1631,6 @@
 			]);
 		});
 	</script>
-
 
 	<section class="ftco-section contact-section ftco-no-pb" id="contact-section">
 		<div class="container">
@@ -1627,7 +1680,6 @@
 		</div>
 	</section>
 
-
 	<footer class="ftco-footer ftco-section">
 		<div class="container">
 
@@ -1635,15 +1687,13 @@
 				<div class="col-md-12 text-center">
 					<p>
 						<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-						This template is made with <a href="https://colorlib.com" target="_blank">Colorlib</a>
+						This template is made with <a href="https://colorlib.com" target="_blank" rel="noopener">Colorlib</a>
 						<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
 					</p>
 				</div>
 			</div>
 		</div>
 	</footer>
-
-
 
 	<!-- loader -->
 	<div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px">
@@ -1652,19 +1702,13 @@
 				stroke="#F96D00" />
 		</svg></div>
 
-
 	<script src="js/jquery.min.js"></script>
 	<script src="js/jquery-migrate-3.0.1.min.js"></script>
 	<script src="js/popper.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
 	<script src="js/jquery.easing.1.3.js"></script>
 	<script src="js/jquery.waypoints.min.js"></script>
-	<script src="js/jquery.stellar.min.js"></script>
-	<script src="js/owl.carousel.min.js"></script>
 	<script src="js/jquery.magnific-popup.min.js"></script>
-	<script src="js/aos.js"></script>
-	<script src="js/jquery.animateNumber.min.js"></script>
-	<script src="js/scrollax.min.js"></script>
 
 	<script src="js/main.js"></script>
 
@@ -1676,9 +1720,11 @@
 
 			// 상단 고정 메뉴 바로 아래에 섹션 머리가 오도록 이동.
 			// 이동 중 레이아웃이 바뀌어도(이미지·영상 로딩) 매 프레임 목표 위치를 다시 계산해 정확히 도착
+			const mobileToc = window.matchMedia('(max-width: 767.98px)');
 			function targetTop($target) {
 				const navHeight = $('#ftco-navbar').outerHeight() || 70;
-				return Math.max(0, $target.offset().top - navHeight - 20);
+				const tocHeight = mobileToc.matches ? $('#navi').outerHeight() : 0;
+				return Math.max(0, $target.offset().top - navHeight - tocHeight - 20);
 			}
 			// 스냅 이동: easeInOutCubic 트윈, 시간은 거리 / 속도로 정해 가까운 곳은 더 빨리 도착 (너무 멀면 상한)
 			// 이동 중 다시 클릭하면 현재 위치에서 새 목표로 다시 시작하고, 사용자가 직접 스크롤하면 즉시 멈춤
@@ -1720,10 +1766,19 @@
 			});
 
 			// 프로젝트 영역을 보는 동안에만 세부 목차를 펼치고, 상위 "Projects"도 강조
+			let lastCurrent = null;
 			function updateProjectsNav() {
 				const subActive = $('#navi .navi-sub a.current').length > 0;
 				$projects.toggleClass('current-parent', subActive);
 				$projects.parent().toggleClass('expanded', subActive || $projects.hasClass('current'));
+
+				// 모바일 가로 목차: 현재 항목이 바뀌면 그 항목이 보이도록 목차만 가로로 이동
+				const current = $('#navi .navi-sub a.current')[0] || $('#navi a.current')[0];
+				if (mobileToc.matches && current && current !== lastCurrent) {
+					revealInPanel(current, document.querySelector('#navi > ul'));
+				}
+				lastCurrent = current;
+				document.documentElement.style.setProperty('--navbar-height', ($('#ftco-navbar').outerHeight() || 56) + 'px');
 			}
 			$(window).on('scroll', updateProjectsNav);
 			updateProjectsNav();
