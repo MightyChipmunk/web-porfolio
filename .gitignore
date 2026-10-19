@@ -14,3 +14,6 @@ node_modules/
 
 # 원본 포트폴리오 미디어 패키지 (대용량 원본, 웹용 경량본은 Steam/ 에 있음)
 Games/*_Portfolio/
+
+# 하이브리드 퍼즐 원본 영상 (웹용 경량본은 Creatives/puzzle/ 에 있음)
+Puzzles/
